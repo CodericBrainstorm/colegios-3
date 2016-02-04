@@ -1,0 +1,196 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Director
+ *
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\DirectorRepository")
+ * @ORM\HasLifecycleCallbacks
+ */
+class Director extends User {
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Sostenedor", inversedBy="directores")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $sostenedor;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Miembro", mappedBy="director")
+     */
+    private $miembros;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Colegio", mappedBy="director")
+     */
+    private $colegio;
+
+    /**
+     * @ORM\OneToMany(targetEntity="CompromisoReal", mappedBy="director")
+     */
+    private $compromisos;
+
+    /**
+     * Constructor
+     */
+    public function __construct() {
+        $this->miembros = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->compromisos = new \Doctrine\Common\Collections\ArrayCollection();
+        parent::__construct();
+    }
+
+    /**
+     * @ORM\PrePersist()
+     */
+    public function prePersist() {
+        $this->addRole("ROLE_DIRECTOR");
+    }
+
+    /**
+     * Set sostenedor
+     *
+     * @param \AppBundle\Entity\Sostenedor $sostenedor
+     * @return Director
+     */
+    public function setSostenedor(\AppBundle\Entity\Sostenedor $sostenedor = null) {
+        $this->sostenedor = $sostenedor;
+
+        return $this;
+    }
+
+    /**
+     * Get sostenedor
+     *
+     * @return \AppBundle\Entity\Sostenedor 
+     */
+    public function getSostenedor() {
+        return $this->sostenedor;
+    }
+
+    /**
+     * Add miembros
+     *
+     * @param \AppBundle\Entity\Miembro $miembros
+     * @return Director
+     */
+    public function addMiembro(\AppBundle\Entity\Miembro $miembros) {
+        $this->miembros[] = $miembros;
+
+        return $this;
+    }
+
+    /**
+     * Remove miembros
+     *
+     * @param \AppBundle\Entity\Miembro $miembros
+     */
+    public function removeMiembro(\AppBundle\Entity\Miembro $miembros) {
+        $this->miembros->removeElement($miembros);
+    }
+
+    /**
+     * Get miembros
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMiembros() {
+        return $this->miembros;
+    }
+
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     * @return Director
+     */
+    public function setNombre($nombre) {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string 
+     */
+    public function getNombre() {
+        return $this->nombre;
+    }
+
+    /**
+     * Set apellido
+     *
+     * @param string $apellido
+     * @return Director
+     */
+    public function setApellido($apellido) {
+        $this->apellido = $apellido;
+
+        return $this;
+    }
+
+    /**
+     * Get apellido
+     *
+     * @return string 
+     */
+    public function getApellido() {
+        return $this->apellido;
+    }
+
+    /**
+     * Set colegio
+     *
+     * @param \AppBundle\Entity\Colegio $colegio
+     * @return Director
+     */
+    public function setColegio(\AppBundle\Entity\Colegio $colegio = null) {
+        $this->colegio = $colegio;
+
+        return $this;
+    }
+
+    /**
+     * Get colegio
+     *
+     * @return \AppBundle\Entity\Colegio 
+     */
+    public function getColegio() {
+        return $this->colegio;
+    }
+
+    /**
+     * Add compromisos
+     *
+     * @param \AppBundle\Entity\CompromisoReal $compromisos
+     * @return Director
+     */
+    public function addCompromiso(\AppBundle\Entity\CompromisoReal $compromisos) {
+        $this->compromisos[] = $compromisos;
+
+        return $this;
+    }
+
+    /**
+     * Remove compromisos
+     *
+     * @param \AppBundle\Entity\CompromisoReal $compromisos
+     */
+    public function removeCompromiso(\AppBundle\Entity\CompromisoReal $compromisos) {
+        $this->compromisos->removeElement($compromisos);
+    }
+
+    /**
+     * Get compromisos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCompromisos() {
+        return $this->compromisos;
+    }
+
+}
