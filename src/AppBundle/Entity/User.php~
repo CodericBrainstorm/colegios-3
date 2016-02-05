@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * User
@@ -28,12 +29,14 @@ class User extends BaseUser {
     /**     
      * @var string
      * 
+     * @Assert\NotBlank(message = "user.nombre.not_blank")
      * @ORM\Column(name="nombre", type="string", length=255) 
      */ 
     protected $nombre;
     /**     
      * @var string
      * 
+     * @Assert\NotBlank(message = "user.apellido.not_blank")
      * @ORM\Column(name="apellido", type="string", length=255) 
      */ 
     protected $apellido;

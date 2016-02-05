@@ -1,0 +1,2 @@
+assert:
+    not_blank: Este valor no puede estar vacío

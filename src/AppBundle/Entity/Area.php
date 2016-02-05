@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Area
@@ -24,6 +25,7 @@ class Area {
     /**
      * @var string
      *
+     * @Assert\NotBlank(message = "area.nombre.not_blank")
      * @ORM\Column(type="string", length=255, unique=true)
      */
     private $nombre;
@@ -31,13 +33,16 @@ class Area {
     /**
      * @var string
      *
-     * @ORM\Column(type="text", nullable=true)
+     * @Assert\NotNull(message = "area.descripcion.not_null")
+     * @ORM\Column(type="text")
      */
     private $descripcion;
 
     /**
      * @var float
      *
+     * @Assert\NotNull(message = "area.ponderacion.not_null")
+     * @Assert\Type(type="float", message="area.ponderacion.type")
      * @ORM\Column(type="float")
      */
     private $ponderacion;

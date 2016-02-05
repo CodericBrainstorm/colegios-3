@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Hito
@@ -24,6 +25,7 @@ class Hito {
     /**
      * @var string
      *
+     * @Assert\NotBlank(message = "hito.nombre.not_blank")
      * @ORM\Column(type="string", length=255)
      */
     private $nombre;
@@ -31,6 +33,7 @@ class Hito {
     /**
      * @var string
      *
+     * @Assert\NotNull(message = "hito.descripcion.not_null")
      * @ORM\Column(type="text")
      */
     private $descripcion;
@@ -38,6 +41,8 @@ class Hito {
     /**
      * @var float
      *
+     * @Assert\NotNull(message = "hito.ponderacion.not_null")
+     * @Assert\Type(type="float", message="hito.ponderacion.type")
      * @ORM\Column(type="float")
      */
     private $ponderacion;
@@ -45,6 +50,7 @@ class Hito {
     /**
      * @var \DateTime
      *
+     * @Assert\Date(message = "assert.date")
      * @ORM\Column(type="date")
      */
     private $fechaInicio;
@@ -52,6 +58,7 @@ class Hito {
     /**
      * @var \DateTime
      *
+     * @Assert\Date(message = "assert.date")
      * @ORM\Column(type="date")
      */
     private $fechaFin;
@@ -59,6 +66,7 @@ class Hito {
     /**
      * @var bool
      *
+     * @Assert\NotNull(message = "assert.not_null")
      * @ORM\Column(type="boolean")
      */
     private $verificado;

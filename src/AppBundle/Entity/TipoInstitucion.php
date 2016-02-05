@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * TipoInstitucion
@@ -24,6 +25,7 @@ class TipoInstitucion {
     /**
      * @var string
      *
+     * @Assert\NotBlank(message = "tipoInstitucion.nombre.not_blank")
      * @ORM\Column(name="nombre", type="string", length=255, unique=true)
      */
     private $nombre;

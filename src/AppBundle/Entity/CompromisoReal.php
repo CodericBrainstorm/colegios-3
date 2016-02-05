@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * CompromisoReal
@@ -24,6 +25,7 @@ class CompromisoReal {
     /**
      * @var bool
      *
+     * @Assert\NotNull(message = "assert.not_null")
      * @ORM\Column(name="verificado", type="boolean")
      */
     private $verificado;

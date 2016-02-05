@@ -26,6 +26,7 @@ class Archivo {
     /**
      * @var string
      *
+     * @Assert\NotBlank(message = "archivo.nombre.not_blank")
      * @ORM\Column(type="string", length=255)
      */
     private $nombre;
@@ -33,6 +34,7 @@ class Archivo {
     /**
      * @var string
      *
+     * @Assert\NotNull(message = "assert.not_null")
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $path;

@@ -1,0 +1,2 @@
+assert:
+    not_blank: This value should not be blank.
