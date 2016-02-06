@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Accion
@@ -24,6 +25,7 @@ class Accion {
     /**
      * @var string
      *
+     * @Assert\NotBlank(message = "accion.nombre.not_blank")
      * @ORM\Column(name="nombre", type="string", length=255)
      */
     private $nombre;
@@ -31,6 +33,7 @@ class Accion {
     /**
      * @var string
      *
+     * @Assert\NotNull(message = "accion.descripcion.not_null")
      * @ORM\Column(name="descripcion", type="text")
      */
     private $descripcion;
@@ -38,6 +41,7 @@ class Accion {
     /**
      * @var \DateTime
      *
+     * @Assert\Date(message = "assert.date")
      * @ORM\Column(name="fechaInicio", type="date")
      */
     private $fechaInicio;
@@ -45,6 +49,7 @@ class Accion {
     /**
      * @var \DateTime
      *
+     * @Assert\Date(message = "assert.date")
      * @ORM\Column(name="fechaFin", type="date")
      */
     private $fechaFin;
@@ -52,6 +57,7 @@ class Accion {
     /**
      * @var bool
      *
+     * @Assert\NotNull(message = "assert.not_null")
      * @ORM\Column(name="verificado", type="boolean")
      */
     private $verificado;
@@ -194,15 +200,13 @@ class Accion {
         return $this->verificado;
     }
 
-
     /**
      * Set miembro
      *
      * @param \AppBundle\Entity\Miembro $miembro
      * @return Accion
      */
-    public function setMiembro(\AppBundle\Entity\Miembro $miembro = null)
-    {
+    public function setMiembro(\AppBundle\Entity\Miembro $miembro = null) {
         $this->miembro = $miembro;
 
         return $this;
@@ -213,8 +217,7 @@ class Accion {
      *
      * @return \AppBundle\Entity\Miembro 
      */
-    public function getMiembro()
-    {
+    public function getMiembro() {
         return $this->miembro;
     }
 
@@ -224,8 +227,7 @@ class Accion {
      * @param \AppBundle\Entity\Estado $estadoDirector
      * @return Accion
      */
-    public function setEstadoDirector(\AppBundle\Entity\Estado $estadoDirector = null)
-    {
+    public function setEstadoDirector(\AppBundle\Entity\Estado $estadoDirector = null) {
         $this->estadoDirector = $estadoDirector;
 
         return $this;
@@ -236,8 +238,7 @@ class Accion {
      *
      * @return \AppBundle\Entity\Estado 
      */
-    public function getEstadoDirector()
-    {
+    public function getEstadoDirector() {
         return $this->estadoDirector;
     }
 
@@ -247,8 +248,7 @@ class Accion {
      * @param \AppBundle\Entity\Estado $estadoMiembro
      * @return Accion
      */
-    public function setEstadoMiembro(\AppBundle\Entity\Estado $estadoMiembro = null)
-    {
+    public function setEstadoMiembro(\AppBundle\Entity\Estado $estadoMiembro = null) {
         $this->estadoMiembro = $estadoMiembro;
 
         return $this;
@@ -259,8 +259,7 @@ class Accion {
      *
      * @return \AppBundle\Entity\Estado 
      */
-    public function getEstadoMiembro()
-    {
+    public function getEstadoMiembro() {
         return $this->estadoMiembro;
     }
 
@@ -270,8 +269,7 @@ class Accion {
      * @param \AppBundle\Entity\Hito $hito
      * @return Accion
      */
-    public function setHito(\AppBundle\Entity\Hito $hito = null)
-    {
+    public function setHito(\AppBundle\Entity\Hito $hito = null) {
         $this->hito = $hito;
 
         return $this;
@@ -282,8 +280,8 @@ class Accion {
      *
      * @return \AppBundle\Entity\Hito 
      */
-    public function getHito()
-    {
+    public function getHito() {
         return $this->hito;
     }
+
 }

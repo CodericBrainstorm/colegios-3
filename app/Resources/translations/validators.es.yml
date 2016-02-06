@@ -1,0 +1,80 @@
+assert:
+    not_blank: Este valor no puede estar vacío.
+    not_null: Este valor no puede ser nulo.
+    date: La fecha no es válida.
+    type: El valor {{ value }} no es un {{ type }} válido.
+        
+accion:
+    nombre:
+        not_blank: El nombre de la acción no puede estar vacío.
+    descripcion:
+        not_null: La descripción no puede ser nula.
+        
+archivo:
+    nombre:
+        not_blank: El nombre de la acción no puede estar vacío.
+       
+area:
+    nombre:
+        not_blank: El nombre de la acción no puede estar vacío.
+    descripcion:
+        not_null: La descripción no puede ser nula.
+    ponderacion:
+        not_null: La ponderación no puede ser nula.
+        type: El valor {{ value }} no es una ponderacion válida.
+        
+ciudad:
+    nombre:
+        not_blank: El nombre de la ciudad no puede estar vacío.
+        
+colegio:
+    nombre:
+        not_blank: El nombre del colegio no puede estar vacío.
+       
+compromiso:
+    nombre:
+        not_blank: El nombre del compromiso no puede estar vacío.
+    descripcion:
+        not_null: La descripción no puede ser nula.
+    indicador:
+        not_null: El indicador no puede ser nulo.
+    ponderacion:
+        not_null: La ponderación no puede ser nula.
+        type: El valor {{ value }} no es una ponderacion válida.
+        
+comuna:
+    nombre:
+        not_blank: El nombre de la comuna no puede estar vacío.
+        
+estado:
+    nombre:
+        not_blank: El nombre del estado no puede estar vacío.
+       
+hito:
+    nombre:
+        not_blank: El nombre del hito no puede estar vacío.
+    descripcion:
+        not_null: La descripción no puede ser nula.
+    ponderacion:
+        not_null: La ponderación no puede ser nula.
+        type: El valor {{ value }} no es una ponderacion válida.
+        
+sostenedor:
+    nombreInstitucion:
+        not_blank: El nombre de la institucion no puede estar vacío.
+    direccion:
+        not_blank: La dirección no puede estar vacía.
+        
+tipoColegio:
+    nombre:
+        not_blank: El tipo de colegio no puede estar vacío.
+        
+tipoInstitucion:
+    nombre:
+        not_blank: El tipo de institucion no puede estar vacío.
+        
+user:
+    nombre:
+        not_blank: El nombre del usuario no puede estar vacío.
+    apellido:
+        not_blank: El apellido del usuario no puede estar vacío.

@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Sostenedor
@@ -15,6 +16,7 @@ class Sostenedor extends User {
     /**
      * @var string
      * 
+     * @Assert\NotBlank(message = "sostenedor.nombreInstitucion.not_blank")
      * @ORM\Column(type="string", length=255) 
      */
     private $nombreInstitucion;
@@ -22,6 +24,7 @@ class Sostenedor extends User {
     /**
      * @var string
      * 
+     * @Assert\NotBlank(message = "sostenedor.direccion.not_blank")
      * @ORM\Column(type="string", length=255) 
      */
     private $direccion;

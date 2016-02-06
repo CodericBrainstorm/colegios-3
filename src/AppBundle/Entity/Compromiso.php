@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Compromiso
@@ -24,6 +25,7 @@ class Compromiso {
     /**
      * @var string
      *
+     * @Assert\NotBlank(message = "compromiso.nombre.not_blank")
      * @ORM\Column(type="string", length=255)
      */
     private $nombre;
@@ -31,6 +33,7 @@ class Compromiso {
     /**
      * @var string
      *
+     * @Assert\NotNull(message = "compromiso.descripcion.not_null")
      * @ORM\Column(type="text")
      */
     private $descripcion;
@@ -38,6 +41,7 @@ class Compromiso {
     /**
      * @var string
      *
+     * @Assert\NotNull(message = "compromiso.indicador.not_null")
      * @ORM\Column(type="text")
      */
     private $indicador;
@@ -45,6 +49,8 @@ class Compromiso {
     /**
      * @var float
      *
+     * @Assert\NotNull(message = "compromiso.ponderacion.not_null")
+     * @Assert\Type(type="float", message="compromiso.ponderacion.type")
      * @ORM\Column(name="ponderacion", type="float")
      */
     private $ponderacion;
