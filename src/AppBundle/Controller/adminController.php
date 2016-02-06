@@ -34,6 +34,18 @@ class adminController extends Controller
     }
     
     /**
+    * @Route("/admin/nuevo_sostenedor/", name="nuevo sostenedor")
+    */
+    
+    public function nuevoSostenedorAction()
+    {
+        return $this->render(
+            'admin/nuevo_sostenedor.html.twig',
+            array('params' => 1)
+        );
+    }
+    
+    /**
     * @Route("/admin/directores/", name="directores")
     */
     
@@ -53,6 +65,66 @@ class adminController extends Controller
     {
         return $this->render(
             'admin/miembros.html.twig',
+            array('params' => 1)
+        );
+    }
+    
+    /**
+    * @Route("/admin/rubricas/", name="rubricas")
+    */
+    
+    public function rubricasAction()
+    {
+        return $this->render(
+            'admin/rubricas.html.twig',
+            array('params' => 1)
+        );
+    }
+    
+    /**
+    * @Route("/admin/tipos_de_institucion/", name="tipos de institucion")
+    */
+    
+    public function tiposDeInstitucionAction()
+    {
+        return $this->render(
+            'admin/tipos_de_institucion.html.twig',
+            array('params' => 1)
+        );
+    }
+    
+    /**
+    * @Route("/admin/ciudades/", name="ciudades")
+    */
+    
+    public function ciudadesAction()
+    {
+        return $this->render(
+            'admin/ciudades.html.twig',
+            array('params' => 1)
+        );
+    }
+    
+    /**
+    * @Route("/admin/comunas/", name="comunas")
+    */
+    
+    public function comunasAction()
+    {
+        return $this->render(
+            'admin/comunas.html.twig',
+            array('params' => 1)
+        );
+    }
+    
+    /**
+    * @Route("/admin/areas/", name="areas")
+    */
+    
+    public function areasAction()
+    {
+        return $this->render(
+            'admin/areas.html.twig',
             array('params' => 1)
         );
     }
