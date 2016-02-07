@@ -3,7 +3,13 @@
 {% block body %}
 <section class="panel">
     <header class="panel-heading">
-        Nuevo Sostenedor
+        {% if op == "alta" %}
+            Nuevo Sostenedor
+        {% elseif op == "modificacion" %}
+            Editar Sostenedor
+        {% else %}
+            Ver Sostenedor
+        {% endif %}
     </header>
     <div class="panel-body">
         <form class="form-horizontal adminex-form" method="get">

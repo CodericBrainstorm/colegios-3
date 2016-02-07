@@ -40,8 +40,8 @@ class adminController extends Controller
     public function nuevoSostenedorAction()
     {
         return $this->render(
-            'admin/nuevo_sostenedor.html.twig',
-            array('params' => 1)
+            'admin/form_sostenedor.html.twig',
+            array('op' => "alta")
         );
     }
     
@@ -58,6 +58,18 @@ class adminController extends Controller
     }
     
     /**
+    * @Route("/admin/nuevo_director/", name="nuevo director")
+    */
+    
+    public function nuevoDirectorAction()
+    {
+        return $this->render(
+            'admin/form_director.html.twig',
+            array('op' => "alta")
+        );
+    }
+    
+    /**
     * @Route("/admin/miembros/", name="miembros")
     */
     
@@ -66,6 +78,18 @@ class adminController extends Controller
         return $this->render(
             'admin/miembros.html.twig',
             array('params' => 1)
+        );
+    }
+    
+    /**
+    * @Route("/admin/nuevo_miembro/", name="nuevo miembro")
+    */
+    
+    public function nuevoMiembroAction()
+    {
+        return $this->render(
+            'admin/form_miembro.html.twig',
+            array('op' => "alta")
         );
     }
     
@@ -82,6 +106,18 @@ class adminController extends Controller
     }
     
     /**
+    * @Route("/admin/nueva_rubrica/", name="nueva rubrica")
+    */
+    
+    public function nuevaRubricaAction()
+    {
+        return $this->render(
+            'admin/form_rubrica.html.twig',
+            array('op' => "alta")
+        );
+    }
+    
+    /**
     * @Route("/admin/tipos_de_institucion/", name="tipos de institucion")
     */
     
@@ -90,6 +126,18 @@ class adminController extends Controller
         return $this->render(
             'admin/tipos_de_institucion.html.twig',
             array('params' => 1)
+        );
+    }
+    
+    /**
+    * @Route("/admin/nuevo_tipo_institucion/", name="nuevo tipo de institucion")
+    */
+    
+    public function nuevoTipoInstitucionAction()
+    {
+        return $this->render(
+            'admin/form_tipo_institucion.html.twig',
+            array('op' => "alta")
         );
     }
     
@@ -106,6 +154,18 @@ class adminController extends Controller
     }
     
     /**
+    * @Route("/admin/nueva_ciudad/", name="nueva ciudad")
+    */
+    
+    public function nuevaCiudadAction()
+    {
+        return $this->render(
+            'admin/form_ciudad.html.twig',
+            array('op' => "alta")
+        );
+    }
+    
+    /**
     * @Route("/admin/comunas/", name="comunas")
     */
     
@@ -118,6 +178,18 @@ class adminController extends Controller
     }
     
     /**
+    * @Route("/admin/nueva_comuna/", name="nueva comuna")
+    */
+    
+    public function nuevaComunaAction()
+    {
+        return $this->render(
+            'admin/form_comuna.html.twig',
+            array('op' => "alta")
+        );
+    }
+    
+    /**
     * @Route("/admin/areas/", name="areas")
     */
     
@@ -126,6 +198,18 @@ class adminController extends Controller
         return $this->render(
             'admin/areas.html.twig',
             array('params' => 1)
+        );
+    }
+    
+    /**
+    * @Route("/admin/nueva_area/", name="nueva area")
+    */
+    
+    public function nuevaAreaAction()
+    {
+        return $this->render(
+            'admin/form_area.html.twig',
+            array('op' => "alta")
         );
     }
     
