@@ -16,64 +16,98 @@
             <div class="form-group">
                 <label class="col-sm-2 col-sm-2 control-label">Nombre</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control">
+                    {% if op=="vista" %}
+                        <p class="form-control-static">{{ nombre }}</p>
+                    {% else %}
+                        <input type="text" class="form-control" {% if op=="modificacion" %} value="{{ nombre }}" {% endif %}>
+                    {% endif %}
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 col-sm-2 control-label">Tipo de Institución</label>
                 <div class="col-sm-10">
-                    <select class="form-control m-bot15">
-                        <option>Option 1</option>
-                        <option>Option 2</option>
-                        <option>Option 3</option>
-                    </select>
+                    {% if op=="vista" %}
+                        <p class="form-control-static">{{ tipo_de_institucion }}</p>
+                    {% else %}
+                        <select class="form-control m-bot15">
+                            <option {% if op=="modificacion" %} {% if tipo_de_institucion=="Option 1" %} selected {% endif %} {% endif %}>Option 1</option>
+                            <option {% if op=="modificacion" %} {% if tipo_de_institucion=="Option 2" %} selected {% endif %} {% endif %}>Option 2</option>
+                            <option {% if op=="modificacion" %} {% if tipo_de_institucion=="Option 2" %} selected {% endif %} {% endif %}>Option 3</option>
+                        </select>
+                    {% endif %}
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 col-sm-2 control-label">Email</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control">
+                    {% if op=="vista" %}
+                        <p class="form-control-static">{{ email }}</p>
+                    {% else %}
+                        <input type="text" class="form-control" {% if op=="modificacion" %} value="{{ email }}" {% endif %}>
+                    {% endif %}
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 col-sm-2 control-label">Usuario</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control">
+                    {% if op=="vista" %}
+                        <p class="form-control-static">{{ usuario }}</p>
+                    {% else %}
+                        <input type="text" class="form-control" {% if op=="modificacion" %} value="{{ usuario }}" {% endif %}>
+                    {% endif %}
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 col-sm-2 control-label">Contraseña</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control">
+                    {% if op=="vista" %}
+                        <p class="form-control-static">{{ contraseña }}</p>
+                    {% else %}
+                        <input type="text" class="form-control" {% if op=="modificacion" %} value="{{ contraseña }}" {% endif %}>
+                    {% endif %}
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 col-sm-2 control-label">Ciudad</label>
                 <div class="col-sm-10">
-                    <select class="form-control m-bot15">
-                        <option>Option 1</option>
-                        <option>Option 2</option>
-                        <option>Option 3</option>
-                    </select>
+                    {% if op=="vista" %}
+                        <p class="form-control-static">{{ ciudad }}</p>
+                    {% else %}
+                        <select class="form-control m-bot15">
+                            <option {% if op=="modificacion" %} {% if ciudad=="Option 1" %} selected {% endif %} {% endif %}>Option 1</option>
+                            <option {% if op=="modificacion" %} {% if ciudad=="Option 2" %} selected {% endif %} {% endif %}>Option 2</option>
+                            <option {% if op=="modificacion" %} {% if ciudad=="Option 2" %} selected {% endif %} {% endif %}>Option 3</option>
+                        </select>
+                    {% endif %}
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 col-sm-2 control-label">Comuna</label>
                 <div class="col-sm-10">
-                    <select class="form-control m-bot15">
-                        <option>Option 1</option>
-                        <option>Option 2</option>
-                        <option>Option 3</option>
-                    </select>
+                    {% if op=="vista" %}
+                        <p class="form-control-static">{{ comuna }}</p>
+                    {% else %}
+                        <select class="form-control m-bot15">
+                            <option {% if op=="modificacion" %} {% if comuna=="Option 1" %} selected {% endif %} {% endif %}>Option 1</option>
+                            <option {% if op=="modificacion" %} {% if comuna=="Option 2" %} selected {% endif %} {% endif %}>Option 2</option>
+                            <option {% if op=="modificacion" %} {% if comuna=="Option 2" %} selected {% endif %} {% endif %}>Option 3</option>
+                        </select>
+                    {% endif %}
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 col-sm-2 control-label">Dirección</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control">
+                    {% if op=="vista" %}
+                        <p class="form-control-static">{{ direccion }}</p>
+                    {% else %}
+                        <input type="text" class="form-control" {% if op=="modificacion" %} value="{{ direccion }}" {% endif %}>
+                    {% endif %}
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">Enviar</button>
+            {% if op!="vista" %}
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            {% endif %}
         </form>
     </div>
 </section>

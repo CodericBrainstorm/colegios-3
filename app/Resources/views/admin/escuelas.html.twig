@@ -13,27 +13,29 @@
         <div class="col-sm-12">
             <section class="panel">
                 <header class="panel-heading">
-                    Rúbricas
+                    Escuelas
                 </header>
-                <a href="{{ path('nueva rubrica') }}"><button class="btn btn-info" type="button" style="margin:15px;"><i class="fa fa-plus"></i> Nueva Rúbrica</button></a>
+                <a href="{{ path('nueva escuela') }}"><button class="btn btn-info" type="button" style="margin:15px;"><i class="fa fa-plus"></i> Nueva Escuela</button></a>
                 <div class="panel-body">
                     <div class="adv-table">
                         <table  class="display table table-bordered table-striped" id="dynamic-table">
                         <thead>
                             <tr>
                                 <th>Nombre</th>
+                                <th>Comuna</th>
                                 <th>Operaciones</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr class="gradeX">
-                                <td>Logrado</td>
+                                <td>Instituto Mariano Moreno</td>
+                                <td>Comuna 1</td>
                                 <td class="center">
                                     <div class="btn-group">
                                         <button data-toggle="dropdown" class="btn btn-info dropdown-toggle" type="button">Operaciones <span class="caret"></span></button>
                                         <ul role="menu" class="dropdown-menu">
-                                            <li><a href="{{ path('ver rubrica', {'id': 1}) }}">Ver</a></li>
-                                            <li><a href="{{ path('editar rubrica', {'id': 1}) }}">Editar</a></li>
+                                            <li><a href="{{ path('ver escuela', {'id': 1}) }}">Ver</a></li>
+                                            <li><a href="{{ path('editar escuela', {'id': 1}) }}">Editar</a></li>
                                             <li><a href="#">Eliminar</a></li>
                                         </ul>
                                     </div>
@@ -43,6 +45,7 @@
                         <tfoot>
                             <tr>
                                 <th>Nombre</th>
+                                <th>Comuna</th>
                                 <th>Operaciones</th>
                             </tr>
                         </tfoot>

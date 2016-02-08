@@ -16,10 +16,16 @@
             <div class="form-group">
                 <label class="col-sm-2 col-sm-2 control-label">Nombre</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control">
+                    {% if op=="vista" %}
+                        <p class="form-control-static">{{ nombre }}</p>
+                    {% else %}
+                        <input type="text" class="form-control" {% if op=="modificacion" %} value="{{ nombre }}" {% endif %}>
+                    {% endif %}
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">Enviar</button>
+            {% if op!="vista" %}
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            {% endif %}
         </form>
     </div>
 </section>
