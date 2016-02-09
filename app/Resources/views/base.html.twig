@@ -12,18 +12,18 @@
 
   {% block estilos %}
   <!--icheck-->
-  <link href="{{ asset('bundles/assets/js/iCheck/skins/minimal/minimal.css') }}" rel="stylesheet">
-  <link href="{{ asset('bundles/assets/js/iCheck/skins/square/square.css') }}" rel="stylesheet">
-  <link href="{{ asset('bundles/assets/js/iCheck/skins/square/red.css') }}" rel="stylesheet">
-  <link href="{{ asset('bundles/assets/js/iCheck/skins/square/blue.css') }}" rel="stylesheet">
+  <link href="{{ asset('adminex/js/iCheck/skins/minimal/minimal.css') }}" rel="stylesheet">
+  <link href="{{ asset('adminex/js/iCheck/skins/square/square.css') }}" rel="stylesheet">
+  <link href="{{ asset('adminex/js/iCheck/skins/square/red.css') }}" rel="stylesheet">
+  <link href="{{ asset('adminex/js/iCheck/skins/square/blue.css') }}" rel="stylesheet">
 
   <!--dashboard calendar-->
-  <link href="{{ asset('bundles/assets/css/clndr.css') }}" rel="stylesheet">
+  <link href="{{ asset('adminex/css/clndr.css') }}" rel="stylesheet">
 
 
   <!--common-->
-  <link href="{{ asset('bundles/assets/css/style.css') }}" rel="stylesheet">
-  <link href="{{ asset('bundles/assets/css/style-responsive.css') }}" rel="stylesheet">
+  <link href="{{ asset('adminex/css/style.css') }}" rel="stylesheet">
+  <link href="{{ asset('adminex/css/style-responsive.css') }}" rel="stylesheet">
   {% endblock %}
 
 
@@ -44,11 +44,11 @@
 
         <!--logo and iconic logo start-->
         <div class="logo">
-            <a href="index.html"><img src="{{ asset('bundles/assets/images/logo.png') }}" alt=""></a>
+            <a href="index.html"><img src="{{ asset('adminex/images/logo.png') }}" alt=""></a>
         </div>
 
         <div class="logo-icon text-center">
-            <a href="index.html"><img src="{{ asset('bundles/assets/images/logo_icon.png') }}" alt=""></a>
+            <a href="index.html"><img src="{{ asset('adminex/images/logo_icon.png') }}" alt=""></a>
         </div>
         <!--logo and iconic logo end-->
 
@@ -57,7 +57,7 @@
             <!-- visible to small devices only -->
             <div class="visible-xs hidden-sm hidden-md hidden-lg">
                 <div class="media logged-user">
-                    <img alt="" src="{{ asset('bundles/assets/images/photos/user-avatar.png') }}" class="media-object">
+                    <img alt="" src="{{ asset('adminex/images/photos/user-avatar.png') }}" class="media-object">
                     <div class="media-body">
                         <h4><a href="#">{% block usuario_mobile %}John Doe{% endblock %}</a></h4>
                         <span>"Bienvenido..."</span>
@@ -93,7 +93,7 @@
                 <ul class="notification-menu">
                     <li>
                         <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                            <img src="{{ asset('bundles/assets/images/photos/user-avatar.png') }}" alt="" />
+                            <img src="{{ asset('adminex/images/photos/user-avatar.png') }}" alt="" />
                             {% block usuario %}John Doe{% endblock %}
                             <span class="caret"></span>
                         </a>
@@ -131,15 +131,15 @@
 
 {% block scripts %}
 <!-- Placed js at the end of the document so the pages load faster -->
-<script src="{{ asset('bundles/assets/js/jquery-1.10.2.min.js') }}"></script>
-<script src="{{ asset('bundles/assets/js/jquery-ui-1.9.2.custom.min.js') }}"></script>
-<script src="{{ asset('bundles/assets/js/jquery-migrate-1.2.1.min.js') }}"></script>
-<script src="{{ asset('bundles/assets/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('bundles/assets/js/modernizr.min.js') }}"></script>
-<script src="{{ asset('bundles/assets/js/jquery.nicescroll.js') }}"></script>
+<script src="{{ asset('adminex/js/jquery-1.10.2.min.js') }}"></script>
+<script src="{{ asset('adminex/js/jquery-ui-1.9.2.custom.min.js') }}"></script>
+<script src="{{ asset('adminex/js/jquery-migrate-1.2.1.min.js') }}"></script>
+<script src="{{ asset('adminex/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('adminex/js/modernizr.min.js') }}"></script>
+<script src="{{ asset('adminex/js/jquery.nicescroll.js') }}"></script>
 
 <!--common scripts for all pages-->
-<script src="{{ asset('bundles/assets/js/scripts.js') }}"></script>
+<script src="{{ asset('adminex/js/scripts.js') }}"></script>
 {% endblock %}
 
 </body>

@@ -3,9 +3,9 @@
 {% block estilos %}
     {{ parent() }}
     <!--dynamic table-->
-    <link href="{{ asset('bundles/assets/js/advanced-datatable/css/demo_page.css') }}" rel="stylesheet" />
-    <link href="{{ asset('bundles/assets/js/advanced-datatable/css/demo_table.css') }}" rel="stylesheet" />
-    <link rel="stylesheet" href="{{ asset('bundles/assets/js/data-tables/DT_bootstrap.css') }}" />
+    <link href="{{ asset('adminex/js/advanced-datatable/css/demo_page.css') }}" rel="stylesheet" />
+    <link href="{{ asset('adminex/js/advanced-datatable/css/demo_table.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ asset('adminex/js/data-tables/DT_bootstrap.css') }}" />
 {% endblock %}
 
 {% block body %}
@@ -60,8 +60,8 @@
 {% block scripts %}
     {{ parent() }}
     <!--dynamic table-->
-    <script type="text/javascript" language="javascript" src="{{ asset('bundles/assets/js/advanced-datatable/js/jquery.dataTables.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/assets/js/data-tables/DT_bootstrap.js') }}"></script>
+    <script type="text/javascript" language="javascript" src="{{ asset('adminex/js/advanced-datatable/js/jquery.dataTables.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('adminex/js/data-tables/DT_bootstrap.js') }}"></script>
     <!--dynamic table initialization -->
     <script>
         function fnFormatDetails ( oTable, nTr )
@@ -78,16 +78,14 @@
 
         $(document).ready(function() {
 
-            $('#dynamic-table').dataTable( {
-                "aaSorting": [[ 4, "desc" ]]
-            } );
+            $('#dynamic-table').dataTable();
 
             /*
              * Insert a 'details' column to the table
              */
             var nCloneTh = document.createElement( 'th' );
             var nCloneTd = document.createElement( 'td' );
-            nCloneTd.innerHTML = '<img src="{{ asset('bundles/assets/images/details_open.png') }}">';
+            nCloneTd.innerHTML = '<img src="{{ asset('adminex/images/details_open.png') }}">';
             nCloneTd.className = "center";
 
             $('#hidden-table-info thead tr').each( function () {
