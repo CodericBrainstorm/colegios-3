@@ -32,13 +32,11 @@ class Colegio {
 
     /**
      * @ORM\ManyToOne(targetEntity="TipoColegio")
-     * @ORM\JoinColumn(name="id", referencedColumnName="id")
      */
     private $tipoColegio;
 
     /**
      * @ORM\OneToOne(targetEntity="Director", inversedBy="colegio")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $director;
 

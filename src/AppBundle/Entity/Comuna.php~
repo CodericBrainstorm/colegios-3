@@ -32,7 +32,6 @@ class Comuna {
 
     /**
      * @ORM\ManyToOne(targetEntity="Ciudad", inversedBy="comunas")
-     * @ORM\JoinColumn(name="id", referencedColumnName="id")
      */
     private $ciudad;
 

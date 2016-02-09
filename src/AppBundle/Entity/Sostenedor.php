@@ -4,14 +4,26 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
 
 /**
  * Sostenedor
  *
  * @ORM\Entity(repositoryClass="AppBundle\Repository\SostenedorRepository")
  * @ORM\HasLifecycleCallbacks
+ * @UniqueEntity(fields = "username", targetClass = "AppBundle\Entity\User", message="fos_user.username.already_used")
+ * @UniqueEntity(fields = "email", targetClass = "AppBundle\Entity\User", message="fos_user.email.already_used")
  */
 class Sostenedor extends User {
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
 
     /**
      * @var string
@@ -36,13 +48,11 @@ class Sostenedor extends User {
 
     /**
      * @ORM\ManyToOne(targetEntity="TipoInstitucion")
-     * @ORM\JoinColumn(name="id", referencedColumnName="id")
      */
     private $tipoInstitucion;
 
     /**
      * @ORM\ManyToOne(targetEntity="Comuna")
-     * @ORM\JoinColumn(name="id", referencedColumnName="id")
      */
     private $comuna;
 

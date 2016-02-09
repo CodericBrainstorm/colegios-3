@@ -13,8 +13,16 @@ use Doctrine\ORM\Mapping as ORM;
 class Director extends User {
 
     /**
+     * @var int
+     *
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Sostenedor", inversedBy="directores")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $sostenedor;
 

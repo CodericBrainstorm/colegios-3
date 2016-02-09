@@ -13,14 +13,21 @@ use Doctrine\ORM\Mapping as ORM;
 class Miembro extends User {
 
     /**
+     * @var int
+     *
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Director", inversedBy="miembros")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $director;
 
     /**
      * @ORM\ManyToOne(targetEntity="Colegio", inversedBy="miembros")
-     * @ORM\JoinColumn(name="id", referencedColumnName="id")
      */
     private $colegio;
 
@@ -163,15 +170,13 @@ class Miembro extends User {
         return $this->hitos;
     }
 
-
     /**
      * Add acciones
      *
      * @param \AppBundle\Entity\Accion $acciones
      * @return Miembro
      */
-    public function addAccione(\AppBundle\Entity\Accion $acciones)
-    {
+    public function addAccione(\AppBundle\Entity\Accion $acciones) {
         $this->acciones[] = $acciones;
 
         return $this;
@@ -182,8 +187,7 @@ class Miembro extends User {
      *
      * @param \AppBundle\Entity\Accion $acciones
      */
-    public function removeAccione(\AppBundle\Entity\Accion $acciones)
-    {
+    public function removeAccione(\AppBundle\Entity\Accion $acciones) {
         $this->acciones->removeElement($acciones);
     }
 
@@ -192,8 +196,8 @@ class Miembro extends User {
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getAcciones()
-    {
+    public function getAcciones() {
         return $this->acciones;
     }
+
 }

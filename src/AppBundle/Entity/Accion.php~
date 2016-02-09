@@ -64,25 +64,21 @@ class Accion {
 
     /**
      * @ORM\ManyToOne(targetEntity="Miembro", inversedBy="acciones")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $miembro;
 
     /**
      * @ORM\ManyToOne(targetEntity="Estado")
-     * @ORM\JoinColumn(name="id", referencedColumnName="id")
      */
     private $estadoDirector;
 
     /**
      * @ORM\ManyToOne(targetEntity="Estado")
-     * @ORM\JoinColumn(name="id", referencedColumnName="id")
      */
     private $estadoMiembro;
 
     /**
      * @ORM\ManyToOne(targetEntity="Hito", inversedBy="acciones")
-     * @ORM\JoinColumn(name="id", referencedColumnName="id")
      */
     private $hito;
 
