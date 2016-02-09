@@ -11,11 +11,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(name="fos_user")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
- * @ORM\InheritanceType("SINGLE_TABLE")
+ * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="discr", type="string")
- * @ORM\DiscriminatorMap({"user" = "User", "sostenedor" = "Sostenedor", "director" = "Director", "miembro" = "Miembro"})
+ * @ORM\DiscriminatorMap({"administrador" = "Administrador", "sostenedor" = "Sostenedor", "director" = "Director", "miembro" = "Miembro"})
  */
-class User extends BaseUser {
+abstract class User extends BaseUser {
 
     /**
      * @var int
@@ -41,10 +41,10 @@ class User extends BaseUser {
      */ 
     protected $apellido;
 
-    public function __construct() {
-        parent::__construct();
+//    public function __construct() {
+//        parent::__construct();
         // your own logic
-    }
+//    }
 
     /**
      * Get id

@@ -32,25 +32,21 @@ class CompromisoReal {
 
     /**
      * @ORM\ManyToOne(targetEntity="Compromiso", inversedBy="compromisosReales")
-     * @ORM\JoinColumn(name="id", referencedColumnName="id")
      */
     private $compromiso;
 
     /**
      * @ORM\ManyToOne(targetEntity="Estado")
-     * @ORM\JoinColumn(name="id", referencedColumnName="id")
      */
     private $estadoDirector;
 
     /**
      * @ORM\ManyToOne(targetEntity="Estado")
-     * @ORM\JoinColumn(name="id", referencedColumnName="id")
      */
     private $estadoSostenedor;
 
     /**
      * @ORM\ManyToOne(targetEntity="Director", inversedBy="compromisos")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $director;
 
@@ -61,7 +57,6 @@ class CompromisoReal {
 
     /**
      * @ORM\OneToOne(targetEntity="Archivo")
-     * @ORM\JoinColumn(name="id", referencedColumnName="id")
      */
     private $medioVerificacion;
 

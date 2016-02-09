@@ -62,19 +62,16 @@ class Compromiso {
 
     /**
      * @ORM\ManyToOne(targetEntity="Area", inversedBy="compromisos")
-     * @ORM\JoinColumn(name="id", referencedColumnName="id")
      */
     private $area;
 
     /**
      * @ORM\ManyToOne(targetEntity="Sostenedor", inversedBy="compromisos")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $sostenedor;
 
     /**
      * @ORM\ManyToOne(targetEntity="Estado")
-     * @ORM\JoinColumn(name="id", referencedColumnName="id")
      */
     private $estado;
 

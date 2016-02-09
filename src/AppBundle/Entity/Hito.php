@@ -73,19 +73,16 @@ class Hito {
 
     /**
      * @ORM\ManyToOne(targetEntity="Estado")
-     * @ORM\JoinColumn(name="id", referencedColumnName="id")
      */
     private $estadoDirector;
 
     /**
      * @ORM\ManyToOne(targetEntity="Estado")
-     * @ORM\JoinColumn(name="id", referencedColumnName="id")
      */
     private $estadoSostenedor;
 
     /**
      * @ORM\ManyToOne(targetEntity="CompromisoReal", inversedBy="hitos")
-     * @ORM\JoinColumn(name="id", referencedColumnName="id")
      */
     private $compromiso;
 
