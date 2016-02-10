@@ -1,0 +1,12 @@
+{% for alert in alerts.get('notice') %} 
+    {{ include('utils/alert/list_row.html.twig', { 'type' : 'info', 'alert': alert }) }} 
+{% endfor %}
+{% for alert in alerts.get('success') %} 
+    {{ include('utils/alert/list_row.html.twig', { 'type' : 'success', 'alert': alert }) }} 
+{% endfor %}
+{% for alert in alerts.get('error') %} 
+    {{ include('utils/alert/list_row.html.twig', { 'type' : 'error', 'alert': alert }) }} 
+{% endfor %}
+{% for alert in alerts.get('warning') %} 
+    {{ include('utils/alert/list_row.html.twig', { 'type' : 'warning', 'alert': alert }) }} 
+{% endfor %}

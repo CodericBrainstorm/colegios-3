@@ -1,0 +1,13 @@
+<tr class="gradeX">
+    <td>{{ estado.nombre }}</td>
+    <td class="center">
+        <div class="btn-group">
+            <button data-toggle="dropdown" class="btn btn-info dropdown-toggle" type="button">Operaciones <span class="caret"></span></button>
+            <ul role="menu" class="dropdown-menu">
+                <li><a href="{{ path('ver rubrica', {'id': estado.id}) }}">Ver</a></li>
+                <li><a href="{{ path('editar rubrica', {'id': estado.id}) }}">Editar</a></li>
+                <li><a href="#">Eliminar</a></li>
+            </ul>
+        </div>
+    </td>
+</tr>

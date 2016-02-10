@@ -1,2 +1,13 @@
-assert:
-    not_blank: Este valor no puede estar vacío
+boton:
+    crear: Crear
+    
+flash:
+    notice:
+        cambio: Los cambios han sido realizados.
+    success:
+        cambio: ¡Los cambios han sido realizados con éxito!
+    error:
+        cambio: ¡Se produjo un error guardando los cambios!
+        
+
+    
