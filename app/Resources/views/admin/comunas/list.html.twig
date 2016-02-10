@@ -1,0 +1,25 @@
+{% extends 'admin/base_list.html.twig' %}
+{% block list_title %}
+    Comuna
+{% endblock %}
+
+{% block boton_nuevo %}
+    <a href="{{ path('nueva comuna') }}"><button class="btn btn-info" type="button" style="margin:15px;"><i class="fa fa-plus"></i> Nueva Comuna</button></a>
+{% endblock %}    
+
+{% block list_header %}
+    <th>Nombre</th>
+    <th>Ciudad</th>
+    <th>Operaciones</th>
+    {% endblock %}   
+
+{% block list_body %}
+    {% for comuna in comunas %} 
+        {{ include('admin/comunas/list_row.html.twig', { 'comuna': comuna }) }} 
+    {% endfor %} 
+{% endblock %}
+{% block list_footer %}
+    <th>Nombre</th>
+    <th>Ciudad</th>
+    <th>Operaciones</th>
+{% endblock %}

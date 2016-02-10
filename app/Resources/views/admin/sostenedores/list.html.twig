@@ -1,0 +1,33 @@
+{% extends 'admin/base_list.html.twig' %}
+{% block list_title %}
+    Usuarios Sostenedores
+{% endblock %}
+
+{% block boton_nuevo %}
+    <a href="{{ path('nuevo sostenedor') }}"><button class="btn btn-info" type="button" style="margin:15px;"><i class="fa fa-plus"></i> Nuevo Sostenedor</button></a>
+{% endblock %}    
+
+{% block list_header %}
+    <th>Nombre</th>
+    <th>Tipo de Institución</th>
+    <th>Email</th>
+    <th>Dirección</th>
+    <th>Comuna</th>
+    <th>Ciudad</th>
+    <th>Operaciones</th>
+    {% endblock %}   
+
+{% block list_body %}
+    {% for sostenedor in sostenedores %} 
+        {{ include('admin/sostenedores/list_row.html.twig', { 'sostenedor': sostenedor }) }} 
+    {% endfor %} 
+{% endblock %}
+{% block list_footer %}
+    <th>Nombre</th>
+    <th>Tipo de Institución</th>
+    <th>Email</th>
+    <th>Dirección</th>
+    <th>Comuna</th>
+    <th>Ciudad</th>
+    <th>Operaciones</th>
+    {% endblock %}

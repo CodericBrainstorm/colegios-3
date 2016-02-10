@@ -105,20 +105,6 @@ pugx_multi_user:
     miembro:
         entity: 
           class: AppBundle\Entity\Miembro
-        registration:
-          form: 
-            type: AppBundle\Form\Type\RegistrationMiembroFormType
-          template: AcmeUserBundle:Registration:miembro.form.html.twig
-        profile:
-          form: 
-            type: AppBundle\Form\Type\ProfileMiembroFormType
     director:
         entity: 
           class: AppBundle\Entity\Director
-        registration:
-          form: 
-            type: AppBundle\Form\Type\RegistrationDirectorFormType
-          template: AcmeUserBundle:Registration:director.form.html.twig
-        profile:
-          form: 
-            type: AppBundle\Form\Type\ProfileDirectorFormType

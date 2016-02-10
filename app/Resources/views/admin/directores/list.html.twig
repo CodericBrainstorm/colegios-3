@@ -1,0 +1,29 @@
+{% extends 'admin/base_list.html.twig' %}
+{% block list_title %}
+    Usuarios Directores
+{% endblock %}
+
+{% block boton_nuevo %}
+    <a href="{{ path('nuevo director') }}"><button class="btn btn-info" type="button" style="margin:15px;"><i class="fa fa-plus"></i> Nuevo Director</button></a>
+{% endblock %}    
+
+{% block list_header %}
+    <th>Nombre</th>
+    <th>Sostenedor</th>
+    <th>Colegio</th>
+    <th>Email</th>
+    <th>Operaciones</th>
+    {% endblock %}   
+
+{% block list_body %}
+    {% for director in directores %} 
+        {{ include('admin/directores/list_row.html.twig', { 'director': director }) }} 
+    {% endfor %} 
+{% endblock %}
+{% block list_footer %}
+    <th>Nombre</th>
+    <th>Sostenedor</th>
+    <th>Colegio</th>
+    <th>Email</th>
+    <th>Operaciones</th>
+    {% endblock %}

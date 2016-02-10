@@ -4,11 +4,11 @@
     <section class="panel">
         <header class="panel-heading">
             {% if op == "alta" %}
-                Nueva Rúbrica
+                Nueva Comuna
             {% elseif op == "modificacion" %}
-                Editar Rúbrica
+                Editar Comuna
             {% else %}
-                Ver Rúbrica
+                Ver Comuna
             {% endif %}
         </header>
         <div class="panel-body">
@@ -17,7 +17,7 @@
                     <label class="col-sm-2 col-sm-2 control-label">Nombre</label>
                     <div class="col-sm-10">
                         {% if op=="vista" %}
-                            <p class="form-control-static">{{ estado.nombre }}</p>
+                            <p class="form-control-static">{{ comuna.nombre }}</p>
                         {% else %}
                             {{ form_start(form) }} 
                             {{ form_widget(form) }} 

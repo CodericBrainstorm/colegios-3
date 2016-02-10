@@ -1,0 +1,13 @@
+<tr class="gradeX">
+    <td>{{ tipo_colegio.nombre }}</td>
+    <td class="center">
+        <div class="btn-group">
+            <button data-toggle="dropdown" class="btn btn-info dropdown-toggle" type="button">Operaciones <span class="caret"></span></button>
+            <ul role="menu" class="dropdown-menu">
+                <li><a href="{{ path('ver tipo_colegio', {'id': tipo_colegio.id}) }}">Ver</a></li>
+                <li><a href="{{ path('editar tipo_colegio', {'id': tipo_colegio.id}) }}">Editar</a></li>
+                <li><a href="#">Eliminar</a></li>
+            </ul>
+        </div>
+    </td>
+</tr>
