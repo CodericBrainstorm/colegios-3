@@ -1,0 +1,18 @@
+<tr class="gradeX">
+    <td>{{ sostenedor.nombre }}</td>
+    <td>{{ (sostenedor.tipoInstitucion is null ? 'Sin asignar' : sostenedor.tipoInstitucion.nombre) }}</td>
+    <td>{{ sostenedor.email }}</td>
+    <td>{{ sostenedor.direccion }}</td>
+    <td>{{ (sostenedor.comuna is null ? 'Sin asignar' : sostenedor.comuna.nombre) }}</td>
+    <td>{{ (sostenedor.comuna is null ? 'Sin asignar' : sostenedor.comuna.ciudad.nombre) }}</td>
+    <td class="center">
+        <div class="btn-group">
+            <button data-toggle="dropdown" class="btn btn-info dropdown-toggle" type="button">Operaciones <span class="caret"></span></button>
+            <ul role="menu" class="dropdown-menu">
+                <li><a href="{{ path('ver sostenedor', {'id': sostenedor.id}) }}">Ver</a></li>
+                <li><a href="{{ path('editar sostenedor', {'id': sostenedor.id}) }}">Editar</a></li>
+                <li><a href="#">Eliminar</a></li>
+            </ul>
+        </div>
+    </td>
+</tr>

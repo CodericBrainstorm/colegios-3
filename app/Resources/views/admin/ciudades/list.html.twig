@@ -1,0 +1,23 @@
+{% extends 'admin/base_list.html.twig' %}
+{% block list_title %}
+    Ciudad
+{% endblock %}
+
+{% block boton_nuevo %}
+    <a href="{{ path('nueva ciudad') }}"><button class="btn btn-info" type="button" style="margin:15px;"><i class="fa fa-plus"></i> Nueva Ciudad</button></a>
+{% endblock %}    
+
+{% block list_header %}
+    <th>Nombre</th>
+    <th>Operaciones</th>
+    {% endblock %}   
+
+{% block list_body %}
+    {% for ciudad in ciudades %} 
+        {{ include('admin/ciudades/list_row.html.twig', { 'ciudad': ciudad }) }} 
+    {% endfor %} 
+{% endblock %}
+{% block list_footer %}
+    <th>Nombre</th>
+    <th>Operaciones</th>
+{% endblock %}

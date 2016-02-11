@@ -1,0 +1,23 @@
+{% extends 'admin/base_list.html.twig' %}
+{% block list_title %}
+    Tipo de Colegios
+{% endblock %}
+
+{% block boton_nuevo %}
+    <a href="{{ path('nuevo tipo_colegio') }}"><button class="btn btn-info" type="button" style="margin:15px;"><i class="fa fa-plus"></i> Nuevo Tipo de Colegio</button></a>
+{% endblock %}    
+
+{% block list_header %}
+    <th>Nombre</th>
+    <th>Operaciones</th>
+    {% endblock %}   
+
+{% block list_body %}
+    {% for tipo_colegio in tipo_colegios %} 
+        {{ include('admin/tipo_colegios/list_row.html.twig', { 'tipo_colegio': tipo_colegio }) }} 
+    {% endfor %} 
+{% endblock %}
+{% block list_footer %}
+    <th>Nombre</th>
+    <th>Operaciones</th>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'admin/base_list.html.twig' %}
+{% block list_title %}
+    Rúbricas
+{% endblock %}
+
+{% block boton_nuevo %}
+    <a href="{{ path('nueva rubrica') }}"><button class="btn btn-info" type="button" style="margin:15px;"><i class="fa fa-plus"></i> Nueva Rúbrica</button></a>
+{% endblock %}    
+
+{% block list_header %}
+    <th>Nombre</th>
+    <th>Operaciones</th>
+    {% endblock %}   
+
+{% block list_body %}
+    {% for estado in estados %} 
+        {{ include('admin/estados/list_row.html.twig', { 'estado': estado }) }} 
+    {% endfor %} 
+{% endblock %}
+{% block list_footer %}
+    <th>Nombre</th>
+    <th>Operaciones</th>
+{% endblock %}

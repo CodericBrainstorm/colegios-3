@@ -6,17 +6,15 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
-class SostenedorType extends AbstractType {
+class MiembroType extends AbstractType {
 
     public function buildForm(FormBuilderInterface $builder, array $options) {
-        $builder->add('nombreInstitucion');
-        $builder->add('direccion');
-        $builder->add('comuna', EntityType::class, array(
-            'class' => 'AppBundle:Comuna',
+        $builder->add('director', EntityType::class, array(
+            'class' => 'AppBundle:Director',
             'choice_label' => 'nombre',
         ));
-        $builder->add('tipoInstitucion', EntityType::class, array(
-            'class' => 'AppBundle:TipoInstitucion',
+        $builder->add('colegio', EntityType::class, array(
+            'class' => 'AppBundle:Colegio',
             'choice_label' => 'nombre',
         ));
     }
@@ -26,7 +24,7 @@ class SostenedorType extends AbstractType {
     }
 
     public function getBlockPrefix() {
-        return 'app_user_sostenedor';
+        return 'app_user_director';
     }
 
     // For Symfony 2.x
