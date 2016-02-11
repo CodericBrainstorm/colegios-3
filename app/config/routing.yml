@@ -2,17 +2,5 @@ app:
     resource: "@AppBundle/Controller/"
     type:     annotation
     
-#administrador_registration:
-#    pattern:  /register/administrador
-#    defaults: { _controller: AppBundle:Default:crearadmin }
-#    
-#sostenedor_registration:
-#    pattern:  /register/sostenedor
-#    defaults: { _controller: AppBundle:Default:index }
-#
-#miembro_registration:
-#    pattern:  /register/miembro
-#    defaults: { _controller: AppBundle:RegistrationMiembro:register }    
-    
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
