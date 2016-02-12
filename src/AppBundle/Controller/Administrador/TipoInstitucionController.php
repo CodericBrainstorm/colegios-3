@@ -66,10 +66,12 @@ class TipoInstitucionController extends Controller {
      */
     public function verTipoInstitucionAction($id, Request $request) {
         $tipoInstitucion = $this->_getObject('AppBundle:TipoInstitucion', $id);
+        $form = $this->createForm(TipoInstitucionType::class, $tipoInstitucion, array('disabled' => true));
+        $form->handleRequest($request);
         return $this->render(
                         $this->view_template, array(
                     'title' => "tipo_institucion.views.ver.title",
-                    'tipo_institucion' => $tipoInstitucion
+                    'form' => $form->createView()
                         )
         );
     }

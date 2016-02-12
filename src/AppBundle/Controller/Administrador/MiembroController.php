@@ -71,9 +71,12 @@ class MiembroController extends Controller {
     public function verMiembroAction($id, Request $request) {
         $userManager = $this->_obtenerUserManager('AppBundle\Entity\Miembro');
         $user = $userManager->findUserBy(array('id' => $id));
+        $form = $this->createForm(MiembroType::class, $user, array('disabled' => true));
+        $form->remove('plainPassword');
+        $form->handleRequest($request);
         return $this->render(
                         $this->view_template, array('title' => "miembro.views.ver.title",
-                    'miembro' => $user
+                    'form' => $form->createView()
                         )
         );
     }

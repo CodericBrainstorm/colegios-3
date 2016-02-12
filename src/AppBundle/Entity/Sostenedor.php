@@ -52,6 +52,11 @@ class Sostenedor extends User {
     private $tipoInstitucion;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Ciudad")
+     */
+    private $ciudad;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Comuna")
      */
     private $comuna;
@@ -263,4 +268,27 @@ class Sostenedor extends User {
         return $this->compromisos;
     }
 
+
+    /**
+     * Set ciudad
+     *
+     * @param \AppBundle\Entity\Ciudad $ciudad
+     * @return Sostenedor
+     */
+    public function setCiudad(\AppBundle\Entity\Ciudad $ciudad = null)
+    {
+        $this->ciudad = $ciudad;
+
+        return $this;
+    }
+
+    /**
+     * Get ciudad
+     *
+     * @return \AppBundle\Entity\Ciudad 
+     */
+    public function getCiudad()
+    {
+        return $this->ciudad;
+    }
 }

@@ -1,7 +1,7 @@
 <tr class="gradeX">
     <td>{{ colegio.nombre }}</td>
     <td>{{ colegio.tipoColegio.nombre }}</td>
-    <td>{#{{ colegio.director.nombre }} {{ colegio.director.apellido }}#}</td>
+    <td>{{ (colegio.director is null ? ('views.sin_asignar' | trans) : colegio.director.nombre ~' '~colegio.director.apellido) }}</td>
     <td class="center">
         <div class="btn-group">
             <button data-toggle="dropdown" class="btn btn-info dropdown-toggle" type="button">Operaciones <span class="caret"></span></button>

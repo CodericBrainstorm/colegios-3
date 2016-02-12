@@ -8,6 +8,9 @@ flash:
         cambio: ¡Los cambios han sido realizados con éxito!
     error:
         cambio: ¡Se produjo un error guardando los cambios!
+ 
+views:
+    sin_asignar: Sin asignar
         
 accion:
     views:

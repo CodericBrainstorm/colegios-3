@@ -52,6 +52,11 @@ class Sostenedor extends User {
     private $tipoInstitucion;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Ciudad")
+     */
+    private $ciudad;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Comuna")
      */
     private $comuna;

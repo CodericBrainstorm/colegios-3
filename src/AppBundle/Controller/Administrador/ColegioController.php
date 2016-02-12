@@ -65,10 +65,12 @@ class ColegioController extends Controller {
      */
     public function verColegioAction($id, Request $request) {
         $colegio = $this->_getObject('AppBundle:Colegio', $id);
+        $form = $this->createForm(ColegioType::class, $colegio, array('disabled' => true));
+        $form->handleRequest($request);
         return $this->render(
                         $this->view_template, array(
-                   'title' => "colegio.views.ver.title",
-                    'colegio' => $colegio
+                    'title' => "colegio.views.ver.title",
+                    'form' => $form->createView()
                         )
         );
     }

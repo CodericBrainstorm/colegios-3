@@ -71,9 +71,11 @@ class DirectorController extends Controller {
     public function verDirectorAction($id, Request $request) {
         $userManager = $this->_obtenerUserManager('AppBundle\Entity\Director');
         $user = $userManager->findUserBy(array('id' => $id));
+        $form = $this->createForm(DirectorType::class, $user, array('disabled' => true));
+        $form->remove('plainPassword');
         return $this->render(
                         $this->view_template, array('title' => "director.views.ver.title",
-                    'director' => $user
+                    'form' => $form->createView()
                         )
         );
     }

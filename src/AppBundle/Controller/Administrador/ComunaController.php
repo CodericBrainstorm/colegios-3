@@ -66,10 +66,12 @@ class ComunaController extends Controller {
      */
     public function verComunaAction($id, Request $request) {
         $comuna = $this->_getObject('AppBundle:Comuna', $id);
+        $form = $this->createForm(ComunaType::class, $comuna, array('disabled' => true));
+        $form->handleRequest($request);
         return $this->render(
                         $this->view_template, array(
                     'title' => "comuna.views.ver.title",
-                    'comuna' => $comuna
+                    'form' => $form->createView()
                         )
         );
     }

@@ -66,10 +66,12 @@ class CiudadController extends Controller {
      */
     public function verCiudadAction($id, Request $request) {
         $ciudad = $this->_getObject('AppBundle:Ciudad', $id);
+        $form = $this->createForm(CiudadType::class, $ciudad, array('disabled' => true));
+        $form->handleRequest($request);
         return $this->render(
                         $this->view_template, array(
                     'title' => "ciudad.views.ver.title",
-                    'ciudad' => $ciudad
+                    'form' => $form->createView()
                         )
         );
     }
