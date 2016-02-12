@@ -40,7 +40,7 @@ class AreaController extends Controller {
             $this->addFlash('notice', 'flash.success.cambio');
             return $this->redirectToRoute('areas');
         }
-        return $this->render('admin/areas/form.html.twig', array('op' => "alta", 'form' => $form->createView()
+        return $this->render($this->form_template, array('title' => "area.views.new.title", 'form' => $form->createView()
         ));
     }
 
@@ -56,7 +56,7 @@ class AreaController extends Controller {
             $this->addFlash('success', 'flash.success.cambio');
             return $this->redirectToRoute('areas');
         }
-        return $this->render('admin/areas/form.html.twig', array('op' => "modificacion", 'form' => $form->createView()
+        return $this->render($this->form_template, array('title' => "area.views.editar.title",  'form' => $form->createView()
         ));
     }
 
@@ -66,8 +66,8 @@ class AreaController extends Controller {
     public function verAreaAction($id, Request $request) {
         $area = $this->_getObject('AppBundle:Area', $id);
         return $this->render(
-                        'admin/areas/form.html.twig', array(
-                    'op' => "vista",
+                        $this->view_template, array(
+                    'title' => "area.views.ver.title",
                     'area' => $area
                         )
         );

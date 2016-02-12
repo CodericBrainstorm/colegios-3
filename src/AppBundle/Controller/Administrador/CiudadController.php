@@ -41,7 +41,7 @@ class CiudadController extends Controller {
             return $this->redirectToRoute('ciudades');
         }
 
-        return $this->render('admin/ciudades/form.html.twig', array('op' => "alta", 'form' => $form->createView()
+        return $this->render($this->form_template, array('title' => "ciudad.views.new.title", 'form' => $form->createView()
         ));
     }
 
@@ -57,7 +57,7 @@ class CiudadController extends Controller {
             $this->addFlash('success', 'flash.success.cambio');
             return $this->redirectToRoute('ciudades');
         }
-        return $this->render('admin/ciudades/form.html.twig', array('op' => "modificacion", 'form' => $form->createView()
+        return $this->render($this->form_template, array('title' => "ciudad.views.edit.title", 'form' => $form->createView()
         ));
     }
 
@@ -67,8 +67,8 @@ class CiudadController extends Controller {
     public function verCiudadAction($id, Request $request) {
         $ciudad = $this->_getObject('AppBundle:Ciudad', $id);
         return $this->render(
-                        'admin/ciudades/form.html.twig', array(
-                    'op' => "vista",
+                        $this->view_template, array(
+                    'title' => "ciudad.views.ver.title",
                     'ciudad' => $ciudad
                         )
         );

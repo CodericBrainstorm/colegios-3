@@ -40,7 +40,7 @@ class ColegioController extends Controller {
             $this->addFlash('success', 'flash.success.cambio');
             return $this->redirectToRoute('colegios');
         }
-        return $this->render('admin/colegios/form.html.twig', array('op' => "alta", 'form' => $form->createView()
+        return $this->render($this->form_template, array('title' => "colegio.views.new.title", 'form' => $form->createView()
         ));
     }
 
@@ -56,7 +56,7 @@ class ColegioController extends Controller {
             $this->addFlash('success', 'flash.success.cambio');
             return $this->redirectToRoute('colegios');
         }
-        return $this->render('admin/colegios/form.html.twig', array('op' => "modificacion", 'form' => $form->createView()
+        return $this->render($this->form_template, array('title' => "colegio.views.edit.title", 'form' => $form->createView()
         ));
     }
 
@@ -66,8 +66,8 @@ class ColegioController extends Controller {
     public function verColegioAction($id, Request $request) {
         $colegio = $this->_getObject('AppBundle:Colegio', $id);
         return $this->render(
-                        'admin/form.html.twig', array(
-                    'op' => "vista",
+                        $this->view_template, array(
+                   'title' => "colegio.views.ver.title",
                     'colegio' => $colegio
                         )
         );
