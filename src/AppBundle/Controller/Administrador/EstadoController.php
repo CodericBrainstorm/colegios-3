@@ -66,10 +66,12 @@ class EstadoController extends Controller {
      */
     public function verRubricaAction($id, Request $request) {
         $estado = $this->_getObject('AppBundle:Estado', $id);
+        $form = $this->createForm(EstadoType::class, $estado, array('disabled' => true));
+        $form->handleRequest($request);
         return $this->render(
                         $this->view_template, array(
                     'title' => "estado.views.ver.title",
-                    'estado' => $estado
+                    'form' => $form->createView()
                         )
         );
     }

@@ -1,7 +1,7 @@
 <tr class="gradeX">
     <td>{{ miembro.nombre }}</td>
-    <td>{{ (miembro.director is null ? 'Sin asignar' : miembro.director.nombre) }}</td>
-    <td>{{ (miembro.colegio is null ? 'Sin asignar' : miembro.colegio.nombre) }}</td>
+    <td>{{ (miembro.director is null ? ('views.sin_asignar' | trans) : miembro.director.nombre) }}</td>
+    <td>{{ (miembro.colegio is null ? ('views.sin_asignar' | trans) : miembro.colegio.nombre) }}</td>
     <td>{{ miembro.email }}</td>
     <td class="center">
         <div class="btn-group">

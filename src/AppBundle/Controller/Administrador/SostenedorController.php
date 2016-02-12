@@ -17,6 +17,13 @@ class SostenedorController extends Controller {
 
     use \AppBundle\Controller\Utils\DBUsersUtilsTrait;
 
+//    private $form_template = 'admin/sostenedores/form.html.twig';
+
+    function __construct() {
+        $this->form_template = 'admin/sostenedores/form.html.twig';
+        $this->view_template = 'admin/sostenedores/view.html.twig';
+    }
+
     /**
      * @Route("/admin/sostenedores/", name="sostenedores")
      */
@@ -61,7 +68,7 @@ class SostenedorController extends Controller {
             return $this->redirectToRoute('sostenedores');
         }
 
-        return $this->render($this->form_template, array('title' => "sostenedor.views.edit.title",'form' => $form->createView()
+        return $this->render($this->form_template, array('title' => "sostenedor.views.edit.title", 'form' => $form->createView()
         ));
     }
 
@@ -71,9 +78,12 @@ class SostenedorController extends Controller {
     public function verSostenedorAction($id, Request $request) {
         $userManager = $this->_obtenerUserManager('AppBundle\Entity\Sostenedor');
         $user = $userManager->findUserBy(array('id' => $id));
+        $form = $this->createForm(SostenedorType::class, $user, array('disabled' => true));
+        $form->remove('plainPassword');
+        $form->handleRequest($request);
         return $this->render(
                         $this->view_template, array('title' => "sostenedor.views.ver.title",
-                    'sostenedor' => $user
+                    'form' => $form->createView()
                         )
         );
     }
