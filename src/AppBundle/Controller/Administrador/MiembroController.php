@@ -43,7 +43,7 @@ class MiembroController extends Controller {
             $this->addFlash('success', 'flash.success.cambio');
             return $this->redirectToRoute('miembros');
         }
-        return $this->render('admin/miembros/form.html.twig', array('op' => "alta", 'form' => $form->createView()
+        return $this->render($this->form_template, array('title' => "miembro.views.new.title", 'form' => $form->createView()
         ));
     }
 
@@ -61,7 +61,7 @@ class MiembroController extends Controller {
             return $this->redirectToRoute('miembros');
         }
 
-        return $this->render('admin/miembros/form.html.twig', array('op' => "modificacion", 'form' => $form->createView()
+        return $this->render($this->form_template, array('title' => "miembro.views.edit.title", 'form' => $form->createView()
         ));
     }
 
@@ -72,7 +72,7 @@ class MiembroController extends Controller {
         $userManager = $this->_obtenerUserManager('AppBundle\Entity\Miembro');
         $user = $userManager->findUserBy(array('id' => $id));
         return $this->render(
-                        'admin/miembros/form.html.twig', array('op' => "vista",
+                        $this->view_template, array('title' => "miembro.views.ver.title",
                     'miembro' => $user
                         )
         );

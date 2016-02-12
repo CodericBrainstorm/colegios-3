@@ -43,7 +43,7 @@ class SostenedorController extends Controller {
             $this->addFlash('success', 'flash.success.cambio');
             return $this->redirectToRoute('sostenedores');
         }
-        return $this->render('admin/sostenedores/form.html.twig', array('op' => "alta", 'form' => $form->createView()
+        return $this->render($this->form_template, array('title' => "sostenedor.views.new.title", 'form' => $form->createView()
         ));
     }
 
@@ -61,7 +61,7 @@ class SostenedorController extends Controller {
             return $this->redirectToRoute('sostenedores');
         }
 
-        return $this->render('admin/sostenedores/form.html.twig', array('op' => "modificacion", 'form' => $form->createView()
+        return $this->render($this->form_template, array('title' => "sostenedor.views.edit.title",'form' => $form->createView()
         ));
     }
 
@@ -72,7 +72,7 @@ class SostenedorController extends Controller {
         $userManager = $this->_obtenerUserManager('AppBundle\Entity\Sostenedor');
         $user = $userManager->findUserBy(array('id' => $id));
         return $this->render(
-                        'admin/sostenedores/form.html.twig', array('op' => "vista",
+                        $this->view_template, array('title' => "sostenedor.views.ver.title",
                     'sostenedor' => $user
                         )
         );

@@ -41,7 +41,7 @@ class ComunaController extends Controller {
             return $this->redirectToRoute('comunas');
         }
 
-        return $this->render('admin/comunas/form.html.twig', array('op' => "alta", 'form' => $form->createView()
+        return $this->render($this->form_template, array('title' => "comuna.views.new.title", 'form' => $form->createView()
         ));
     }
 
@@ -57,7 +57,7 @@ class ComunaController extends Controller {
             $this->addFlash('success', 'flash.success.cambio');
             return $this->redirectToRoute('comunas');
         }
-        return $this->render('admin/comunas/form.html.twig', array('op' => "modificacion", 'form' => $form->createView()
+        return $this->render($this->form_template, array('title' => "comuna.views.edit.title", 'form' => $form->createView()
         ));
     }
 
@@ -67,8 +67,8 @@ class ComunaController extends Controller {
     public function verComunaAction($id, Request $request) {
         $comuna = $this->_getObject('AppBundle:Comuna', $id);
         return $this->render(
-                        'admin/comuna/form.html.twig', array(
-                    'op' => "vista",
+                        $this->view_template, array(
+                    'title' => "comuna.views.ver.title",
                     'comuna' => $comuna
                         )
         );

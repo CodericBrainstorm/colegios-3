@@ -41,7 +41,7 @@ class EstadoController extends Controller {
             return $this->redirectToRoute('rubricas');
         }
 
-        return $this->render('admin/estados/form.html.twig', array('op' => "alta", 'form' => $form->createView()
+        return $this->render($this->form_template, array('title' => "estado.views.new.title", 'form' => $form->createView()
         ));
     }
 
@@ -57,7 +57,7 @@ class EstadoController extends Controller {
             $this->addFlash('success', 'flash.success.cambio');
             return $this->redirectToRoute('rubricas');
         }
-        return $this->render('admin/estados/form.html.twig', array('op' => "modificacion", 'form' => $form->createView()
+        return $this->render($this->form_template, array('title' => "estado.views.edit.title", 'form' => $form->createView()
         ));
     }
 
@@ -67,8 +67,8 @@ class EstadoController extends Controller {
     public function verRubricaAction($id, Request $request) {
         $estado = $this->_getObject('AppBundle:Estado', $id);
         return $this->render(
-                        'admin/estados/form.html.twig', array(
-                    'op' => "vista",
+                        $this->view_template, array(
+                    'title' => "estado.views.ver.title",
                     'estado' => $estado
                         )
         );

@@ -14,10 +14,6 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class AdminController extends Controller {
 
-    use \AppBundle\Controller\Utils\DBUsersUtilsTrait;
-
-use \AppBundle\Controller\Utils\DBGeneralUtilsTrait;
-
     /**
      * @Route("/admin/")
      */

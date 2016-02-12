@@ -37,10 +37,10 @@ class AreaController extends Controller {
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $this->_persistObject($area);
-            $this->addFlash('notice', 'flash.success.cambio');
+            $this->addFlash('success', 'flash.success.cambio');
             return $this->redirectToRoute('areas');
         }
-        return $this->render('admin/areas/form.html.twig', array('op' => "alta", 'form' => $form->createView()
+        return $this->render($this->form_template, array('title' => "area.views.new.title", 'form' => $form->createView()
         ));
     }
 
@@ -56,7 +56,7 @@ class AreaController extends Controller {
             $this->addFlash('success', 'flash.success.cambio');
             return $this->redirectToRoute('areas');
         }
-        return $this->render('admin/areas/form.html.twig', array('op' => "modificacion", 'form' => $form->createView()
+        return $this->render($this->form_template, array('title' => "area.views.edit.title", 'form' => $form->createView()
         ));
     }
 
@@ -65,10 +65,12 @@ class AreaController extends Controller {
      */
     public function verAreaAction($id, Request $request) {
         $area = $this->_getObject('AppBundle:Area', $id);
+        $form = $this->createForm(AreaType::class, $area, array('disabled' => true));
+        $form->handleRequest($request);
         return $this->render(
-                        'admin/areas/form.html.twig', array(
-                    'op' => "vista",
-                    'area' => $area
+                        $this->view_template, array(
+                    'title' => "area.views.ver.title",
+                    'form' => $form->createView()
                         )
         );
     }

@@ -9,5 +9,120 @@ flash:
     error:
         cambio: ¡Se produjo un error guardando los cambios!
         
-
+accion:
+    views:
+        new:
+            title: Crear Acción
+        edit:
+            title: Editar Acción
+        ver:
+            title: Ver Acción
+        
+area:
+    views:
+        new:
+            title: Crear Área
+        edit:
+            title: Editar Área
+        ver:
+            title: Ver Área
+        
+ciudad:
+    views:
+        new:
+            title: Crear Ciudad
+        edit:
+            title: Editar Ciudad
+        ver:
+            title: Ver Ciudad
+        
+colegio:
+    views:
+        new:
+            title: Crear Colegio
+        edit:
+            title: Editar Colegio
+        ver:
+            title: Ver Colegio
+        
+compromiso:
+    views:
+        new:
+            title: Crear Compromiso
+        edit:
+            title: Editar Compromiso
+        ver:
+            title: Ver Compromiso
+        
+comuna:
+    views:
+        new:
+            title: Crear Comuna
+        edit:
+            title: Editar Comuna
+        ver:
+            title: Ver Comuna
+            
+director:
+    views:
+        new:
+            title: Crear Director
+        edit:
+            title: Editar Director
+        ver:
+            title: Ver Director
+            
+estado:
+    views:
+        new:
+            title: Crear Estado
+        edit:
+            title: Editar Estado
+        ver:
+            title: Ver Estado
+            
+hito:
+    views:
+        new:
+            title: Crear Hito
+        edit:
+            title: Editar Hito
+        ver:
+            title: Ver Hito
+            
+miembro:
+    views:
+        new:
+            title: Crear Miembro
+        edit:
+            title: Editar Miembro
+        ver:
+            title: Ver Miembro
+            
+sostenedor:
+    views:
+        new:
+            title: Crear Sostenedor
+        edit:
+            title: Editar Sostenedor
+        ver:
+            title: Ver Sostenedor
+            
+tipo_colegio:
+    views:
+        new:
+            title: Crear Tipo de Colegio
+        edit:
+            title: Editar Tipo de Colegio
+        ver:
+            title: Ver Tipo de Colegio
+            
+tipo_institucion:
+    views:
+        new:
+            title: Crear Tipo de Institución
+        edit:
+            title: Editar Tipo de Institución
+        ver:
+            title: Ver Tipo de Institución
     
