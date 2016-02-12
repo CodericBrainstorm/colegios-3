@@ -41,7 +41,7 @@ class TipoInstitucionController extends Controller {
             return $this->redirectToRoute('tipo_instituciones');
         }
 
-        return $this->render('admin/tipo_instituciones/form.html.twig', array('op' => "alta", 'form' => $form->createView()
+        return $this->render($this->form_template, array('title' => "tipo_institucion.views.new.title", 'form' => $form->createView()
         ));
     }
 
@@ -57,7 +57,7 @@ class TipoInstitucionController extends Controller {
             $this->addFlash('success', 'flash.success.cambio');
             return $this->redirectToRoute('tipo_instituciones');
         }
-        return $this->render('admin/tipo_instituciones/form.html.twig', array('op' => "modificacion", 'form' => $form->createView()
+        return $this->render($this->form_template, array('title' => "tipo_institucion.views.edit.title", 'form' => $form->createView()
         ));
     }
 
@@ -67,8 +67,8 @@ class TipoInstitucionController extends Controller {
     public function verTipoInstitucionAction($id, Request $request) {
         $tipoInstitucion = $this->_getObject('AppBundle:TipoInstitucion', $id);
         return $this->render(
-                        'admin/tipo_instituciones/form.html.twig', array(
-                    'op' => "vista",
+                        $this->view_template, array(
+                    'title' => "tipo_institucion.views.ver.title",
                     'tipo_institucion' => $tipoInstitucion
                         )
         );

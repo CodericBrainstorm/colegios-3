@@ -41,7 +41,7 @@ class TipoColegioController extends Controller {
             return $this->redirectToRoute('tipo_colegios');
         }
 
-        return $this->render('admin/tipo_colegios/form.html.twig', array('op' => "alta", 'form' => $form->createView()
+        return $this->render($this->form_template, array('title' => "tipo_colegio.views.new.title", 'form' => $form->createView()
         ));
     }
 
@@ -57,7 +57,7 @@ class TipoColegioController extends Controller {
             $this->addFlash('success', 'flash.success.cambio');
             return $this->redirectToRoute('tipo_colegios');
         }
-        return $this->render('admin/tipo_colegios/form.html.twig', array('op' => "modificacion", 'form' => $form->createView()
+        return $this->render($this->form_template, array('title' => "tipo_colegio.views.edit.title", 'form' => $form->createView()
         ));
     }
 
@@ -67,8 +67,8 @@ class TipoColegioController extends Controller {
     public function verTipoColegioAction($id, Request $request) {
         $tipoColegio = $this->_getObject('AppBundle:TipoColegio', $id);
         return $this->render(
-                        'admin/tipo_colegios/form.html.twig', array(
-                    'op' => "vista",
+                        $this->view_template, array(
+                    'title' => "tipo_colegio.views.ver.title",
                     'tipo_colegio' => $tipoColegio
                         )
         );
