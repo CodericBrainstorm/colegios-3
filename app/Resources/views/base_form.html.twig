@@ -5,13 +5,7 @@
 {% block body %}
     <section class="panel">
         <header class="panel-heading">
-            {% if op == "alta" %}
-                Nuevo Director
-            {% elseif op == "modificacion" %}
-                Editar Director
-            {% else %}
-                Ver Director
-            {% endif %}
+            {{ title }}
         </header>
         <div class="panel-body">
             <div class="form-group">
@@ -19,18 +13,16 @@
                     {% if op=="vista" %}
                     {% else %}
                         {{ form_start(form) }} 
-                        {{ form_widget(form) }} 
-                        <div>
-                            <input type="submit" value="{{ 'boton.crear'|trans }}" />
+                        {{ form_widget(form) }}
+                        <div class="form-group">
+                            <div class="col-lg-offset-2 col-lg-10">
+                                <button type="submit" class="btn btn-primary">{{ 'boton.crear'|trans }}</button>
+                            </div>
                         </div>
                         {{ form_end(form) }}
                     {% endif %}
                 </div>
             </div>
-            {% if op!="vista" %}
-                <button type="submit" class="btn btn-primary">Enviar</button>
-            {% endif %}
-            {#            </form>#}
         </div>
     </section>
 {% endblock %}
