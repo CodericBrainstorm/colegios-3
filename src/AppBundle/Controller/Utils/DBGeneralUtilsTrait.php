@@ -4,7 +4,7 @@ namespace AppBundle\Controller\Utils;
 
 trait DBGeneralUtilsTrait {
 
-    private $form_template = 'form.html.twig';
+    private $form_template = 'base_form.html.twig';
     private $view_template = 'base_view.html.twig';
 
     private function _persistObject($obj) {

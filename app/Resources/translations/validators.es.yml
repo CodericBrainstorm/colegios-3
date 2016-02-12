@@ -16,7 +16,7 @@ archivo:
        
 area:
     nombre:
-        not_blank: El nombre de la acción no puede estar vacío.
+        not_blank: El nombre del área no puede estar vacío.
     descripcion:
         not_null: La descripción no puede ser nula.
     ponderacion:

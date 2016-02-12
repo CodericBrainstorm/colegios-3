@@ -5,22 +5,19 @@
 {% block body %}
     <section class="panel">
         <header class="panel-heading">
-            {{ title }}
+            {{ title | trans}}
         </header>
         <div class="panel-body">
             <div class="form-group">
                 <div class="col-sm-10">
-                    {% if op=="vista" %}
-                    {% else %}
-                        {{ form_start(form) }} 
-                        {{ form_widget(form) }}
-                        <div class="form-group">
-                            <div class="col-lg-offset-2 col-lg-10">
-                                <button type="submit" class="btn btn-primary">{{ 'boton.crear'|trans }}</button>
-                            </div>
+                    {{ form_start(form) }} 
+                    {{ form_widget(form) }}
+                    <div class="form-group">
+                        <div class="col-lg-offset-2 col-lg-10">
+                            <button type="submit" class="btn btn-primary">{{ 'boton.crear'|trans }}</button>
                         </div>
-                        {{ form_end(form) }}
-                    {% endif %}
+                    </div>
+                    {{ form_end(form) }}
                 </div>
             </div>
         </div>
