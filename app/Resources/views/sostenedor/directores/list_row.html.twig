@@ -10,6 +10,8 @@
                 <li><a href="{{ path('ver director', {'id': director.id, 'role':role}) }}">Ver</a></li>
                 <li><a href="{{ path('editar director', {'id': director.id, 'role':role}) }}">Editar</a></li>
                 <li><a href="#">Eliminar</a></li>
+                <li class="divider"></li>
+                <li><a href="{{ path('ver miembros director', {'role': 'admin', 'id': director.id}) }}">Ver Miembros</a></li>
             </ul>
         </div>
     </td>

@@ -12,6 +12,8 @@
                 <li><a href="{{ path('ver sostenedor', {'id': sostenedor.id}) }}">Ver</a></li>
                 <li><a href="{{ path('editar sostenedor', {'id': sostenedor.id}) }}">Editar</a></li>
                 <li><a href="#">Eliminar</a></li>
+                <li class="divider"></li>
+                <li><a href="{{ path('ver directores sostenedor', {'role': 'admin', 'id': sostenedor.id}) }}">Ver Directores</a></li>
             </ul>
         </div>
     </td>

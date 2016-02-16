@@ -1,6 +1,6 @@
 {% extends 'base_list.html.twig' %}
 {% block list_title %}
-    Usuarios Miembros
+    Usuarios Miembros {% if nombre_director is defined %} del Director: <span style="color:#5bc0de;">{{nombre_director}}</span> {% endif %}
 {% endblock %}
 
 {% block boton_nuevo %}
