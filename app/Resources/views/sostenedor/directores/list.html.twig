@@ -1,6 +1,6 @@
 {% extends 'base_list.html.twig' %}
 {% block list_title %}
-    Usuarios Directores
+    Usuarios Directores {% if nombre_sostenedor is defined %} del Sostenedor: <span style="color:#5bc0de;">{{nombre_sostenedor}}</span> {% endif %}
 {% endblock %}
 
 {% block boton_nuevo %}

@@ -26,6 +26,20 @@ class MiembroController extends Controller {
                         'director/miembros/list.html.twig', array('miembros' => $miembros)
         );
     }
+    
+    /**
+     * @Route("/{role}/miembros_director/{id}", name="ver miembros director")
+     */
+    public function verMiembrosDirectorAction($id, Request $request) {
+        
+        $userManager = $this->_obtenerUserManager('AppBundle\Entity\Director');
+        $director = $userManager->findUserBy(array('id' => $id));
+        $miembros = $this->getDoctrine()->getRepository('AppBundle:Miembro')->findBy(array('director' => $director));
+        $nombre_director = $director->getNombre() . " " . $director->getApellido();
+        return $this->render(
+                        'director/miembros/list.html.twig', array('miembros' => $miembros, 'nombre_director' => $nombre_director)
+        );
+    }
 
     /**
      * @Route("/{role}/miembro/", name="nuevo miembro")

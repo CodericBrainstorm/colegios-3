@@ -26,6 +26,20 @@ class DirectorController extends Controller {
                         'sostenedor/directores/list.html.twig', array('directores' => $directores)
         );
     }
+    
+    /**
+     * @Route("/{role}/directores_sostenedor/{id}", name="ver directores sostenedor")
+     */
+    public function verDirectoresSostenedorAction($id, Request $request) {
+        
+        $userManager = $this->_obtenerUserManager('AppBundle\Entity\Sostenedor');
+        $sostenedor = $userManager->findUserBy(array('id' => $id));
+        $directores = $this->getDoctrine()->getRepository('AppBundle:Director')->findBy(array('sostenedor' => $sostenedor));
+        $nombre_sostenedor = $sostenedor->getNombre() . " " . $sostenedor->getApellido();
+        return $this->render(
+                        'sostenedor/directores/list.html.twig', array('directores' => $directores, 'nombre_sostenedor' => $nombre_sostenedor)
+        );
+    }
 
     /**
      * @Route("/{role}/director/", name="nuevo director")
