@@ -1,8 +1,6 @@
 <?php
 
-// src/AppBundle/Controller/AdminController.php
-
-namespace AppBundle\Controller\Administrador;
+namespace AppBundle\Controller\Director;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security as Security;
@@ -10,16 +8,16 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * @Security("has_role('ROLE_ADMIN')") 
+ * @Security("has_role('ROLE_DIRECTOR')") 
  */
-class AdminController extends Controller {
+class DirectoresController extends Controller {
 
     /**
-     * @Route("/admin/", name="admin_index")
+     * @Route("/director/", name="director_index")
      */
     public function indexAction(Request $request) {
         return $this->render(
-                        'admin/index.html.twig', array('params' => 1)
+                        'director/index.html.twig'
         );
     }
 

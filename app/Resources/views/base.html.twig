@@ -1,148 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta name="keywords" content="admin, dashboard, bootstrap, template, flat, modern, theme, responsive, fluid, retina, backend, html5, css, css3">
-  <meta name="description" content="">
-  <meta name="author" content="ThemeBucket">
-  <link rel="shortcut icon" href="#" type="image/png">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+        <meta name="keywords" content="admin, dashboard, bootstrap, template, flat, modern, theme, responsive, fluid, retina, backend, html5, css, css3">
+        <meta name="description" content="">
+        <meta name="author" content="ThemeBucket">
+        <link rel="shortcut icon" href="#" type="image/png">
 
-  <title>{% block title %}Colegios{% endblock %}</title>
+        <title>{% block title %}Colegios{% endblock %}</title>
 
-  {% block estilos %}
-  <!--icheck-->
-  <link href="{{ asset('adminex/js/iCheck/skins/minimal/minimal.css') }}" rel="stylesheet">
-  <link href="{{ asset('adminex/js/iCheck/skins/square/square.css') }}" rel="stylesheet">
-  <link href="{{ asset('adminex/js/iCheck/skins/square/red.css') }}" rel="stylesheet">
-  <link href="{{ asset('adminex/js/iCheck/skins/square/blue.css') }}" rel="stylesheet">
+        {% block estilos %}
+            <!--icheck-->
+            <link href="{{ asset('adminex/js/iCheck/skins/minimal/minimal.css') }}" rel="stylesheet">
+            <link href="{{ asset('adminex/js/iCheck/skins/square/square.css') }}" rel="stylesheet">
+            <link href="{{ asset('adminex/js/iCheck/skins/square/red.css') }}" rel="stylesheet">
+            <link href="{{ asset('adminex/js/iCheck/skins/square/blue.css') }}" rel="stylesheet">
 
-  <!--dashboard calendar-->
-  <link href="{{ asset('adminex/css/clndr.css') }}" rel="stylesheet">
-
-
-  <!--common-->
-  <link href="{{ asset('adminex/css/style.css') }}" rel="stylesheet">
-  <link href="{{ asset('adminex/css/style-responsive.css') }}" rel="stylesheet">
-  {% endblock %}
+            <!--dashboard calendar-->
+            <link href="{{ asset('adminex/css/clndr.css') }}" rel="stylesheet">
 
 
+            <!--common-->
+            <link href="{{ asset('adminex/css/style.css') }}" rel="stylesheet">
+            <link href="{{ asset('adminex/css/style-responsive.css') }}" rel="stylesheet">
+        {% endblock %}
 
 
-  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!--[if lt IE 9]>
-  <script src="js/html5shiv.js"></script>
-  <script src="js/respond.min.js"></script>
-  <![endif]-->
-</head>
 
-{% block body_general %}
-<body class="sticky-header">
 
-<section>
-    <!-- left side start-->
-    <div class="left-side sticky-left-side">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+        <script src="js/html5shiv.js"></script>
+        <script src="js/respond.min.js"></script>
+        <![endif]-->
+    </head>
 
-        <!--logo and iconic logo start-->
-        <div class="logo">
-            <a href="index.html"><img src="{{ asset('adminex/images/logo.png') }}" alt=""></a>
-        </div>
+    {% block body_general %}
+        <body class="sticky-header">
 
-        <div class="logo-icon text-center">
-            <a href="index.html"><img src="{{ asset('adminex/images/logo_icon.png') }}" alt=""></a>
-        </div>
-        <!--logo and iconic logo end-->
+            <section>
+                <!-- left side start-->
+                <div class="left-side sticky-left-side">
 
-        <div class="left-side-inner">
+                    <!--logo and iconic logo start-->
+                    <div class="logo">
+                        <a href="index.html"><img src="{{ asset('adminex/images/logo.png') }}" alt=""></a>
+                    </div>
 
-            <!-- visible to small devices only -->
-            <div class="visible-xs hidden-sm hidden-md hidden-lg">
-                <div class="media logged-user">
-                    <img alt="" src="{{ asset('adminex/images/photos/user-avatar.png') }}" class="media-object">
-                    <div class="media-body">
-                        <h4><a href="#">{% block usuario_mobile %}John Doe{% endblock %}</a></h4>
-                        <span>"Bienvenido..."</span>
+                    <div class="logo-icon text-center">
+                        <a href="index.html"><img src="{{ asset('adminex/images/logo_icon.png') }}" alt=""></a>
+                    </div>
+                    <!--logo and iconic logo end-->
+
+                    <div class="left-side-inner">
+
+                        <!-- visible to small devices only -->
+                        <div class="visible-xs hidden-sm hidden-md hidden-lg">
+                            <div class="media logged-user">
+                                <img alt="" src="{{ asset('adminex/images/photos/user-avatar.png') }}" class="media-object">
+                                <div class="media-body">
+                                    <h4><a href="#">
+                                            {% block usuario_mobile %}{{ app.user.username }}{% endblock %}
+                                        </a></h4>
+                                    <span>"Bienvenido..."</span>
+                                </div>
+                            </div>
+
+                            <h5 class="left-nav-title">Información de cuenta</h5>
+                            <ul class="nav nav-pills nav-stacked custom-nav">
+                                <li><a href="#"><i class="fa fa-user"></i> <span>Cuenta</span></a></li>
+                                <li><a href="/logout"><i class="fa fa-sign-out"></i> <span>Salir</span></a></li>
+                            </ul>
+                        </div>
+
+                        {% block menu %}
+                            {{ include(role ~'/menu.html.twig')}} 
+                        {% endblock %}
+
                     </div>
                 </div>
+                <!-- left side end-->
 
-                <h5 class="left-nav-title">Información de cuenta</h5>
-                <ul class="nav nav-pills nav-stacked custom-nav">
-                  <li><a href="#"><i class="fa fa-user"></i> <span>Cuenta</span></a></li>
-                  <li><a href="/logout"><i class="fa fa-sign-out"></i> <span>Salir</span></a></li>
-                </ul>
+                <!-- main content start-->
+                <div class="main-content" >
+
+                    <!-- header section start-->
+                    <div class="header-section">
+
+                        <!--toggle button start-->
+                        <a class="toggle-btn"><i class="fa fa-bars"></i></a>
+                        <!--toggle button end-->
+
+                        <!--notification menu start -->
+                        <div class="menu-right">
+                            <ul class="notification-menu">
+                                <li>
+                                    <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                        {% block usuario %}{{ app.user.username }}{% endblock %}
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+                                        <li><a href="#"><i class="fa fa-user"></i>  Profile</a></li>
+                                        <li><a href="/logout"><i class="fa fa-sign-out"></i> Log Out</a></li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <!--notification menu end -->
+
+                    </div>
+                    <!-- header section end-->
+
+
+
+                    <!--body wrapper start-->
+                    <div class="wrapper">
+                    {% block body %}{% endblock %}
+                </div>
+                <!--body wrapper end-->
+
+                <!--footer section start-->
+                <footer>
+                    Desarrollado por <a href="http://www.softwaretrident.com/" target="_Blank">Trident Software</a>.
+                </footer>
+                <!--footer section end-->
+
+
             </div>
+            <!-- main content end-->
+        </section>
 
-            {% block menu %}
-            {% endblock %}
+    {% endblock body_general %}
 
-        </div>
-    </div>
-    <!-- left side end-->
-    
-    <!-- main content start-->
-    <div class="main-content" >
+    {% block scripts %}
+        <!-- Placed js at the end of the document so the pages load faster -->
+        <script src="{{ asset('adminex/js/jquery-1.10.2.min.js') }}"></script>
+        <script src="{{ asset('adminex/js/jquery-ui-1.9.2.custom.min.js') }}"></script>
+        <script src="{{ asset('adminex/js/jquery-migrate-1.2.1.min.js') }}"></script>
+        <script src="{{ asset('adminex/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('adminex/js/modernizr.min.js') }}"></script>
+        <script src="{{ asset('adminex/js/jquery.nicescroll.js') }}"></script>
 
-        <!-- header section start-->
-        <div class="header-section">
-
-            <!--toggle button start-->
-            <a class="toggle-btn"><i class="fa fa-bars"></i></a>
-            <!--toggle button end-->
-
-            <!--notification menu start -->
-            <div class="menu-right">
-                <ul class="notification-menu">
-                    <li>
-                        <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                            {% block usuario %}John Doe{% endblock %}
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
-                            <li><a href="#"><i class="fa fa-user"></i>  Profile</a></li>
-                            <li><a href="/logout"><i class="fa fa-sign-out"></i> Log Out</a></li>
-                        </ul>
-                    </li>
-
-                </ul>
-            </div>
-            <!--notification menu end -->
-
-        </div>
-        <!-- header section end-->
-
-
-
-        <!--body wrapper start-->
-        <div class="wrapper">
-        {% block body %}{% endblock %}
-        </div>
-        <!--body wrapper end-->
-
-        <!--footer section start-->
-        <footer>
-            Desarrollado por <a href="http://www.softwaretrident.com/" target="_Blank">Trident Software</a>.
-        </footer>
-        <!--footer section end-->
-
-
-    </div>
-    <!-- main content end-->
-</section>
-        
-{% endblock body_general %}
-
-{% block scripts %}
-<!-- Placed js at the end of the document so the pages load faster -->
-<script src="{{ asset('adminex/js/jquery-1.10.2.min.js') }}"></script>
-<script src="{{ asset('adminex/js/jquery-ui-1.9.2.custom.min.js') }}"></script>
-<script src="{{ asset('adminex/js/jquery-migrate-1.2.1.min.js') }}"></script>
-<script src="{{ asset('adminex/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('adminex/js/modernizr.min.js') }}"></script>
-<script src="{{ asset('adminex/js/jquery.nicescroll.js') }}"></script>
-
-<!--common scripts for all pages-->
-<script src="{{ asset('adminex/js/scripts.js') }}"></script>
-{% endblock %}
+        <!--common scripts for all pages-->
+        <script src="{{ asset('adminex/js/scripts.js') }}"></script>
+    {% endblock %}
 
 </body>
 </html>

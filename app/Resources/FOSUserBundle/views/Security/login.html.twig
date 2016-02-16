@@ -3,35 +3,35 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block fos_user_content %}
-{% block body_general %}
-    
-{% if error %}
-    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-{% endif %}
-    <body class="login-body">
-        <div class="container">
-            <form class="form-signin" action="{{ path("fos_user_security_check") }}" method="post">
+    {% block body_general %}
+        <body class="login-body">
+            <div class="container">
+                <form class="form-signin" action="{{ path("fos_user_security_check") }}" method="post">
 
-                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
-                <div class="form-signin-heading text-center">
-                    <h1 class="sign-title">Ingreso de usuario</h1>
-                    <img src="{{ asset('adminex/images/login-logo.png') }}" alt=""/>
-                </div>
-                <div class="login-wrap">
-                    <input id="username" name="_username" required="required" type="text" class="form-control" placeholder="{{ 'security.login.username'|trans }}" value="{{ last_username }}" autofocus>
-                    <input id="password" name="_password" required="required" type="password" class="form-control" placeholder="{{ 'security.login.password'|trans }}" value="" autofocus>
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
-                    <input class="btn btn-lg btn-login btn-block" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+                    <div class="form-signin-heading text-center">
+                        <h1 class="sign-title">Ingreso de usuario</h1>
+                        <img src="{{ asset('adminex/images/login-logo.png') }}" alt=""/>
+                    </div>
+                    <div class="login-wrap">
+                        {% if error %}
+                            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        {% endif %}
+                        <input id="username" name="_username" required="required" type="text" class="form-control" placeholder="{{ 'security.login.username'|trans }}" value="{{ last_username }}" autofocus>
+                        <input id="password" name="_password" required="required" type="password" class="form-control" placeholder="{{ 'security.login.password'|trans }}" value="" autofocus>
 
-                    <label class="checkbox">
-                        <input type="checkbox" id="remember_me" name="_remember_me" value="on" value="remember-me"> {{ 'security.login.remember_me'|trans }}
-                    </label>
-                </div>
-            </form>
-        </div>
-    </body>     
-    
-{% endblock body_general %}
+                        <input class="btn btn-lg btn-login btn-block" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+
+                        <label class="checkbox">
+                            <input type="checkbox" id="remember_me" name="_remember_me" value="on" value="remember-me"> {{ 'security.login.remember_me'|trans }}
+                        </label>
+                    </div>
+                </form>
+            </div>
+        </body>     
+
+    {% endblock body_general %}
 {% endblock fos_user_content %}
 

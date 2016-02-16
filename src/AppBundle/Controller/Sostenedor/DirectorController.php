@@ -2,7 +2,7 @@
 
 // src/AppBundle/Controller/AdminController.php
 
-namespace AppBundle\Controller\Administrador;
+namespace AppBundle\Controller\Sostenedor;
 
 use AppBundle\Form\Type\DirectorType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -18,17 +18,17 @@ class DirectorController extends Controller {
     use \AppBundle\Controller\Utils\DBUsersUtilsTrait;
 
     /**
-     * @Route("/admin/directores/", name="directores")
+     * @Route("/{role}/directores/", name="directores")
      */
     public function directoresAction(Request $request) {
         $directores = $this->getDoctrine()->getRepository('AppBundle:Director')->findAll();
         return $this->render(
-                        'admin/directores/list.html.twig', array('directores' => $directores)
+                        'sostenedor/directores/list.html.twig', array('directores' => $directores)
         );
     }
 
     /**
-     * @Route("/admin/director/", name="nuevo director")
+     * @Route("/{role}/director/", name="nuevo director")
      */
     public function nuevoDirectorAction(Request $request) {
 
@@ -48,7 +48,7 @@ class DirectorController extends Controller {
     }
 
     /**
-     * @Route("/admin/director/{id}", name="editar director")
+     * @Route("/{role}/director/{id}", name="editar director")
      */
     public function editarDirectorAction($id, Request $request) {
         $userManager = $this->_obtenerUserManager('AppBundle\Entity\Director');
@@ -66,7 +66,7 @@ class DirectorController extends Controller {
     }
 
     /**
-     * @Route("/admin/ver_director/{id}", name="ver director")
+     * @Route("/{role}/ver_director/{id}", name="ver director")
      */
     public function verDirectorAction($id, Request $request) {
         $userManager = $this->_obtenerUserManager('AppBundle\Entity\Director');

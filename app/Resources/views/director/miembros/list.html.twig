@@ -4,7 +4,7 @@
 {% endblock %}
 
 {% block boton_nuevo %}
-    <a href="{{ path('nuevo miembro') }}"><button class="btn btn-info" type="button" style="margin:15px;"><i class="fa fa-plus"></i> Nuevo Miembro</button></a>
+    <a href="{{ path('nuevo miembro', {'role':role}) }}"><button class="btn btn-info" type="button" style="margin:15px;"><i class="fa fa-plus"></i> Nuevo Miembro</button></a>
 {% endblock %}    
 
 {% block list_header %}
@@ -17,7 +17,7 @@
 
 {% block list_body %}
     {% for miembro in miembros %} 
-        {{ include('admin/miembros/list_row.html.twig', { 'miembro': miembro }) }} 
+        {{ include('director/miembros/list_row.html.twig', { 'miembro': miembro }) }} 
     {% endfor %} 
 {% endblock %}
 {% block list_footer %}

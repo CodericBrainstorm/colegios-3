@@ -4,19 +4,3 @@ app:
     
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
-    
-admin_index:
-    path: /admin/index
-    defaults: { _controller: AppBundle:Administrador/Admin:index }
-    
-sostenedor_index:
-    path: /sostenedor/index
-    defaults: { _controller: AppBundle:Sostenedor/Sostenedor:index }
-    
-director_index:
-    path: /director/index
-    defaults: { _controller: AppBundle:Director/Director:index }
-    
-miembro_index:
-    path: /miembro/index
-    defaults: { _controller: AppBundle:Miembro/Miembro:index }

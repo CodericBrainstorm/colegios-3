@@ -12,11 +12,21 @@ class DefaultController extends Controller {
      * @Route("/", name="homepage")
      */
     public function indexAction(Request $request) {
-
-        // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', array(
-            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
-        ));
+        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            return $this->redirectToRoute('fos_user_security_login');
+        } else {
+            if ($this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+                return $this->redirectToRoute('admin_index');
+            } else if ($this->get('security.authorization_checker')->isGranted('ROLE_SOSTENEDOR')) {
+                return $this->redirectToRoute('sostenedor_index');
+            } else if ($this->get('security.authorization_checker')->isGranted('ROLE_DIRECTOR')) {
+                return $this->redirectToRoute('director_index');
+            } else if ($this->get('security.authorization_checker')->isGranted('ROLE_MIEMBRO')) {
+                return $this->redirectToRoute('miembro_index');
+            } else {
+                return $this->redirectToRoute('fos_user_security_login');
+            }
+        }
     }
 
     /**

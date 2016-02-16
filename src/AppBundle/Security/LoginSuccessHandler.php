@@ -1,6 +1,4 @@
 <?php
-// AppBundle\Security\LoginSuccessHandler.php
-
 namespace AppBundle\Security;
 
 use Symfony\Component\Security\Http\Authentication\AuthenticationSuccessHandlerInterface;
