@@ -2,7 +2,7 @@
 
 // src/AppBundle/Controller/AdminController.php
 
-namespace AppBundle\Controller\Administrador;
+namespace AppBundle\Controller\Director;
 
 use AppBundle\Form\Type\MiembroType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -18,17 +18,17 @@ class MiembroController extends Controller {
     use \AppBundle\Controller\Utils\DBUsersUtilsTrait;
 
     /**
-     * @Route("/admin/miembros/", name="miembros")
+     * @Route("/{role}/miembros/", name="miembros")
      */
     public function miembrosAction(Request $request) {
         $miembros = $this->getDoctrine()->getRepository('AppBundle:Miembro')->findAll();
         return $this->render(
-                        'admin/miembros/list.html.twig', array('miembros' => $miembros)
+                        'director/miembros/list.html.twig', array('miembros' => $miembros)
         );
     }
 
     /**
-     * @Route("/admin/miembro/", name="nuevo miembro")
+     * @Route("/{role}/miembro/", name="nuevo miembro")
      */
     public function nuevoMiembroAction(Request $request) {
 
@@ -48,7 +48,7 @@ class MiembroController extends Controller {
     }
 
     /**
-     * @Route("/admin/miembro/{id}", name="editar miembro")
+     * @Route("/{role}/miembro/{id}", name="editar miembro")
      */
     public function editarMiembroAction($id, Request $request) {
         $userManager = $this->_obtenerUserManager('AppBundle\Entity\Miembro');
@@ -66,7 +66,7 @@ class MiembroController extends Controller {
     }
 
     /**
-     * @Route("/admin/ver_miembro/{id}", name="ver miembro")
+     * @Route("/{role}/ver_miembro/{id}", name="ver miembro")
      */
     public function verMiembroAction($id, Request $request) {
         $userManager = $this->_obtenerUserManager('AppBundle\Entity\Miembro');
