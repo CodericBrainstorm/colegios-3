@@ -2,14 +2,16 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Repository\ArchivoRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Archivo
  *
  * @ORM\Table(name="archivo")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\ArchivoRepository")
+ * @ORM\Entity(repositoryClass="ArchivoRepository")
  * @ORM\HasLifecycleCallbacks 
  */
 class Archivo {
