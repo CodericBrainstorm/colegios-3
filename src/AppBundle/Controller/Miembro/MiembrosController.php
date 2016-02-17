@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller\Miembro;
 
+use AppBundle\Controller\Controlador;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security as Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -10,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * @Security("has_role('ROLE_MIEMBRO')") 
  */
-class MiembrosController extends Controller {
+class MiembrosController extends Controlador {
 
     /**
      * @Route("/miembro/", name="miembro_index")

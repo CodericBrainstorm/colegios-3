@@ -4,6 +4,7 @@
 
 namespace AppBundle\Controller\Director;
 
+use AppBundle\Controller\Controlador;
 use AppBundle\Form\Type\MiembroType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security as Security;
@@ -13,7 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * @Security("has_role('ROLE_DIRECTOR')") 
  */
-class MiembroController extends Controller {
+class MiembroController extends Controlador {
 
     use \AppBundle\Controller\Utils\DBUsersUtilsTrait;
 

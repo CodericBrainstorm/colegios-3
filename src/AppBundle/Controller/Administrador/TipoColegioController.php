@@ -4,6 +4,7 @@
 
 namespace AppBundle\Controller\Administrador;
 
+use AppBundle\Controller\Controlador;
 use AppBundle\Entity\TipoColegio;
 use AppBundle\Form\Type\TipoColegioType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -14,7 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * @Security("has_role('ROLE_ADMIN')") 
  */
-class TipoColegioController extends Controller {
+class TipoColegioController extends Controlador {
 
     use \AppBundle\Controller\Utils\DBGeneralUtilsTrait;
 

@@ -4,6 +4,7 @@
 
 namespace AppBundle\Controller\Administrador;
 
+use AppBundle\Controller\Controlador;
 use AppBundle\Form\Type\SostenedorType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security as Security;
@@ -13,7 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * @Security("has_role('ROLE_ADMIN')") 
  */
-class SostenedorController extends Controller {
+class SostenedorController extends Controlador {
 
     use \AppBundle\Controller\Utils\DBUsersUtilsTrait;
 

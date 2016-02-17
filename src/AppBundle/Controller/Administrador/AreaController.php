@@ -4,6 +4,7 @@
 
 namespace AppBundle\Controller\Administrador;
 
+use AppBundle\Controller\Controlador;
 use AppBundle\Entity\Area;
 use AppBundle\Form\Type\AreaType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -14,7 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * @Security("has_role('ROLE_ADMIN')") 
  */
-class AreaController extends Controller {
+class AreaController extends Controlador {
 
     use \AppBundle\Controller\Utils\DBGeneralUtilsTrait;
 
