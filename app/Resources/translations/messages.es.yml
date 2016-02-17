@@ -129,3 +129,11 @@ tipo_institucion:
         ver:
             title: Ver Tipo de Institución
     
+compromiso:
+    views:
+        new:
+            title: Crear Área
+        edit:
+            title: Editar Área
+        ver:
+            title: Ver Área

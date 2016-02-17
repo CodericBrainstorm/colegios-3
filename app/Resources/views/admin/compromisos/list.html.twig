@@ -1,0 +1,27 @@
+{% extends 'base_list.html.twig' %}
+{% block list_title %}
+    Compromisos {% if sostenedor is defined %} del Sostenedor: <span style="color:#5bc0de;">{{sostenedor.nombre~" "~sostenedor.apellido}}</span> {% endif %}
+{% endblock %}
+
+{% block boton_nuevo %}
+    <a href="{{ path('nuevo compromiso') }}"><button class="btn btn-info" type="button" style="margin:15px;"><i class="fa fa-plus"></i> Nuevo Compromiso</button></a>
+{% endblock %}    
+
+{% block list_header %}
+    <th>Nombre</th>
+    <th>Área</th>
+    <th>Sostenedor</th>
+    <th>Operaciones</th>
+    {% endblock %}   
+
+{% block list_body %}
+    {% for compromiso in compromisos %} 
+        {{ include('admin/compromisos/list_row.html.twig', { 'compromiso': compromiso }) }} 
+    {% endfor %} 
+{% endblock %}
+{% block list_footer %}
+    <th>Nombre</th>
+    <th>Área</th>
+    <th>Sostenedor</th>
+    <th>Operaciones</th>
+    {% endblock %}

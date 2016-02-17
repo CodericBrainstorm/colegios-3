@@ -1,0 +1,15 @@
+<tr class="gradeX">
+    <td>{{ compromiso.nombre }}</td>
+    <td>{{ compromiso.area.nombre }}</td>
+    <td>{{ compromiso.sostenedor.nombre~" "~compromiso.sostenedor.apellido }}</td>
+    <td class="center">
+        <div class="btn-group">
+            <button data-toggle="dropdown" class="btn btn-info dropdown-toggle" type="button">Operaciones <span class="caret"></span></button>
+            <ul role="menu" class="dropdown-menu">
+                <li><a href="{{ path('ver compromiso', {'id': compromiso.id}) }}">Ver</a></li>
+                <li><a href="{{ path('editar compromiso', {'id': compromiso.id}) }}">Editar</a></li>
+                <li><a href="#">Eliminar</a></li>
+            </ul>
+        </div>
+    </td>
+</tr>
