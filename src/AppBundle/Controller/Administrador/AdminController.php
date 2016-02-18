@@ -1,13 +1,10 @@
 <?php
 
-// src/AppBundle/Controller/AdminController.php
-
 namespace AppBundle\Controller\Administrador;
 
 use AppBundle\Controller\Controlador;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security as Security;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
