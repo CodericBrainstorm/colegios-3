@@ -88,12 +88,6 @@ pugx_multi_user:
             name: fos_user_registration_form
             validation_groups:  [Registration, Default]
           template: default/administrador.form.html.twig
-        profile:
-          form:
-            type: AppBundle\Form\Type\UserType
-            name: fos_user_profile_form
-            validation_groups:  [Profile, Default]
-          template: base_form.html.twig
     sostenedor:
         entity: 
           class: AppBundle\Entity\Sostenedor
