@@ -19,7 +19,7 @@ class MiembroController extends Controlador {
      * @Route("/director/miembros/", name="miembros director")
      */
     public function miembrosAction(Request $request) {
-        $user = $this->_getDirector();
+        $user = $this->getUser();
         $miembros = $user->getMiembros();
         return $this->render(
                         'director/miembros/list.html.twig', array('miembros' => $miembros)
@@ -30,7 +30,7 @@ class MiembroController extends Controlador {
      * @Route("/director/miembro/", name="nuevo miembro director")
      */
     public function nuevoMiembroAction(Request $request) {
-        $director = $this->_getDirector();
+        $director = $this->getUser();
         $userManager = $this->_obtenerUserManager('AppBundle\Entity\Miembro');
         $user = $userManager->createUser();
         $user->setDirector($director);
@@ -80,10 +80,6 @@ class MiembroController extends Controlador {
                     'form' => $form->createView()
                         )
         );
-    }
-
-    private function _getDirector() {
-        return $this->container->get('security.context')->getToken()->getUser();
     }
 
 }

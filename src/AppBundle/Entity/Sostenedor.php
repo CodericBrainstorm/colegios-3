@@ -291,4 +291,8 @@ class Sostenedor extends User {
     {
         return $this->ciudad;
     }
+    
+    public function getType(){
+        return \AppBundle\Form\Type\SostenedorType::class;
+    }
 }
