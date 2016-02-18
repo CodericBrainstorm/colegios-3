@@ -100,4 +100,8 @@ abstract class User extends BaseUser {
     {
         return $this->apellido;
     }
+    
+    public function getType(){
+        return \AppBundle\Form\Type\UserType::class;
+    }
 }

@@ -19,7 +19,7 @@ class DirectorController extends Controlador {
      * @Route("/sostenedor/directores/", name="directores sostenedor")
      */
     public function directoresAction(Request $request) {
-        $user = $this->_getSostenedor();
+        $user = $this->getUser();
         $directores = $user->getDirectores();
         return $this->render(
                         'sostenedor/directores/list.html.twig', array('directores' => $directores, 'sostenedor' => $user)
@@ -30,7 +30,7 @@ class DirectorController extends Controlador {
      * @Route("/sostenedor/director/", name="nuevo director sostenedor")
      */
     public function nuevoDirectorAction(Request $request) {
-        $sostenedor = $this->_getSostenedor();
+        $sostenedor = $this->getUser();
         $userManager = $this->_obtenerUserManager('AppBundle\Entity\Director');
         $user = $userManager->createUser();
         $user->setSostenedor($sostenedor);
@@ -80,10 +80,6 @@ class DirectorController extends Controlador {
                     'form' => $form->createView()
                         )
         );
-    }
-
-    private function _getSostenedor() {
-        return $this->container->get('security.context')->getToken()->getUser();
     }
 
 }

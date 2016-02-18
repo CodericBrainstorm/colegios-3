@@ -3,14 +3,18 @@
 namespace AppBundle\Controller\Administrador;
 
 use AppBundle\Controller\Controlador;
+use AppBundle\Form\Type\AdministradorType;
+use AppBundle\Form\Type\UserType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security as Security;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security as Security;
 
 /**
  * @Security("has_role('ROLE_ADMIN')") 
  */
 class AdminController extends Controlador {
+
+    use \AppBundle\Controller\Utils\DBUsersUtilsTrait;
 
     /**
      * @Route("/admin/", name="admin_index")
