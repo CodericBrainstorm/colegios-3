@@ -18,61 +18,49 @@ class MiembroController extends Controller {
     use \AppBundle\Controller\Utils\DBUsersUtilsTrait;
 
     /**
-     * @Route("/{role}/miembros/", name="miembros")
+     * @Route("/director/miembros/", name="miembros director")
      */
     public function miembrosAction(Request $request) {
-        $miembros = $this->getDoctrine()->getRepository('AppBundle:Miembro')->findAll();
+        $user = $this->_getDirector();
+        $miembros = $user->getMiembros();
         return $this->render(
                         'director/miembros/list.html.twig', array('miembros' => $miembros)
         );
     }
-    
-    /**
-     * @Route("/{role}/miembros_director/{id}", name="ver miembros director")
-     */
-    public function verMiembrosDirectorAction($id, Request $request) {
-        
-        $userManager = $this->_obtenerUserManager('AppBundle\Entity\Director');
-        $director = $userManager->findUserBy(array('id' => $id));
-        $miembros = $this->getDoctrine()->getRepository('AppBundle:Miembro')->findBy(array('director' => $director));
-        $nombre_director = $director->getNombre() . " " . $director->getApellido();
-        return $this->render(
-                        'director/miembros/list.html.twig', array('miembros' => $miembros, 'nombre_director' => $nombre_director)
-        );
-    }
 
     /**
-     * @Route("/{role}/miembro/", name="nuevo miembro")
+     * @Route("/director/miembro/", name="nuevo miembro director")
      */
     public function nuevoMiembroAction(Request $request) {
-
+        $director = $this->_getDirector();
         $userManager = $this->_obtenerUserManager('AppBundle\Entity\Miembro');
         $user = $userManager->createUser();
-
-        $form = $this->createForm(MiembroType::class, $user);
+        $user->setDirector($director);
+        $form = $this->createForm(MiembroType::class, $user, array('disabledDirector' => true));
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $user->setEnabled(true);
             $userManager->updateUser($user, true);
             $this->addFlash('success', 'flash.success.cambio');
-            return $this->redirectToRoute('miembros');
+            return $this->redirectToRoute('miembros director');
         }
         return $this->render($this->form_template, array('title' => "miembro.views.new.title", 'form' => $form->createView()
         ));
     }
 
     /**
-     * @Route("/{role}/miembro/{id}", name="editar miembro")
+     * @Route("/director/miembro/{id}", name="editar miembro director")
      */
     public function editarMiembroAction($id, Request $request) {
         $userManager = $this->_obtenerUserManager('AppBundle\Entity\Miembro');
         $user = $userManager->findUserBy(array('id' => $id));
-        $form = $this->createForm(MiembroType::class, $user);
+        $this->denyAccessUnlessGranted('edit', $user);
+        $form = $this->createForm(MiembroType::class, $user, array('disabledDirector' => true));
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $userManager->updateUser($user, true);
             $this->addFlash('success', 'flash.success.cambio');
-            return $this->redirectToRoute('miembros');
+            return $this->redirectToRoute('miembros director');
         }
 
         return $this->render($this->form_template, array('title' => "miembro.views.edit.title", 'form' => $form->createView()
@@ -85,6 +73,7 @@ class MiembroController extends Controller {
     public function verMiembroAction($id, Request $request) {
         $userManager = $this->_obtenerUserManager('AppBundle\Entity\Miembro');
         $user = $userManager->findUserBy(array('id' => $id));
+        $this->denyAccessUnlessGranted('view', $user);
         $form = $this->createForm(MiembroType::class, $user, array('disabled' => true));
         $form->remove('plainPassword');
         $form->handleRequest($request);
@@ -93,6 +82,10 @@ class MiembroController extends Controller {
                     'form' => $form->createView()
                         )
         );
+    }
+
+    private function _getDirector() {
+        return $this->container->get('security.context')->getToken()->getUser();
     }
 
 }

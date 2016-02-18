@@ -1,10 +1,10 @@
 {% extends 'base_list.html.twig' %}
 {% block list_title %}
-    Usuarios Directores {% if nombre_sostenedor is defined %} del Sostenedor: <span style="color:#5bc0de;">{{nombre_sostenedor}}</span> {% endif %}
+    Usuarios Directores 
 {% endblock %}
 
 {% block boton_nuevo %}
-    <a href="{{ path('nuevo director', {'role':role}) }}"><button class="btn btn-info" type="button" style="margin:15px;"><i class="fa fa-plus"></i> Nuevo Director</button></a>
+    <a href="{{ path('nuevo director sostenedor') }}"><button class="btn btn-info" type="button" style="margin:15px;"><i class="fa fa-plus"></i> Nuevo Director</button></a>
 {% endblock %}    
 
 {% block list_header %}

@@ -7,8 +7,12 @@
         <div class="btn-group">
             <button data-toggle="dropdown" class="btn btn-info dropdown-toggle" type="button">Operaciones <span class="caret"></span></button>
             <ul role="menu" class="dropdown-menu">
-                <li><a href="{{ path('ver director', {'role' : role, 'id': director.id}) }}">Ver</a></li>
-                <li><a href="{{ path('editar director sostenedor', {'id': director.id}) }}">Editar</a></li>
+                <li><a href="{{ path('ver director', {'role': role, 'id': director.id}) }}">Ver</a></li>
+                    {% if sostenedor is defined %}
+                    <li><a href="{{ path('nuevo director sostenedor admin', {'type': 'editar', 'director_id': director.id, 'id': sostenedor.id}) }}">Editar</a></li>
+                    {% else %}
+                    <li><a href="{{ path('editar director admin', {'id': director.id}) }}">Editar</a></li>
+                    {% endif %}
                 <li><a href="#">Eliminar</a></li>
                 <li class="divider"></li>
                 <li><a href="{{ path('ver miembros director', {'role': role, 'id': director.id}) }}">Ver Miembros</a></li>
