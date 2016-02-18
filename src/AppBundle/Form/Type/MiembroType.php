@@ -2,9 +2,10 @@
 
 namespace AppBundle\Form\Type;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class MiembroType extends AbstractType {
 
@@ -12,10 +13,17 @@ class MiembroType extends AbstractType {
         $builder->add('director', EntityType::class, array(
             'class' => 'AppBundle:Director',
             'choice_label' => 'nombre',
+            'disabled' => $options['disabledDirector']
         ));
         $builder->add('colegio', EntityType::class, array(
             'class' => 'AppBundle:Colegio',
             'choice_label' => 'nombre',
+        ));
+    }
+
+    public function setDefaultOptions(OptionsResolverInterface $resolver) {
+        $resolver->setDefaults(array(
+            'disabledDirector' => false
         ));
     }
 
