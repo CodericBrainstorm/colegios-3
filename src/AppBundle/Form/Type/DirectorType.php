@@ -2,9 +2,10 @@
 
 namespace AppBundle\Form\Type;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class DirectorType extends AbstractType {
 
@@ -12,10 +13,17 @@ class DirectorType extends AbstractType {
         $builder->add('sostenedor', EntityType::class, array(
             'class' => 'AppBundle:Sostenedor',
             'choice_label' => 'nombre',
+            'disabled' => $options['disabledSostenedor']
         ));
         $builder->add('colegio', EntityType::class, array(
             'class' => 'AppBundle:Colegio',
             'choice_label' => 'nombre',
+        ));
+    }
+
+    public function setDefaultOptions(OptionsResolverInterface $resolver) {
+        $resolver->setDefaults(array(
+            'disabledSostenedor' => false
         ));
     }
 

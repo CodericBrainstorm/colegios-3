@@ -9,7 +9,25 @@ services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
-
+    app.sostenedor_voter:
+        class: AppBundle\Security\SostenedorVoter
+        tags:
+            - { name: security.voter }
+        arguments: ['@security.access.decision_manager']
+        public: false
+    app.director_voter:
+        class: AppBundle\Security\DirectorVoter
+        tags:
+            - { name: security.voter }
+        arguments: ['@security.access.decision_manager']
+        public: false
+    app.miembro_voter:
+        class: AppBundle\Security\MiembroVoter
+        tags:
+            - { name: security.voter }
+        arguments: ['@security.access.decision_manager']
+        public: false
+        
     authentication.handler.login_success_handler:
         class:  AppBundle\Security\LoginSuccessHandler
         arguments:  ['@router', '@security.authorization_checker']

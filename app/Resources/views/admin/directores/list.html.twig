@@ -1,0 +1,29 @@
+{% extends 'base_list.html.twig' %}
+{% block list_title %}
+    Usuarios Directores  {% if sostenedor is defined %} del Sostenedor: <span style="color:#5bc0de;">{{sostenedor.apellido}} {{sostenedor.nombre}}</span> {% endif %}
+{% endblock %}
+
+{% block boton_nuevo %}
+    <a href="{% if sostenedor is defined %}{{ path('nuevo director sostenedor admin', {'id':sostenedor.id})}}{% else %} {{ path('nuevo director admin') }}{% endif %}"><button class="btn btn-info" type="button" style="margin:15px;"><i class="fa fa-plus"></i> Nuevo Director</button></a>
+{% endblock %}    
+
+{% block list_header %}
+    <th>Nombre</th>
+    <th>Sostenedor</th>
+    <th>Colegio</th>
+    <th>Email</th>
+    <th>Operaciones</th>
+    {% endblock %}   
+
+{% block list_body %}
+    {% for director in directores %} 
+        {{ include('admin/directores/list_row.html.twig', { 'director': director }) }} 
+    {% endfor %} 
+{% endblock %}
+{% block list_footer %}
+    <th>Nombre</th>
+    <th>Sostenedor</th>
+    <th>Colegio</th>
+    <th>Email</th>
+    <th>Operaciones</th>
+    {% endblock %}

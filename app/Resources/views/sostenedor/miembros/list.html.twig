@@ -1,0 +1,29 @@
+{% extends 'base_list.html.twig' %}
+{% block list_title %}
+    Usuarios Miembros {% if director is defined %} del Director: <span style="color:#5bc0de;">{{director.apellido}} {{director.nombre}}</span> {% endif %}
+{% endblock %}
+
+{% block boton_nuevo %}
+    <a href="{% if director is defined %}{{ path('nuevo miembro_director', {'role':role, 'id':director.id})}}{% else %} {{ path('nuevo miembro', {'role':role}) }}{% endif %}"><button class="btn btn-info" type="button" style="margin:15px;"><i class="fa fa-plus"></i> Nuevo Miembro</button></a>
+{% endblock %}    
+
+{% block list_header %}
+    <th>Nombre</th>
+    <th>Director</th>
+    <th>Colegio</th>
+    <th>Email</th>
+    <th>Operaciones</th>
+    {% endblock %}   
+
+{% block list_body %}
+    {% for miembro in miembros %} 
+        {{ include('sostenedor/miembros/list_row.html.twig', { 'miembro': miembro }) }} 
+    {% endfor %} 
+{% endblock %}
+{% block list_footer %}
+    <th>Nombre</th>
+    <th>Director</th>
+    <th>Colegio</th>
+    <th>Email</th>
+    <th>Operaciones</th>
+    {% endblock %}
