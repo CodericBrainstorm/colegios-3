@@ -1,19 +1,17 @@
 <?php
 
-// src/AppBundle/Controller/AdminController.php
-
 namespace AppBundle\Controller\Sostenedor;
 
 use AppBundle\Form\Type\MiembroType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security as Security;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use AppBundle\Controller\Controlador;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @Security("has_role('ROLE_SOSTENEDOR')") 
  */
-class MiembroController extends Controller {
+class MiembroController extends Controlador {
 
     use \AppBundle\Controller\Utils\DBUsersUtilsTrait;
 

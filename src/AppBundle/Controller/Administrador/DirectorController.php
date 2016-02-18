@@ -1,19 +1,17 @@
 <?php
 
-// src/AppBundle/Controller/AdminController.php
-
 namespace AppBundle\Controller\Administrador;
 
 use AppBundle\Form\Type\DirectorType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security as Security;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use AppBundle\Controller\Controlador;
 
 /**
  * @Security("has_role('ROLE_ADMIN')") 
  */
-class DirectorController extends Controller {
+class DirectorController extends Controlador {
 
     use \AppBundle\Controller\Utils\DBUsersUtilsTrait;
 
