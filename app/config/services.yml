@@ -48,3 +48,15 @@ services:
                 name: kernel.event_listener
                 event: kernel.request
                 method: onKernelRequest
+                
+    validator.unique.porcentaje_constraint_validator:
+        class: AppBundle\Validator\Constraints\PorcentajeConstraintValidator
+        arguments: [ '@doctrine.orm.entity_manager' ]
+        tags:
+            - { name: validator.constraint_validator, alias: porcentaje_constraint }
+            
+    app.form.type.area:
+        class: AppBundle\Form\Type\AreaType
+        arguments: [ '@doctrine.orm.entity_manager' ]
+        tags: 
+            - { name: form.type }
