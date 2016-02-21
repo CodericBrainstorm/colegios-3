@@ -294,6 +294,11 @@ class Sostenedor extends User {
         return \AppBundle\Form\Type\SostenedorType::class;
     }
 
+    /**
+     * Get PorcentajeDelArea
+     *
+     * @return float 
+     */
     public function getPorcentajeDelArea(Area $area) {
         $porcentaje = 0;
         foreach ($this->compromisos as $compromiso) {

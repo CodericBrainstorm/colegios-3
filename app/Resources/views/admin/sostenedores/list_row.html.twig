@@ -1,5 +1,6 @@
 <tr class="gradeX">
-    <td>{{ sostenedor.nombre }}</td>
+    <td>{{ sostenedor.username }}</td>
+    <td>{{ sostenedor.apellido }} {{ sostenedor.nombre }}</td>
     <td>{{ (sostenedor.tipoInstitucion is null ? ('views.sin_asignar' | trans) : sostenedor.tipoInstitucion.nombre) }}</td>
     <td>{{ sostenedor.email }}</td>
     <td>{{ sostenedor.direccion }}</td>
