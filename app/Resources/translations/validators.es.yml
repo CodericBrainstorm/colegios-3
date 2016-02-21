@@ -2,7 +2,7 @@ assert:
     not_blank: Este valor no puede estar vacío.
     not_null: Este valor no puede ser nulo.
     date: La fecha no es válida.
-    type: El valor {{ value }} no es un {{ type }} válido.
+    type: El valor %value% no es un %type% válido.
         
 accion:
     nombre:
@@ -21,7 +21,8 @@ area:
         not_null: La descripción no puede ser nula.
     ponderacion:
         not_null: La ponderación no puede ser nula.
-        type: El valor {{ value }} no es una ponderacion válida.
+        type: El valor %value% no es una ponderacion válida.
+        porcentaje: El porcentaje de este área no puede superar %num%%.
         
 ciudad:
     nombre:
@@ -40,7 +41,7 @@ compromiso:
         not_null: El indicador no puede ser nulo.
     ponderacion:
         not_null: La ponderación no puede ser nula.
-        type: El valor {{ value }} no es una ponderacion válida.
+        type: El valor %value% no es una ponderacion válida.
         
 comuna:
     nombre:
@@ -57,7 +58,7 @@ hito:
         not_null: La descripción no puede ser nula.
     ponderacion:
         not_null: La ponderación no puede ser nula.
-        type: El valor {{ value }} no es una ponderacion válida.
+        type: El valor %value% no es una ponderacion válida.
         
 sostenedor:
     nombreInstitucion:

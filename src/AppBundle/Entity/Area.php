@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use AppBundle\Validator\Constraints as AppAssert;
 
 /**
  * Area
@@ -127,8 +128,7 @@ class Area {
     /**
      * Constructor
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->compromisos = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -138,8 +138,7 @@ class Area {
      * @param \AppBundle\Entity\Compromiso $compromisos
      * @return Area
      */
-    public function addCompromiso(\AppBundle\Entity\Compromiso $compromisos)
-    {
+    public function addCompromiso(\AppBundle\Entity\Compromiso $compromisos) {
         $this->compromisos[] = $compromisos;
 
         return $this;
@@ -150,8 +149,7 @@ class Area {
      *
      * @param \AppBundle\Entity\Compromiso $compromisos
      */
-    public function removeCompromiso(\AppBundle\Entity\Compromiso $compromisos)
-    {
+    public function removeCompromiso(\AppBundle\Entity\Compromiso $compromisos) {
         $this->compromisos->removeElement($compromisos);
     }
 
@@ -160,8 +158,8 @@ class Area {
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getCompromisos()
-    {
+    public function getCompromisos() {
         return $this->compromisos;
     }
+
 }

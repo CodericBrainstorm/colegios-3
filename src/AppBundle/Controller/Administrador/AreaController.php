@@ -47,7 +47,7 @@ class AreaController extends Controlador {
      */
     public function editarAreaAction($id, Request $request) {
         $area = $this->_getObject('AppBundle:Area', $id);
-        $form = $this->createForm(AreaType::class, $area);
+        $form = $this->createForm(AreaType::class, $area, array('porcentaje' => $area->getPonderacion()));
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $this->_updateObject();

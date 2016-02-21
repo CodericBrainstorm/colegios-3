@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
+use AppBundle\Entity\Area;
 
 /**
  * Sostenedor
@@ -268,15 +269,13 @@ class Sostenedor extends User {
         return $this->compromisos;
     }
 
-
     /**
      * Set ciudad
      *
      * @param \AppBundle\Entity\Ciudad $ciudad
      * @return Sostenedor
      */
-    public function setCiudad(\AppBundle\Entity\Ciudad $ciudad = null)
-    {
+    public function setCiudad(\AppBundle\Entity\Ciudad $ciudad = null) {
         $this->ciudad = $ciudad;
 
         return $this;
@@ -287,12 +286,27 @@ class Sostenedor extends User {
      *
      * @return \AppBundle\Entity\Ciudad 
      */
-    public function getCiudad()
-    {
+    public function getCiudad() {
         return $this->ciudad;
     }
-    
-    public function getType(){
+
+    public function getType() {
         return \AppBundle\Form\Type\SostenedorType::class;
     }
+
+    /**
+     * Get PorcentajeDelArea
+     *
+     * @return float 
+     */
+    public function getPorcentajeDelArea(Area $area) {
+        $porcentaje = 0;
+        foreach ($this->compromisos as $compromiso) {
+            if ($compromiso->getArea() === $area) {
+                $porcentaje += $compromiso->getPonderacion();
+            }
+        }
+        return $porcentaje;
+    }
+
 }
