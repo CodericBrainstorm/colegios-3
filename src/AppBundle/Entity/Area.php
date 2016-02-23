@@ -49,6 +49,12 @@ class Area {
     private $ponderacion;
 
     /**
+     * @Assert\NotNull(message = "assert.not_null")
+     * @ORM\ManyToOne(targetEntity="Ano")
+     */
+    private $ano;
+
+    /**
      * @ORM\OneToMany(targetEntity="Compromiso", mappedBy="area")
      */
     private $compromisos;
@@ -162,4 +168,26 @@ class Area {
         return $this->compromisos;
     }
 
+    /**
+     * Set ano
+     *
+     * @param \AppBundle\Entity\Ano $ano
+     * @return Area
+     */
+    public function setAno(\AppBundle\Entity\Ano $ano = null)
+    {
+        $this->ano = $ano;
+
+        return $this;
+    }
+
+    /**
+     * Get ano
+     *
+     * @return \AppBundle\Entity\Ano 
+     */
+    public function getAno()
+    {
+        return $this->ano;
+    }
 }

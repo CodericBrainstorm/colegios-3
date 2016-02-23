@@ -15,8 +15,6 @@ class SostenedorController extends Controlador {
 
     use \AppBundle\Controller\Utils\DBUsersUtilsTrait;
 
-//    private $form_template = 'admin/sostenedores/form.html.twig';
-
     function __construct() {
         $this->form_template = 'admin/sostenedores/form.html.twig';
         $this->view_template = 'admin/sostenedores/view.html.twig';
@@ -26,64 +24,28 @@ class SostenedorController extends Controlador {
      * @Route("/admin/sostenedores/", name="sostenedores")
      */
     public function sostenedoresAction(Request $request) {
-        $sostenedores = $this->getDoctrine()->getRepository('AppBundle:Sostenedor')->findAll();
-        return $this->render(
-                        'admin/sostenedores/list.html.twig', array('sostenedores' => $sostenedores)
-        );
+        return $this->_listarUsersByClass('AppBundle\Entity\Sostenedor', 'sostenedores', 'admin/sostenedores/list.html.twig');
     }
 
     /**
      * @Route("/admin/sostenedor/", name="nuevo sostenedor")
      */
     public function nuevoSostenedorAction(Request $request) {
-
-        $userManager = $this->_obtenerUserManager('AppBundle\Entity\Sostenedor');
-        $user = $userManager->createUser();
-
-        $form = $this->createForm(SostenedorType::class, $user);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $user->setEnabled(true);
-            $userManager->updateUser($user, true);
-            $this->addFlash('success', 'flash.success.cambio');
-            return $this->redirectToRoute('sostenedores');
-        }
-        return $this->render($this->form_template, array('title' => "sostenedor.views.new.title", 'form' => $form->createView()
-        ));
+        return $this->_crearUser($request, 'AppBundle\Entity\Sostenedor', SostenedorType::class, 'sostenedores', 'sostenedor');
     }
 
     /**
      * @Route("/admin/sostenedor/{id}", name="editar sostenedor")
      */
     public function editarSostenedorAction($id, Request $request) {
-        $userManager = $this->_obtenerUserManager('AppBundle\Entity\Sostenedor');
-        $user = $userManager->findUserBy(array('id' => $id));
-        $form = $this->createForm(SostenedorType::class, $user);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $userManager->updateUser($user, true);
-            $this->addFlash('success', 'flash.success.cambio');
-            return $this->redirectToRoute('sostenedores');
-        }
-
-        return $this->render($this->form_template, array('title' => "sostenedor.views.edit.title", 'form' => $form->createView()
-        ));
+        return $this->_editarUser($request, $id, 'AppBundle\Entity\Sostenedor', SostenedorType::class, 'sostenedores', 'sostenedor');
     }
 
     /**
      * @Route("/admin/ver_sostenedor/{id}", name="ver sostenedor")
      */
     public function verSostenedorAction($id, Request $request) {
-        $userManager = $this->_obtenerUserManager('AppBundle\Entity\Sostenedor');
-        $user = $userManager->findUserBy(array('id' => $id));
-        $form = $this->createForm(SostenedorType::class, $user, array('disabled' => true));
-        $form->remove('plainPassword');
-        $form->handleRequest($request);
-        return $this->render(
-                        $this->view_template, array('title' => "sostenedor.views.ver.title",
-                    'form' => $form->createView()
-                        )
-        );
+        return $this->_verUser($request, $id, 'AppBundle\Entity\Sostenedor', SostenedorType::class, 'sostenedor', $formOpt = array());
     }
 
 }

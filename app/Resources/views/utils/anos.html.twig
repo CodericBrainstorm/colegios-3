@@ -1,0 +1,20 @@
+<div class="searchform">
+    {{ form_label(form_anos.ano) }}
+    {% set value = app.user.ano.id %}
+    <div class="btn-group">
+        {% for group_label, choice in form_anos.ano.vars.choices %}
+            {% if choice.value == value %} 
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">{{ choice.label|trans }} <span class="caret"></span></button>
+                {% endif %}
+            {% endfor %}
+            {% if form_anos.ano.vars.choices|length > 1 %} 
+            <ul class="dropdown-menu" role="menu">
+                {% for group_label, choice in form_anos.ano.vars.choices %}
+                    {% if not (choice.value == value) %} 
+                        <li><a href="{{ path('cambiar_ano', {'id_ano': choice.value, 'role' : role }) }}">{{ choice.label|trans }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</div>

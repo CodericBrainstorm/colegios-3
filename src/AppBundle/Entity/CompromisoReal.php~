@@ -31,6 +31,12 @@ class CompromisoReal {
     private $verificado;
 
     /**
+     * @Assert\NotNull(message = "assert.not_null")
+     * @ORM\ManyToOne(targetEntity="Ano")
+     */
+    private $ano;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Compromiso", inversedBy="compromisosReales")
      */
     private $compromiso;
@@ -211,15 +217,13 @@ class CompromisoReal {
         return $this->hitos;
     }
 
-
     /**
      * Set medioVerificacion
      *
      * @param \AppBundle\Entity\Archivo $medioVerificacion
      * @return CompromisoReal
      */
-    public function setMedioVerificacion(\AppBundle\Entity\Archivo $medioVerificacion = null)
-    {
+    public function setMedioVerificacion(\AppBundle\Entity\Archivo $medioVerificacion = null) {
         $this->medioVerificacion = $medioVerificacion;
 
         return $this;
@@ -230,8 +234,57 @@ class CompromisoReal {
      *
      * @return \AppBundle\Entity\Archivo 
      */
-    public function getMedioVerificacion()
-    {
+    public function getMedioVerificacion() {
         return $this->medioVerificacion;
+    }
+
+    /**
+     * Get PorcentajeComlpetado
+     *
+     * @return float 
+     */
+    public function getPorcentajeComlpetado() {
+        $verificados = 0;
+        foreach ($this->hitos as $hito) {
+            if ($hito->getVerificado()) {
+                $verificados += 1;
+            }
+        }
+        $porcentaje = $this->hitos->count() / $verificados;
+        return round($porcentaje, 4);
+    }
+
+    /**
+     * Get PorcentajePorHito
+     *
+     * @return float 
+     */
+    public function getPorcentajePorHito() {
+        $porcentaje = 1 / $this->hitos->count();
+        return round($porcentaje, 4);
+    }
+
+
+    /**
+     * Set ano
+     *
+     * @param \AppBundle\Entity\Ano $ano
+     * @return CompromisoReal
+     */
+    public function setAno(\AppBundle\Entity\Ano $ano = null)
+    {
+        $this->ano = $ano;
+
+        return $this;
+    }
+
+    /**
+     * Get ano
+     *
+     * @return \AppBundle\Entity\Ano 
+     */
+    public function getAno()
+    {
+        return $this->ano;
     }
 }

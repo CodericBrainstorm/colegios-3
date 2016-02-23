@@ -36,6 +36,9 @@ security:
         - { path: ^/sostenedor/, role: ROLE_SOSTENEDOR }
         - { path: ^/director/, role: ROLE_DIRECTOR }
         - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/admin/ano/select, roles: ROLE_USER, ip: 127.0.0.1 }
+        - { path: ^/admin/ano/select, roles: ROLE_NO_ACCESS }
+
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
 #    providers:
 #        in_memory:

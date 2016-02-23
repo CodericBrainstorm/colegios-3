@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use AppBundle\Validator\Constraints as AppAssert;
 
 /**
  * Area
@@ -46,6 +47,12 @@ class Area {
      * @ORM\Column(type="float")
      */
     private $ponderacion;
+
+    /**
+     * @Assert\NotNull(message = "assert.not_null")
+     * @ORM\ManyToOne(targetEntity="Ano")
+     */
+    private $ano;
 
     /**
      * @ORM\OneToMany(targetEntity="Compromiso", mappedBy="area")
@@ -127,8 +134,7 @@ class Area {
     /**
      * Constructor
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->compromisos = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -138,8 +144,7 @@ class Area {
      * @param \AppBundle\Entity\Compromiso $compromisos
      * @return Area
      */
-    public function addCompromiso(\AppBundle\Entity\Compromiso $compromisos)
-    {
+    public function addCompromiso(\AppBundle\Entity\Compromiso $compromisos) {
         $this->compromisos[] = $compromisos;
 
         return $this;
@@ -150,8 +155,7 @@ class Area {
      *
      * @param \AppBundle\Entity\Compromiso $compromisos
      */
-    public function removeCompromiso(\AppBundle\Entity\Compromiso $compromisos)
-    {
+    public function removeCompromiso(\AppBundle\Entity\Compromiso $compromisos) {
         $this->compromisos->removeElement($compromisos);
     }
 
@@ -160,8 +164,30 @@ class Area {
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getCompromisos()
-    {
+    public function getCompromisos() {
         return $this->compromisos;
+    }
+
+    /**
+     * Set ano
+     *
+     * @param \AppBundle\Entity\Ano $ano
+     * @return Area
+     */
+    public function setAno(\AppBundle\Entity\Ano $ano = null)
+    {
+        $this->ano = $ano;
+
+        return $this;
+    }
+
+    /**
+     * Get ano
+     *
+     * @return \AppBundle\Entity\Ano 
+     */
+    public function getAno()
+    {
+        return $this->ano;
     }
 }
