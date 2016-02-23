@@ -20,58 +20,28 @@ class EstadoController extends Controlador {
      * @Route("/admin/rubricas/", name="rubricas")
      */
     public function rubricasAction(Request $request) {
-        $estados = $this->getDoctrine()->getRepository('AppBundle:Estado')->findAll();
-        return $this->render(
-                        'admin/estados/list.html.twig', array('estados' => $estados)
-        );
+        return $this->_listarObjects('AppBundle:Estado', 'estados', 'admin/estados/list.html.twig');
     }
 
     /**
      * @Route("/admin/rubrica/", name="nueva rubrica")
      */
     public function nuevaRubricaAction(Request $request) {
-        $estado = new Estado();
-        $form = $this->createForm(EstadoType::class, $estado);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->_persistObject($estado);
-            $this->addFlash('success', 'flash.success.cambio');
-            return $this->redirectToRoute('rubricas');
-        }
-
-        return $this->render($this->form_template, array('title' => "estado.views.new.title", 'form' => $form->createView()
-        ));
+        return $this->_crearObject($request, Estado::class, EstadoType::class, 'rubricas', "estado", false);
     }
 
     /**
      * @Route("/admin/rubrica/{id}", name="editar rubrica")
      */
     public function editarRubricaAction($id, Request $request) {
-        $estado = $this->_getObject('AppBundle:Estado', $id);
-        $form = $this->createForm(EstadoType::class, $estado);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->_updateObject();
-            $this->addFlash('success', 'flash.success.cambio');
-            return $this->redirectToRoute('rubricas');
-        }
-        return $this->render($this->form_template, array('title' => "estado.views.edit.title", 'form' => $form->createView()
-        ));
+        return $this->_editarObject($request, $id, 'AppBundle:Estado', EstadoType::class, 'rubricas', 'estado', $formOpt = array());
     }
 
     /**
      * @Route("/admin/ver_rubrica/{id}", name="ver rubrica")
      */
     public function verRubricaAction($id, Request $request) {
-        $estado = $this->_getObject('AppBundle:Estado', $id);
-        $form = $this->createForm(EstadoType::class, $estado, array('disabled' => true));
-        $form->handleRequest($request);
-        return $this->render(
-                        $this->view_template, array(
-                    'title' => "estado.views.ver.title",
-                    'form' => $form->createView()
-                        )
-        );
+        return $this->_verObject($request, $id, 'AppBundle:Estado', EstadoType::class, 'estado', $formOpt = array());
     }
 
 }

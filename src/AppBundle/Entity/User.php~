@@ -26,25 +26,27 @@ abstract class User extends BaseUser {
      */
     protected $id;
 
-    /**     
+    /**
      * @var string
      * 
      * @Assert\NotBlank(message = "user.nombre.not_blank")
      * @ORM\Column(name="nombre", type="string", length=255) 
-     */ 
+     */
     protected $nombre;
-    /**     
+
+    /**
      * @var string
      * 
      * @Assert\NotBlank(message = "user.apellido.not_blank")
      * @ORM\Column(name="apellido", type="string", length=255) 
-     */ 
+     */
     protected $apellido;
 
-//    public function __construct() {
-//        parent::__construct();
-        // your own logic
-//    }
+    /**
+     * @ORM\ManyToOne(targetEntity="Ano")
+     * @ORM\JoinColumn(name="ano_id", referencedColumnName="id", nullable=true)
+     */
+    protected $ano;
 
     /**
      * Get id
@@ -61,8 +63,7 @@ abstract class User extends BaseUser {
      * @param string $nombre
      * @return User
      */
-    public function setNombre($nombre)
-    {
+    public function setNombre($nombre) {
         $this->nombre = $nombre;
 
         return $this;
@@ -73,8 +74,7 @@ abstract class User extends BaseUser {
      *
      * @return string 
      */
-    public function getNombre()
-    {
+    public function getNombre() {
         return $this->nombre;
     }
 
@@ -84,8 +84,7 @@ abstract class User extends BaseUser {
      * @param string $apellido
      * @return User
      */
-    public function setApellido($apellido)
-    {
+    public function setApellido($apellido) {
         $this->apellido = $apellido;
 
         return $this;
@@ -96,8 +95,32 @@ abstract class User extends BaseUser {
      *
      * @return string 
      */
-    public function getApellido()
-    {
+    public function getApellido() {
         return $this->apellido;
     }
+
+    public function getType() {
+        return \AppBundle\Form\Type\UserType::class;
+    }
+
+    /**
+     * Set ano
+     *
+     * @param \AppBundle\Entity\Ano $ano
+     * @return User
+     */
+    public function setAno(\AppBundle\Entity\Ano $ano = null) {
+        $this->ano = $ano;
+        return $this;
+    }
+
+    /**
+     * Get ano
+     *
+     * @return \AppBundle\Entity\Ano 
+     */
+    public function getAno() {
+        return $this->ano;
+    }
+
 }

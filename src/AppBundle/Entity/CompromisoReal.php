@@ -31,6 +31,12 @@ class CompromisoReal {
     private $verificado;
 
     /**
+     * @Assert\NotNull(message = "assert.not_null")
+     * @ORM\ManyToOne(targetEntity="Ano")
+     */
+    private $ano;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Compromiso", inversedBy="compromisosReales")
      */
     private $compromiso;
@@ -258,4 +264,27 @@ class CompromisoReal {
         return round($porcentaje, 4);
     }
 
+
+    /**
+     * Set ano
+     *
+     * @param \AppBundle\Entity\Ano $ano
+     * @return CompromisoReal
+     */
+    public function setAno(\AppBundle\Entity\Ano $ano = null)
+    {
+        $this->ano = $ano;
+
+        return $this;
+    }
+
+    /**
+     * Get ano
+     *
+     * @return \AppBundle\Entity\Ano 
+     */
+    public function getAno()
+    {
+        return $this->ano;
+    }
 }

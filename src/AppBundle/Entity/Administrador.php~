@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Form\Type\AdministradorType;
 use Doctrine\ORM\Mapping as ORM;
 use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
 
@@ -45,6 +46,10 @@ class Administrador extends User {
      */
     public function prePersist() {
         $this->addRole("ROLE_SUPER_ADMIN");
+    }
+
+    public function getType() {
+        return AdministradorType::class;
     }
 
 }

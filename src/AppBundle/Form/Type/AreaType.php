@@ -5,6 +5,7 @@ namespace AppBundle\Form\Type;
 use AppBundle\Validator\Constraints\PorcentajeConstraint;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PercentType;
 use Symfony\Component\Form\Form;
 use Symfony\Component\Form\FormBuilderInterface;

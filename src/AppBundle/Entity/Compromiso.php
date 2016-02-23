@@ -56,6 +56,12 @@ class Compromiso {
     private $ponderacion;
 
     /**
+     * @Assert\NotNull(message = "assert.not_null")
+     * @ORM\ManyToOne(targetEntity="Ano")
+     */
+    private $ano;
+
+    /**
      * @ORM\OneToMany(targetEntity="CompromisoReal", mappedBy="compromiso")
      */
     private $compromisosReales;
@@ -150,8 +156,7 @@ class Compromiso {
     /**
      * Constructor
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->compromisosReales = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -161,8 +166,7 @@ class Compromiso {
      * @param float $ponderacion
      * @return Compromiso
      */
-    public function setPonderacion($ponderacion)
-    {
+    public function setPonderacion($ponderacion) {
         $this->ponderacion = $ponderacion;
 
         return $this;
@@ -173,8 +177,7 @@ class Compromiso {
      *
      * @return float 
      */
-    public function getPonderacion()
-    {
+    public function getPonderacion() {
         return $this->ponderacion;
     }
 
@@ -184,8 +187,7 @@ class Compromiso {
      * @param \AppBundle\Entity\CompromisoReal $compromisosReales
      * @return Compromiso
      */
-    public function addCompromisosReale(\AppBundle\Entity\CompromisoReal $compromisosReales)
-    {
+    public function addCompromisosReale(\AppBundle\Entity\CompromisoReal $compromisosReales) {
         $this->compromisosReales[] = $compromisosReales;
 
         return $this;
@@ -196,8 +198,7 @@ class Compromiso {
      *
      * @param \AppBundle\Entity\CompromisoReal $compromisosReales
      */
-    public function removeCompromisosReale(\AppBundle\Entity\CompromisoReal $compromisosReales)
-    {
+    public function removeCompromisosReale(\AppBundle\Entity\CompromisoReal $compromisosReales) {
         $this->compromisosReales->removeElement($compromisosReales);
     }
 
@@ -206,8 +207,7 @@ class Compromiso {
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getCompromisosReales()
-    {
+    public function getCompromisosReales() {
         return $this->compromisosReales;
     }
 
@@ -217,8 +217,7 @@ class Compromiso {
      * @param \AppBundle\Entity\Area $area
      * @return Compromiso
      */
-    public function setArea(\AppBundle\Entity\Area $area = null)
-    {
+    public function setArea(\AppBundle\Entity\Area $area = null) {
         $this->area = $area;
 
         return $this;
@@ -229,8 +228,7 @@ class Compromiso {
      *
      * @return \AppBundle\Entity\Area 
      */
-    public function getArea()
-    {
+    public function getArea() {
         return $this->area;
     }
 
@@ -240,8 +238,7 @@ class Compromiso {
      * @param \AppBundle\Entity\Sostenedor $sostenedor
      * @return Compromiso
      */
-    public function setSostenedor(\AppBundle\Entity\Sostenedor $sostenedor = null)
-    {
+    public function setSostenedor(\AppBundle\Entity\Sostenedor $sostenedor = null) {
         $this->sostenedor = $sostenedor;
 
         return $this;
@@ -252,8 +249,7 @@ class Compromiso {
      *
      * @return \AppBundle\Entity\Sostenedor 
      */
-    public function getSostenedor()
-    {
+    public function getSostenedor() {
         return $this->sostenedor;
     }
 
@@ -263,8 +259,7 @@ class Compromiso {
      * @param \AppBundle\Entity\Estado $estado
      * @return Compromiso
      */
-    public function setEstado(\AppBundle\Entity\Estado $estado = null)
-    {
+    public function setEstado(\AppBundle\Entity\Estado $estado = null) {
         $this->estado = $estado;
 
         return $this;
@@ -275,8 +270,31 @@ class Compromiso {
      *
      * @return \AppBundle\Entity\Estado 
      */
-    public function getEstado()
-    {
+    public function getEstado() {
         return $this->estado;
+    }
+
+
+    /**
+     * Set ano
+     *
+     * @param \AppBundle\Entity\Ano $ano
+     * @return Compromiso
+     */
+    public function setAno(\AppBundle\Entity\Ano $ano = null)
+    {
+        $this->ano = $ano;
+
+        return $this;
+    }
+
+    /**
+     * Get ano
+     *
+     * @return \AppBundle\Entity\Ano 
+     */
+    public function getAno()
+    {
+        return $this->ano;
     }
 }
