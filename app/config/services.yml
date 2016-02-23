@@ -60,3 +60,10 @@ services:
         arguments: [ '@doctrine.orm.entity_manager' ]
         tags: 
             - { name: form.type }
+    # custom fosuser user manager    
+    my_pugx_user.manager.orm_user_manager:
+        class:     AppBundle\Doctrine\MyUserManager
+        arguments: ["@security.encoder_factory", "@fos_user.util.username_canonicalizer", "@fos_user.util.email_canonicalizer", "@fos_user.object_manager", %fos_user.model.user.class%, "@pugx_user.manager.user_discriminator"]
+        
+    my_pugx_user_manager:
+        alias: my_pugx_user.manager.orm_user_manager

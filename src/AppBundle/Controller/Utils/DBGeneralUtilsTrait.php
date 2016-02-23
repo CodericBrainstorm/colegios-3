@@ -61,9 +61,4 @@ trait DBGeneralUtilsTrait {
         }
         return $obj;
     }
-
-//    private function _updateObject() {
-//        $em = $this->getDoctrine()->getManager();
-//        $em->flush();
-//    }
 }
