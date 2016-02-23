@@ -10,7 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security as Security;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * @Security("has_role('ROLE_ADMIN')") 
+ * @Security("has_role('ROLE_SOSTENEDOR')") 
  */
 class CompromisoController extends Controlador {
 
@@ -30,7 +30,8 @@ class CompromisoController extends Controlador {
      * @Route("/{role}/compromisos_sostenedor/{id}", name="ver compromisos sostenedor")
      */
     public function verCompromisosSostenedorAction($id, Request $request) {
-        
+//        $sostenedor = $this->getUser();
+//        $compromisos = $sostenedor->getCompromisos();
         $userManager = $this->_obtenerUserManager('AppBundle\Entity\Sostenedor');
         $sostenedor = $userManager->findUserBy(array('id' => $id));
         $compromisos = $this->getDoctrine()->getRepository('AppBundle:Compromiso')->findBy(array('sostenedor' => $sostenedor));
@@ -56,10 +57,11 @@ class CompromisoController extends Controlador {
     }
 
     /**
-     * @Route("/admin/compromiso/{id}", name="editar compromiso")
+     * @Route("/{role}/compromiso/{id}", name="editar compromiso")
      */
     public function editarCompromisoAction($id, Request $request) {
         $compromiso = $this->_getObject('AppBundle:Compromiso', $id);
+        $this->denyAccessUnlessGranted('edit', $compromiso);
         $form = $this->createForm(CompromisoType::class, $compromiso);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -72,10 +74,11 @@ class CompromisoController extends Controlador {
     }
 
     /**
-     * @Route("/admin/ver_compromiso/{id}", name="ver compromiso")
+     * @Route("/{role}/ver_compromiso/{id}", name="ver compromiso")
      */
     public function verCompromisoAction($id, Request $request) {
         $compromiso = $this->_getObject('AppBundle:Compromiso', $id);
+        $this->denyAccessUnlessGranted('view', $compromiso);
         $form = $this->createForm(CompromisoType::class, $compromiso, array('disabled' => true));
         $form->handleRequest($request);
         return $this->render(

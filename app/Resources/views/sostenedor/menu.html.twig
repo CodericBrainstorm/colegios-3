@@ -13,6 +13,8 @@
         </ul>
     </li>
     <li><a href="{{ path('areas', {'role':role}) }}"><i class="fa fa-sitemap"></i> <span>Áreas</span></a></li>
+    <li><a href="{{ path('ver compromisos sostenedor', {'role':role, 'id': app.user.id}) }}"><i class="fa fa-bookmark-o"></i> <span>Compromisos</span></a></li>
+    <li><a href="{{ path('ver compromisos asignados', {'role':role}) }}"><i class="fa fa-bookmark"></i> <span>Compromisos Asignados</span></a></li>
 
 </ul>
 

@@ -5,3 +5,13 @@
     {{ form_widget(form) }}
 </div>
 {% endblock field_row %}
+
+{% block file_widget %}
+    {% spaceless %}
+    {{ block('form_widget') }}
+    {% if file_url is not null %}
+        <a target="_Blank" href="{{ asset(file_url) }}">{{'archivo.views.download' | trans }}</a>
+    {% endif %}
+
+    {% endspaceless %}
+{% endblock %}

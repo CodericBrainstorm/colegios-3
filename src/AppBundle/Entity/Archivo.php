@@ -2,7 +2,6 @@
 
 namespace AppBundle\Entity;
 
-use AppBundle\Repository\ArchivoRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -11,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Archivo
  *
  * @ORM\Table(name="archivo")
- * @ORM\Entity(repositoryClass="ArchivoRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ArchivoRepository")
  * @ORM\HasLifecycleCallbacks 
  */
 class Archivo {
@@ -28,8 +27,7 @@ class Archivo {
     /**
      * @var string
      *
-     * @Assert\NotBlank(message = "archivo.nombre.not_blank")
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $nombre;
 
@@ -100,13 +98,13 @@ class Archivo {
     }
 
     public function getWebPath() {
-        return null === $this->path ? null : $this->getUploadDir() . '/' . $this->path;
+        return null === $this->path ? null : $this->getUploadDir() . '/' . $this->id . '.' . $this->path;
     }
 
     protected function getUploadRootDir() {
         // the absolute directory path where uploaded
         // documents should be saved
-        return __DIR__ . '/../../../../web/' . $this->getUploadDir();
+        return __DIR__ . '/../../../web/' . $this->getUploadDir();
     }
 
     protected function getUploadDir() {
@@ -129,7 +127,8 @@ class Archivo {
      *
      * @param UploadedFile $file
      */
-    public function setFile(UploadedFile $file = null) {
+    public function setFile(UploadedFile $file = null)
+    {
         $this->file = $file;
         // check if we have an old image path
         if (is_file($this->getAbsolutePath())) {
@@ -145,7 +144,8 @@ class Archivo {
      * @ORM\PrePersist()
      * @ORM\PreUpdate()
      */
-    public function preUpload() {
+    public function preUpload()
+    {
         if (null !== $this->getFile()) {
             $this->path = $this->getFile()->guessExtension();
         }
@@ -172,7 +172,8 @@ class Archivo {
         // so that the entity is not persisted to the database
         // which the UploadedFile move() method does
         $this->getFile()->move(
-                $this->getUploadRootDir(), $this->id . '.' . $this->getFile()->guessExtension()
+                $this->getUploadRootDir(), 
+                $this->id . '.' . $this->getFile()->guessExtension()
         );
 
         $this->setFile(null);

@@ -12,4 +12,8 @@ use Doctrine\ORM\EntityRepository;
  */
 class CompromisoRepository extends EntityRepository
 {
+    public function findBySostenedor($sostenedor)
+    {
+        return $this->findBy(array('sostenedor' => $sostenedor->getId()));
+    }
 }

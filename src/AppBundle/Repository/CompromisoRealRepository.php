@@ -12,4 +12,15 @@ use Doctrine\ORM\EntityRepository;
  */
 class CompromisoRealRepository extends EntityRepository
 {
+    public function findBySostenedor($sostenedor)
+    {
+        $qb = $this->_em->createQueryBuilder();
+        $qb->select('cr')
+            ->from('AppBundle:CompromisoReal', 'cr')
+            ->leftjoin('cr.compromiso', 'AppBundle:Compromiso')
+            ->where($qb->expr()->eq('AppBundle:Compromiso.sostenedor', ':id'))
+            ->setParameter('id', $sostenedor->getId());
+        $query = $qb->getQuery();
+        return $query->getResult();
+    }
 }

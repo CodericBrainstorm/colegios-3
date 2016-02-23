@@ -56,7 +56,7 @@ class CompromisoReal {
     private $hitos;
 
     /**
-     * @ORM\OneToOne(targetEntity="Archivo")
+     * @ORM\OneToOne(targetEntity="Archivo", cascade="all")
      */
     private $medioVerificacion;
 
