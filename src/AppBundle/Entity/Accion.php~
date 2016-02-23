@@ -39,6 +39,12 @@ class Accion {
     private $descripcion;
 
     /**
+     * @Assert\NotNull(message = "assert.not_null")
+     * @ORM\ManyToOne(targetEntity="Ano")
+     */
+    private $ano;
+
+    /**
      * @var \DateTime
      *
      * @Assert\Date(message = "assert.date")
@@ -280,4 +286,27 @@ class Accion {
         return $this->hito;
     }
 
+
+    /**
+     * Set ano
+     *
+     * @param \AppBundle\Entity\Ano $ano
+     * @return Accion
+     */
+    public function setAno(\AppBundle\Entity\Ano $ano = null)
+    {
+        $this->ano = $ano;
+
+        return $this;
+    }
+
+    /**
+     * Get ano
+     *
+     * @return \AppBundle\Entity\Ano 
+     */
+    public function getAno()
+    {
+        return $this->ano;
+    }
 }

@@ -38,7 +38,6 @@ class Archivo {
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $path;
-    
     private $temp;
 
     /**

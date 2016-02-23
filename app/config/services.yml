@@ -9,6 +9,12 @@ services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    app.administrador_voter:
+        class: AppBundle\Security\AdministradorVoter
+        tags:
+            - { name: security.voter }
+        arguments: ['@security.access.decision_manager']
+        public: false
     app.sostenedor_voter:
         class: AppBundle\Security\SostenedorVoter
         tags:
@@ -58,4 +64,22 @@ services:
         tags:
             -
                 name: form.type_extension
-                extended_type: Symfony\Component\Form\Extension\Core\Type\FileType
+                extended_type: Symfony\Component\Form\Extension\Core\Type\FileType      
+    validator.unique.porcentaje_constraint_validator:
+        class: AppBundle\Validator\Constraints\PorcentajeConstraintValidator
+        arguments: [ '@doctrine.orm.entity_manager' ]
+        tags:
+            - { name: validator.constraint_validator, alias: porcentaje_constraint }
+            
+    app.form.type.area:
+        class: AppBundle\Form\Type\AreaType
+        arguments: [ '@doctrine.orm.entity_manager' ]
+        tags: 
+            - { name: form.type }
+    # custom fosuser user manager    
+    my_pugx_user.manager.orm_user_manager:
+        class:     AppBundle\Doctrine\MyUserManager
+        arguments: ["@security.encoder_factory", "@fos_user.util.username_canonicalizer", "@fos_user.util.email_canonicalizer", "@fos_user.object_manager", %fos_user.model.user.class%, "@pugx_user.manager.user_discriminator"]
+        
+    my_pugx_user_manager:
+        alias: my_pugx_user.manager.orm_user_manager

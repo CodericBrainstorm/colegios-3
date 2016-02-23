@@ -1,0 +1,23 @@
+{% extends 'base_list.html.twig' %}
+{% block list_title %}
+    Año
+{% endblock %}
+
+{% block boton_nuevo %}
+    <a href="{{ path('nuevo ano') }}"><button class="btn btn-info" type="button" style="margin:15px;"><i class="fa fa-plus"></i> Iniciar Año</button></a>
+{% endblock %}    
+
+{% block list_header %}
+    <th>Nombre</th>
+    <th>Editar</th>
+    {% endblock %}   
+
+{% block list_body %}
+    {% for ano in anos %} 
+        {{ include('admin/anos/list_row.html.twig', { 'ano': ano }) }} 
+    {% endfor %} 
+{% endblock %}
+{% block list_footer %}
+    <th>Nombre</th>
+    <th>Editar</th>
+{% endblock %}

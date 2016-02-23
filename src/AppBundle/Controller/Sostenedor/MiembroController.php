@@ -19,89 +19,40 @@ class MiembroController extends Controlador {
      * @Route("/{role}/miembros/", requirements={"role" = "admin|sostenedor"}, name="miembros")
      */
     public function miembrosAction(Request $request) {
-        $miembros = $this->getDoctrine()->getRepository('AppBundle:Miembro')->findAll();
-        return $this->render(
-                        'sostenedor/miembros/list.html.twig', array('miembros' => $miembros)
-        );
+        return $this->_listarUsersByClass('AppBundle\Entity\Miembro', 'miembros', 'sostenedor/miembros/list.html.twig');
     }
 
     /**
      * @Route("/{role}/miembros/{id}", requirements={"role" = "admin|sostenedor"}, name="ver miembros director")
      */
     public function verMiembrosDirectorAction($id, Request $request) {
-        $userManager = $this->_obtenerUserManager('AppBundle\Entity\Director');
-        $director = $userManager->findUserBy(array('id' => $id));
-        $miembros = $director->getMiembros();
-        return $this->render(
-                        'sostenedor/miembros/list.html.twig', array('miembros' => $miembros,
-                    'director' => $director)
-        );
+        return $this->_listarUsersByParent($id, 'getMiembros', 'miembros', 'director', 'sostenedor/miembros/list.html.twig');
     }
 
     /**
      * @Route("/{role}/{id}/miembro/{type}/{miembro_id}", requirements={"role" = "admin|sostenedor"}, defaults={"type" = "nuevo", "miembro_id" = -1}, name="nuevo miembro_director")
      */
-    public function nuevoMiembroDirectorAction($id, $type, $miembro_id, Request $request) {
-        $director = $this->_getDirector($id);
-        $userManager = $this->_obtenerUserManager('AppBundle\Entity\Miembro');
+    public function nuevoMiembroDirectorAction($role, $id, $type, $miembro_id, Request $request) {
         if ($type === 'nuevo') {
-            $user = $userManager->createUser();
-            $user->setDirector($director);
-            $title = "miembro.views.new.title";
+            $director = $this->_getDirector($id);
+            return $this->_crearUserWithAssign($request, 'AppBundle\Entity\Miembro', MiembroType::class, 'ver miembros director', 'miembro', $director, 'setDirector', array('disabledDirector' => true), array('id' => $id, 'role' => $role));
         } else {
-            $user = $userManager->findUserBy(array('id' => $miembro_id));
-            $this->denyAccessUnlessGranted('edit', $user);
-            $title = "miembro.views.edit.title";
+            return $this->_editarUser($request, $miembro_id, 'AppBundle\Entity\Miembro', MiembroType::class, 'ver miembros director', 'miembro', array('disabledDirector' => true), array('id' => $id, 'role' => $role));
         }
-        $form = $this->createForm(MiembroType::class, $user, array('disabledDirector' => true));
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $user->setEnabled(true);
-            $userManager->updateUser($user, true);
-            $this->addFlash('success', 'flash.success.cambio');
-            return $this->redirectToRoute('directores');
-        }
-        return $this->render($this->form_template, array('title' => $title, 'form' => $form->createView()
-        ));
     }
 
     /**
      * @Route("/{role}/miembro/", requirements={"role" = "admin|sostenedor"}, name="nuevo miembro")
      */
-    public function nuevoMiembroAction(Request $request) {
-
-        $userManager = $this->_obtenerUserManager('AppBundle\Entity\Miembro');
-        $user = $userManager->createUser();
-
-        $form = $this->createForm(MiembroType::class, $user);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $user->setEnabled(true);
-            $userManager->updateUser($user, true);
-            $this->addFlash('success', 'flash.success.cambio');
-            return $this->redirectToRoute('miembros');
-        }
-        return $this->render($this->form_template, array('title' => "miembro.views.new.title", 'form' => $form->createView()
-        ));
+    public function nuevoMiembroAction($role, Request $request) {
+        return $this->_crearUser($request, 'AppBundle\Entity\Miembro', MiembroType::class, 'miembros', 'miembro', array(), array('role' => $role));
     }
 
     /**
      * @Route("/{role}/miembro/{id}", requirements={"role" = "admin|sostenedor"}, name="editar miembro")
      */
-    public function editarMiembroAction($id, Request $request) {
-        $userManager = $this->_obtenerUserManager('AppBundle\Entity\Miembro');
-        $user = $userManager->findUserBy(array('id' => $id));
-        $this->denyAccessUnlessGranted('edit', $user);
-        $form = $this->createForm(MiembroType::class, $user);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $userManager->updateUser($user, true);
-            $this->addFlash('success', 'flash.success.cambio');
-            return $this->redirectToRoute('miembros');
-        }
-
-        return $this->render($this->form_template, array('title' => "miembro.views.edit.title", 'form' => $form->createView()
-        ));
+    public function editarMiembroAction($role, $id, Request $request) {
+        return $this->_editarUser($request, $id, 'AppBundle\Entity\Miembro', MiembroType::class, 'miembros', 'miembro', array(), array('role' => $role));
     }
 
     private function _getDirector($id) {

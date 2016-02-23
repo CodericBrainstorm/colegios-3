@@ -1,8 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% form_theme form with ['bootstrap_3_horizontal_layout.html.twig', 'Form/fields.html.twig'] %}
-
+{#{% form_theme form with ['bootstrap_3_horizontal_layout.html.twig', 'Form/fields.html.twig'] %}#}
+{% form_theme form with [':Form:bootstrap_3_cool.html.twig', 'Form/fields.html.twig'] %}
 {% block body %}
+    {{ include('utils/alerts.html.twig') }}  
     <section class="panel">
         <header class="panel-heading">
             {{ title | trans}}

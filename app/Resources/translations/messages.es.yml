@@ -20,7 +20,12 @@ accion:
             title: Editar Acción
         ver:
             title: Ver Acción
-        
+
+admin:
+    views:
+        perfil:
+            title: Perfil de Administrador
+            
 area:
     views:
         new:
@@ -74,6 +79,8 @@ director:
             title: Editar Director
         ver:
             title: Ver Director
+        perfil:
+            title: Perfil de Director
             
 estado:
     views:
@@ -101,6 +108,8 @@ miembro:
             title: Editar Miembro
         ver:
             title: Ver Miembro
+        perfil:
+            title: Perfil de Miembro
             
 sostenedor:
     views:
@@ -110,6 +119,8 @@ sostenedor:
             title: Editar Sostenedor
         ver:
             title: Ver Sostenedor
+        perfil:
+            title: Perfil de Sostenedor
             
 tipo_colegio:
     views:

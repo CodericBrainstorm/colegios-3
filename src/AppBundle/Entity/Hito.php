@@ -72,6 +72,12 @@ class Hito {
     private $verificado;
 
     /**
+     * @Assert\NotNull(message = "assert.not_null")
+     * @ORM\ManyToOne(targetEntity="Ano")
+     */
+    private $ano;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Estado")
      */
     private $estadoDirector;
@@ -335,15 +341,13 @@ class Hito {
         return $this->miembros;
     }
 
-
     /**
      * Add acciones
      *
      * @param \AppBundle\Entity\Accion $acciones
      * @return Hito
      */
-    public function addAccione(\AppBundle\Entity\Accion $acciones)
-    {
+    public function addAccione(\AppBundle\Entity\Accion $acciones) {
         $this->acciones[] = $acciones;
 
         return $this;
@@ -354,8 +358,7 @@ class Hito {
      *
      * @param \AppBundle\Entity\Accion $acciones
      */
-    public function removeAccione(\AppBundle\Entity\Accion $acciones)
-    {
+    public function removeAccione(\AppBundle\Entity\Accion $acciones) {
         $this->acciones->removeElement($acciones);
     }
 
@@ -364,8 +367,31 @@ class Hito {
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getAcciones()
-    {
+    public function getAcciones() {
         return $this->acciones;
+    }
+
+
+    /**
+     * Set ano
+     *
+     * @param \AppBundle\Entity\Ano $ano
+     * @return Hito
+     */
+    public function setAno(\AppBundle\Entity\Ano $ano = null)
+    {
+        $this->ano = $ano;
+
+        return $this;
+    }
+
+    /**
+     * Get ano
+     *
+     * @return \AppBundle\Entity\Ano 
+     */
+    public function getAno()
+    {
+        return $this->ano;
     }
 }

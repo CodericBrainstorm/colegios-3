@@ -19,71 +19,28 @@ class MiembroController extends Controlador {
      * @Route("/director/miembros/", name="miembros director")
      */
     public function miembrosAction(Request $request) {
-        $user = $this->_getDirector();
-        $miembros = $user->getMiembros();
-        return $this->render(
-                        'director/miembros/list.html.twig', array('miembros' => $miembros)
-        );
+        return $this->_listarUsersByOwn('getMiembros', 'miembros', 'director/miembros/list.html.twig');
     }
 
     /**
      * @Route("/director/miembro/", name="nuevo miembro director")
      */
     public function nuevoMiembroAction(Request $request) {
-        $director = $this->_getDirector();
-        $userManager = $this->_obtenerUserManager('AppBundle\Entity\Miembro');
-        $user = $userManager->createUser();
-        $user->setDirector($director);
-        $form = $this->createForm(MiembroType::class, $user, array('disabledDirector' => true));
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $user->setEnabled(true);
-            $userManager->updateUser($user, true);
-            $this->addFlash('success', 'flash.success.cambio');
-            return $this->redirectToRoute('miembros director');
-        }
-        return $this->render($this->form_template, array('title' => "miembro.views.new.title", 'form' => $form->createView()
-        ));
+        return $this->_crearUserWithAssign($request, 'AppBundle\Entity\Miembro', MiembroType::class, 'miembros director', 'miembro', $this->getUser(), 'setDirector', array('disabledDirector' => true));
     }
 
     /**
      * @Route("/director/miembro/{id}", name="editar miembro director")
      */
     public function editarMiembroAction($id, Request $request) {
-        $userManager = $this->_obtenerUserManager('AppBundle\Entity\Miembro');
-        $user = $userManager->findUserBy(array('id' => $id));
-        $this->denyAccessUnlessGranted('edit', $user);
-        $form = $this->createForm(MiembroType::class, $user, array('disabledDirector' => true));
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $userManager->updateUser($user, true);
-            $this->addFlash('success', 'flash.success.cambio');
-            return $this->redirectToRoute('miembros director');
-        }
-
-        return $this->render($this->form_template, array('title' => "miembro.views.edit.title", 'form' => $form->createView()
-        ));
+        return $this->_editarUser($request, $id, 'AppBundle\Entity\Miembro', MiembroType::class, 'miembros director', 'miembro', array('disabledDirector' => true));
     }
 
     /**
      * @Route("/{role}/ver_miembro/{id}", name="ver miembro")
      */
     public function verMiembroAction($id, Request $request) {
-        $userManager = $this->_obtenerUserManager('AppBundle\Entity\Miembro');
-        $user = $userManager->findUserBy(array('id' => $id));
-        $this->denyAccessUnlessGranted('view', $user);
-        $form = $this->createForm(MiembroType::class, $user, array('disabled' => true));
-        $form->remove('plainPassword');
-        $form->handleRequest($request);
-        return $this->render(
-                        $this->view_template, array('title' => "miembro.views.ver.title",
-                    'form' => $form->createView()
-                        )
-        );
-    }
-
-    private function _getDirector() {
-        return $this->container->get('security.context')->getToken()->getUser();
+        return $this->_verUser($request, $id, 'AppBundle\Entity\Miembro', MiembroType::class, 'miembro', $formOpt = array());
     }
 
 }

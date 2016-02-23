@@ -199,5 +199,11 @@ class Miembro extends User {
     public function getAcciones() {
         return $this->acciones;
     }
+    
+
+
+    public function getType() {
+        return \AppBundle\Form\Type\MiembroType::class;
+    }
 
 }

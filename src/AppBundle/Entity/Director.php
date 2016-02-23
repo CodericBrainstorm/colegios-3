@@ -200,5 +200,10 @@ class Director extends User {
     public function getCompromisos() {
         return $this->compromisos;
     }
+    
+
+    public function getType() {
+        return \AppBundle\Form\Type\DirectorType::class;
+    }
 
 }

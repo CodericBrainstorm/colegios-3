@@ -72,7 +72,7 @@ fos_user:
     firewall_name: main
     user_class: AppBundle\Entity\User
     service:
-        user_manager: pugx_user_manager
+        user_manager: my_pugx_user_manager
     registration:
         confirmation:
             enabled: false

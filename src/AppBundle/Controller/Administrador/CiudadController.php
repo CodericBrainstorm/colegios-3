@@ -20,58 +20,28 @@ class CiudadController extends Controlador {
      * @Route("/admin/ciudades/", name="ciudades")
      */
     public function ciudadesAction(Request $request) {
-        $ciudades = $this->getDoctrine()->getRepository('AppBundle:Ciudad')->findAll();
-        return $this->render(
-                        'admin/ciudades/list.html.twig', array('ciudades' => $ciudades)
-        );
+        return $this->_listarObjects('AppBundle:Ciudad', 'ciudades', 'admin/ciudades/list.html.twig');
     }
 
     /**
      * @Route("/admin/ciudad/", name="nueva ciudad")
      */
     public function nuevaCiudadAction(Request $request) {
-        $ciudad = new Ciudad();
-        $form = $this->createForm(CiudadType::class, $ciudad);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->_persistObject($ciudad);
-            $this->addFlash('success', 'flash.success.cambio');
-            return $this->redirectToRoute('ciudades');
-        }
-
-        return $this->render($this->form_template, array('title' => "ciudad.views.new.title", 'form' => $form->createView()
-        ));
+        return $this->_crearObject($request, Ciudad::class, CiudadType::class, 'ciudades', "ciudad", false);
     }
 
     /**
      * @Route("/admin/ciudad/{id}", name="editar ciudad")
      */
     public function editarCiudadAction($id, Request $request) {
-        $ciudad = $this->_getObject('AppBundle:Ciudad', $id);
-        $form = $this->createForm(CiudadType::class, $ciudad);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->_updateObject();
-            $this->addFlash('success', 'flash.success.cambio');
-            return $this->redirectToRoute('ciudades');
-        }
-        return $this->render($this->form_template, array('title' => "ciudad.views.edit.title", 'form' => $form->createView()
-        ));
+        return $this->_editarObject($request, $id, 'AppBundle:Ciudad', CiudadType::class, 'ciudades', 'ciudad', $formOpt = array());
     }
 
     /**
      * @Route("/admin/ver_ciudad/{id}", name="ver ciudad")
      */
     public function verCiudadAction($id, Request $request) {
-        $ciudad = $this->_getObject('AppBundle:Ciudad', $id);
-        $form = $this->createForm(CiudadType::class, $ciudad, array('disabled' => true));
-        $form->handleRequest($request);
-        return $this->render(
-                        $this->view_template, array(
-                    'title' => "ciudad.views.ver.title",
-                    'form' => $form->createView()
-                        )
-        );
+        return $this->_verObject($request, $id, 'AppBundle:Ciudad', CiudadType::class, 'ciudad', $formOpt = array());
     }
 
 }
