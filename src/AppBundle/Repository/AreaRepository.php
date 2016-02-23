@@ -12,10 +12,12 @@ use Doctrine\ORM\EntityRepository;
  */
 class AreaRepository extends EntityRepository {
 
-    public function getPorcentajeActual() {
+    public function getPorcentajeActual($ano) {
         $qb = $this->_em->createQueryBuilder();
         $qb->select('SUM(area.ponderacion AS porcentaje')
-                ->from('AppBundle:Area', 'area');
+                ->from('AppBundle:Area', 'area')
+                ->where($qb->expr()->eq('area.ano', '?1'))
+                ->setParameter(1, $ano);
         $query = $qb->getQuery();
         $porcentaje = $query->getOneOrNullResult()['porcentaje'];
         return floatval($porcentaje);

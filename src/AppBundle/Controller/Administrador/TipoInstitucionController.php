@@ -34,14 +34,14 @@ class TipoInstitucionController extends Controlador {
      * @Route("/admin/institucion/{id}", name="editar tipo de institucion")
      */
     public function editarTipoInstitucionAction($id, Request $request) {
-        return $this->_editarObject($request, $id, 'AppBundle:TipoInstitucion', TipoInstitucionType::class, 'tipo_instituciones', 'tipo_institucion', $formOpt = array());
+        return $this->_editarObject($request, $id, 'AppBundle:TipoInstitucion', TipoInstitucionType::class, 'tipo_instituciones', 'tipo_institucion');
     }
 
     /**
      * @Route("/admin/ver_tipo_institucion/{id}", name="ver tipo de institucion")
      */
     public function verTipoInstitucionAction($id, Request $request) {
-        return $this->_verObject($request, $id, 'AppBundle:TipoInstitucion', TipoInstitucionType::class, 'tipo_institucion', $formOpt = array());
+        return $this->_verObject($request, $id, 'AppBundle:TipoInstitucion', TipoInstitucionType::class, 'tipo_institucion');
     }
 
 }
