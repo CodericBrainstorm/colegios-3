@@ -34,14 +34,14 @@ class ColegioController extends Controlador {
      * @Route("/admin/colegio/{id}", name="editar colegio")
      */
     public function editarColegioAction($id, Request $request) {
-        return $this->_editarObject($request, $id, 'AppBundle:Colegio', ColegioType::class, 'colegios', 'colegio', $formOpt = array());
+        return $this->_editarObject($request, $id, 'AppBundle:Colegio', ColegioType::class, 'colegios', 'colegio');
     }
 
     /**
      * @Route("/admin/ver_colegio/{id}", name="ver colegio")
      */
     public function verColegioAction($id, Request $request) {
-        return $this->_verObject($request, $id, 'AppBundle:Colegio', ColegioType::class, 'colegio', $formOpt = array());
+        return $this->_verObject($request, $id, 'AppBundle:Colegio', ColegioType::class, 'colegio');
     }
 
 }

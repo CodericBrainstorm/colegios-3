@@ -34,14 +34,14 @@ class ComunaController extends Controlador {
      * @Route("/admin/comuna/{id}", name="editar comuna")
      */
     public function editarComunaAction($id, Request $request) {
-        return $this->_editarObject($request, $id, 'AppBundle:Comuna', ComunaType::class, 'comunas', 'comuna', $formOpt = array());
+        return $this->_editarObject($request, $id, 'AppBundle:Comuna', ComunaType::class, 'comunas', 'comuna');
     }
 
     /**
      * @Route("/admin/ver_comuna/{id}", name="ver comuna")
      */
     public function verComunaAction($id, Request $request) {
-        return $this->_verObject($request, $id, 'AppBundle:Comuna', ComunaType::class, 'comuna', $formOpt = array());
+        return $this->_verObject($request, $id, 'AppBundle:Comuna', ComunaType::class, 'comuna');
     }
 
 }

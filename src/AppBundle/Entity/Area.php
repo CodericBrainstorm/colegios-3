@@ -9,7 +9,7 @@ use AppBundle\Validator\Constraints as AppAssert;
 /**
  * Area
  *
- * @ORM\Table(name="area")
+ * @ORM\Table(name="area",uniqueConstraints={@ORM\UniqueConstraint(name="ano_nombre", columns={"nombre", "ano_id"})})
  * @ORM\Entity(repositoryClass="AppBundle\Repository\AreaRepository")
  */
 class Area {
@@ -27,7 +27,7 @@ class Area {
      * @var string
      *
      * @Assert\NotBlank(message = "area.nombre.not_blank")
-     * @ORM\Column(type="string", length=255, unique=true)
+     * @ORM\Column(type="string", length=255)
      */
     private $nombre;
 
@@ -174,8 +174,7 @@ class Area {
      * @param \AppBundle\Entity\Ano $ano
      * @return Area
      */
-    public function setAno(\AppBundle\Entity\Ano $ano = null)
-    {
+    public function setAno(\AppBundle\Entity\Ano $ano = null) {
         $this->ano = $ano;
 
         return $this;
@@ -186,8 +185,8 @@ class Area {
      *
      * @return \AppBundle\Entity\Ano 
      */
-    public function getAno()
-    {
+    public function getAno() {
         return $this->ano;
     }
+
 }

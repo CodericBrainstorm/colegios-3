@@ -51,13 +51,12 @@ services:
                 
     validator.unique.porcentaje_constraint_validator:
         class: AppBundle\Validator\Constraints\PorcentajeConstraintValidator
-        arguments: [ '@doctrine.orm.entity_manager' ]
         tags:
             - { name: validator.constraint_validator, alias: porcentaje_constraint }
             
     app.form.type.area:
         class: AppBundle\Form\Type\AreaType
-        arguments: [ '@doctrine.orm.entity_manager' ]
+        arguments: [ '@doctrine.orm.entity_manager', '@security.token_storage' ]
         tags: 
             - { name: form.type }
     # custom fosuser user manager    

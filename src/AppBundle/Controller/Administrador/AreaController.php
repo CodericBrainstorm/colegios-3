@@ -34,14 +34,14 @@ class AreaController extends Controlador {
      * @Route("/admin/area/{id}", name="editar area")
      */
     public function editarAreaAction($id, Request $request) {
-        return $this->_editarObject($request, $id, 'AppBundle:Area', AreaType::class, 'areas', 'area', $formOpt = array());
+        return $this->_editarObject($request, $id, 'AppBundle:Area', AreaType::class, 'areas', 'area');
     }
 
     /**
      * @Route("/admin/ver_area/{id}", name="ver area")
      */
     public function verAreaAction($id, Request $request) {
-        return $this->_verObject($request, $id, 'AppBundle:Area', AreaType::class, 'area', $formOpt = array());
+        return $this->_verObject($request, $id, 'AppBundle:Area', AreaType::class, 'area');
     }
 
 }
