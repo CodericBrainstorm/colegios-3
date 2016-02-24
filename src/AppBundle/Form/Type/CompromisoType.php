@@ -25,14 +25,4 @@ class CompromisoType extends AbstractType {
             'choice_label' => 'nombre',
         ));
     }
-
-    public function getBlockPrefix() {
-        return 'app_user_sostenedor';
-    }
-
-    // For Symfony 2.x
-    public function getName() {
-        return $this->getBlockPrefix();
-    }
-
 }

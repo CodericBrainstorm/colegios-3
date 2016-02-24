@@ -33,11 +33,22 @@ services:
             - { name: security.voter }
         arguments: ['@security.access.decision_manager']
         public: false
+    app.compromiso_voter:
+        class: AppBundle\Security\CompromisoVoter
+        tags:
+            - { name: security.voter }
+        arguments: ['@security.access.decision_manager']
+        public: false
+    app.compromisoReal_voter:
+        class: AppBundle\Security\CompromisoRealVoter
+        tags:
+            - { name: security.voter }
+        arguments: ['@security.access.decision_manager']
+        public: false
         
     authentication.handler.login_success_handler:
         class:  AppBundle\Security\LoginSuccessHandler
         arguments:  ['@router', '@security.authorization_checker']
-        
     templates.role_var_listener:
         class: AppBundle\Listener\RoleVarListener
         arguments:
@@ -48,7 +59,12 @@ services:
                 name: kernel.event_listener
                 event: kernel.request
                 method: onKernelRequest
-                
+    app.file_type_extension:
+        class: AppBundle\Form\Extension\FileTypeExtension
+        tags:
+            -
+                name: form.type_extension
+                extended_type: Symfony\Component\Form\Extension\Core\Type\FileType      
     validator.unique.porcentaje_constraint_validator:
         class: AppBundle\Validator\Constraints\PorcentajeConstraintValidator
         tags:

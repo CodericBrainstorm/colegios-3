@@ -2,14 +2,14 @@
 
 namespace AppBundle\Security;
 
-use AppBundle\Entity\Sostenedor;
+use AppBundle\Entity\Compromiso;
 use AppBundle\Entity\User;
 use LogicException;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\AccessDecisionManagerInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 
-class SostenedorVoter extends Voter {
+class CompromisoVoter extends Voter {
 
     // these strings are just invented: you can use anything
     const VIEW = 'view';
@@ -27,8 +27,8 @@ class SostenedorVoter extends Voter {
             return false;
         }
 
-        // only vote on Sostenedor objects inside this voter
-        if (!$subject instanceof Sostenedor) {
+        // only vote on Compromiso objects inside this voter
+        if (!$subject instanceof Compromiso) {
             return false;
         }
 
@@ -48,38 +48,34 @@ class SostenedorVoter extends Voter {
         }
 
         // you know $subject is a Post object, thanks to supports
-        /** @var Sostenedor $sostenedor */
-        $sostenedor = $subject;
+        /** @var Compromiso $compromiso */
+        $compromiso = $subject;
 
         switch ($attribute) {
             case self::VIEW:
-                return $this->canView($sostenedor, $user);
+                return $this->canView($compromiso, $user);
             case self::EDIT:
-                return $this->canEdit($sostenedor, $user);
+                return $this->canEdit($compromiso, $user);
         }
 
         throw new LogicException('This code should not be reached!');
     }
 
-    private function canView(Sostenedor $sostenedor, User $user) {
+    private function canView(Compromiso $compromiso, User $user) {
         // if they can edit, they can view
-        if ($this->canEdit($sostenedor, $user)) {
+        if ($this->canEdit($compromiso, $user)) {
             return true;
         }
 
         // the Post object could have, for example, a method isPrivate()
         // that checks a boolean $private property
-        $directores = $sostenedor->getDirectores();
-        if($user instanceof Miembro){
-            $user = $user->getDirector();
-        }
-        return is_array($directores) && (in_array($user, $directores));
+        return ($user === $compromiso->getSostenedor());
     }
 
-    private function canEdit(Sostenedor $sostenedor, User $user) {
+    private function canEdit(Compromiso $compromiso, User $user) {
         // this assumes that the data object has a getOwner() method
         // to get the entity of the user who owns this data object
-        return ($user === $sostenedor);
+        return ($user === $compromiso->getSostenedor());
     }
 
 }

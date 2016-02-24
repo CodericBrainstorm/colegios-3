@@ -25,7 +25,6 @@ class CompromisoReal {
     /**
      * @var bool
      *
-     * @Assert\NotNull(message = "assert.not_null")
      * @ORM\Column(name="verificado", type="boolean")
      */
     private $verificado;
@@ -71,7 +70,7 @@ class CompromisoReal {
     private $hitos;
 
     /**
-     * @ORM\OneToOne(targetEntity="Archivo")
+     * @ORM\OneToOne(targetEntity="Archivo", cascade="all")
      */
     private $medioVerificacion;
 

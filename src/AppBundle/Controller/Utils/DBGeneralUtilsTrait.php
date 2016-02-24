@@ -6,15 +6,24 @@ trait DBGeneralUtilsTrait {
 
     private function _listarObjects($class, $nombre, $template, $query = null) {
         if (is_null($query)) {
-            $objects = $this->getDoctrine()->getRepository($class)->findAll();
+            return $this->_listarObjectsByMethod($class, $nombre, $template, "findAll");
         } else {
-            $objects = $this->getDoctrine()->getRepository($class)->findBy($query);
+            return $this->_listarObjectsByMethod($class, $nombre, $template, "findBy", $query);
+        }
+    }
+    
+    private function _listarObjectsByMethod($class, $nombre, $template, $method, $params = null){
+        if(is_null($params)){
+            $objects = $this->getDoctrine()->getRepository($class)->$method();
+        }else{
+            $objects = $this->getDoctrine()->getRepository($class)->$method($params);
         }
         return $this->render($template, array($nombre => $objects));
     }
 
     private function _verObject($request, $id, $class, $type, $title, $formOpt = array()) {
         $object = $this->_getObject($class, $id);
+        $this->denyAccessUnlessGranted('view', $object);
         $formOpt['disabled'] = true;
         $form = $this->createForm($type, $object, $formOpt);
         $form->handleRequest($request);

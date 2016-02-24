@@ -149,8 +149,21 @@ tipo_institucion:
 compromiso:
     views:
         new:
-            title: Crear Área
+            title: Crear Compromiso
         edit:
-            title: Editar Área
+            title: Editar Compromiso
         ver:
-            title: Ver Área
+            title: Ver Compromiso
+
+compromisoReal:
+    views:
+        new:
+            title: Asignar Compromiso
+        edit:
+            title: Editar Compromiso Asignado
+        ver:
+            title: Ver Compromiso Asignado
+            
+archivo:
+    views:
+        download: Descargar
