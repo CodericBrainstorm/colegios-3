@@ -61,8 +61,10 @@ trait DBUsersUtilsTrait {
     }
 
     private function _createUser($class) {
+        $ano = $this->getUser()->getAno();
         $userManager = $this->_obtenerUserManager($class);
         $user = $userManager->createUser();
+        $user->setAno($ano);
         $user->setEnabled(true);
         return $user;
     }
