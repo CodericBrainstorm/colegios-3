@@ -6,9 +6,7 @@
         <div class="btn-group">
             <button data-toggle="dropdown" class="btn btn-info dropdown-toggle" type="button">Operaciones <span class="caret"></span></button>
             <ul role="menu" class="dropdown-menu">
-                <li><a href="{{ path('ver compromiso asignado', {'id': compromiso.id}) }}">Ver</a></li>
-                <li><a href="{{ path('editar compromiso asignado', {'id': compromiso.id}) }}">Editar</a></li>
-                <li><a href="#">Eliminar</a></li>
+                <li><a href="{{ path('ver compromiso asignado admin', {'id': compromiso.id, 'idSostenedor': compromiso.compromiso.sostenedor.id}) }}">Ver</a></li>
             </ul>
         </div>
     </td>

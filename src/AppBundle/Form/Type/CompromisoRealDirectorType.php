@@ -8,34 +8,38 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class CompromisoRealType extends AbstractType {
+class CompromisoRealDirectorType extends AbstractType {
     
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder->add('verificado', CheckboxType::class, array(
-            'required' => false
+            'required' => false,
+            'disabled' => true
         ));
         $builder->add('compromiso', EntityType::class, array(
             'class' => 'AppBundle:Compromiso',
             'choice_label' => 'nombre',
-            'choices' => $options['sostenedor']->getCompromisos()
+            'choices' => $options['sostenedor']->getCompromisos(),
+            'disabled' => true
         ));
         
         $builder->add('estadoSostenedor', EntityType::class, array(
             'class' => 'AppBundle:Estado',
             'choice_label' => 'nombre',
+            'disabled' => true
         ));
         $builder->add('estadoDirector', EntityType::class, array(
             'class' => 'AppBundle:Estado',
-            'choice_label' => 'nombre',
-            'disabled' => true
+            'choice_label' => 'nombre'
         ));
         $builder->add('director', EntityType::class, array(
             'class' => 'AppBundle:Director',
             'choice_label' => 'nombre',
-            'choices' => $options['sostenedor']->getDirectores()
+            'choices' => $options['sostenedor']->getDirectores(),
+            'disabled' => true
         ));
         $builder->add('medioVerificacion', ArchivoType::class, array(
-            'file_path' => $options['file_path']
+            'file_path' => $options['file_path'],
+            'disabled' => true
         ));
     }
     

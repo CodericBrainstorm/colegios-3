@@ -25,7 +25,6 @@ class CompromisoReal {
     /**
      * @var bool
      *
-     * @Assert\NotNull(message = "assert.not_null")
      * @ORM\Column(name="verificado", type="boolean")
      */
     private $verificado;
