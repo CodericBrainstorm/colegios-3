@@ -17,12 +17,10 @@ class CompromisoType extends AbstractType {
         $builder->add('indicador');
         $builder->add('ponderacion', PercentType::class);
         $builder->add('area', EntityType::class, array(
-            'placeholder' => '',
             'class' => 'AppBundle:Area',
             'choice_label' => 'nombre',
         ));
         $builder->add('sostenedor', EntityType::class, array(
-            'placeholder' => '',
             'class' => 'AppBundle:Sostenedor',
             'choice_label' => 'nombre',
         ));

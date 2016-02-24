@@ -31,7 +31,9 @@ class Comuna {
     private $nombre;
 
     /**
+     * @Assert\NotNull(message = "assert.not_null")
      * @ORM\ManyToOne(targetEntity="Ciudad", inversedBy="comunas")
+     * @ORM\JoinColumn(name="ciudad_id", referencedColumnName="id", nullable=false)
      */
     private $ciudad;
 
@@ -65,15 +67,13 @@ class Comuna {
         return $this->nombre;
     }
 
-
     /**
      * Set ciudad
      *
      * @param \AppBundle\Entity\Ciudad $ciudad
      * @return Comuna
      */
-    public function setCiudad(\AppBundle\Entity\Ciudad $ciudad = null)
-    {
+    public function setCiudad(\AppBundle\Entity\Ciudad $ciudad = null) {
         $this->ciudad = $ciudad;
 
         return $this;
@@ -84,8 +84,8 @@ class Comuna {
      *
      * @return \AppBundle\Entity\Ciudad 
      */
-    public function getCiudad()
-    {
+    public function getCiudad() {
         return $this->ciudad;
     }
+
 }

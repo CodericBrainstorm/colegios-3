@@ -13,9 +13,9 @@ class AnoSelectType extends AbstractType {
             'class' => 'AppBundle:Ano',
             'choice_label' => 'nombre',
             'property' => 'nombre',
-            'label' => 'Trabajando en el año ',
+            'label' => 'ano.views.select.large_label',
             'attr' => array('class' => 'form-control'),
-            'label_attr' => array('class' => 'ano_select_label')
+            'label_attr' => array('class' => 'ano_select_label large_label')
         ));
     }
 

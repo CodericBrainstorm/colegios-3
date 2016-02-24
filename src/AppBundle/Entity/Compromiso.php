@@ -58,6 +58,7 @@ class Compromiso {
     /**
      * @Assert\NotNull(message = "assert.not_null")
      * @ORM\ManyToOne(targetEntity="Ano")
+     * @ORM\JoinColumn(name="ano_id", referencedColumnName="id", nullable=false)
      */
     private $ano;
 
@@ -67,17 +68,23 @@ class Compromiso {
     private $compromisosReales;
 
     /**
+     * @Assert\NotNull(message = "assert.not_null")
      * @ORM\ManyToOne(targetEntity="Area", inversedBy="compromisos")
+     * @ORM\JoinColumn(name="area_id", referencedColumnName="id", nullable=false)
      */
     private $area;
 
     /**
+     * @Assert\NotNull(message = "assert.not_null")
      * @ORM\ManyToOne(targetEntity="Sostenedor", inversedBy="compromisos")
+     * @ORM\JoinColumn(name="sostenedor_id", referencedColumnName="id", nullable=false)
      */
     private $sostenedor;
 
     /**
+     * @Assert\NotNull(message = "assert.not_null")
      * @ORM\ManyToOne(targetEntity="Estado")
+     * @ORM\JoinColumn(name="estado_id", referencedColumnName="id", nullable=false)
      */
     private $estado;
 

@@ -4,13 +4,14 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use AppBundle\Validator\Constraints as AppAssert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Area
  *
  * @ORM\Table(name="area",uniqueConstraints={@ORM\UniqueConstraint(name="ano_nombre", columns={"nombre", "ano_id"})})
  * @ORM\Entity(repositoryClass="AppBundle\Repository\AreaRepository")
+ * @UniqueEntity(fields={"nombre", "ano"})
  */
 class Area {
 
@@ -51,6 +52,7 @@ class Area {
     /**
      * @Assert\NotNull(message = "assert.not_null")
      * @ORM\ManyToOne(targetEntity="Ano")
+     * @ORM\JoinColumn(name="ano_id", referencedColumnName="id", nullable=false)
      */
     private $ano;
 
