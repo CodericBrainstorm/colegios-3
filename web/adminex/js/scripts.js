@@ -122,11 +122,11 @@
    });
 
    function searchform_reposition() {
-      if(jQuery('.searchform').css('position') == 'relative') {
-         jQuery('.searchform').insertBefore('.left-side-inner .logged-user');
-      } else {
-         jQuery('.searchform').insertBefore('.menu-right');
-      }
+//      if(jQuery('.searchform').css('position') == 'relative') {
+//         jQuery('.searchform').insertBefore('.left-side-inner .logged-user');
+//      } else {
+//         jQuery('.searchform').insertBefore('.menu-right');
+//      }
    }
 
     // panel collapsible

@@ -113,6 +113,15 @@
 
     .searchform {
         position: relative;
+        float: left;
+    }
+
+    .searchform label.large_label{
+        display: none;
+    }
+
+    .searchform label.small_label{
+        display: inline-block;
     }
 
     .searchform input {

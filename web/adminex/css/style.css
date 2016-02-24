@@ -251,6 +251,10 @@ hr {
     border: none;
 }
 
+.searchform label.small_label{
+    display: none;
+}
+
 .left-side .logged-user {
     padding: 0 0 15px 12px;
     margin: 0 0 15px 0;

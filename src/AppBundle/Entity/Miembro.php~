@@ -3,12 +3,16 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Miembro
  *
  * @ORM\Entity(repositoryClass="AppBundle\Repository\MiembroRepository")
  * @ORM\HasLifecycleCallbacks
+ * @UniqueEntity(fields = "username", targetClass = "AppBundle\Entity\User", message="fos_user.username.already_used")
+ * @UniqueEntity(fields = "email", targetClass = "AppBundle\Entity\User", message="fos_user.email.already_used")
  */
 class Miembro extends User {
 
@@ -22,12 +26,16 @@ class Miembro extends User {
     protected $id;
 
     /**
+     * @Assert\NotNull(message = "assert.not_null")
      * @ORM\ManyToOne(targetEntity="Director", inversedBy="miembros")
+     * @ORM\JoinColumn(name="director_id", referencedColumnName="id", nullable=false)
      */
     private $director;
 
     /**
+     * @Assert\NotNull(message = "assert.not_null")
      * @ORM\ManyToOne(targetEntity="Colegio", inversedBy="miembros")
+     * @ORM\JoinColumn(name="colegio_id", referencedColumnName="id", nullable=false)
      */
     private $colegio;
 
@@ -199,8 +207,6 @@ class Miembro extends User {
     public function getAcciones() {
         return $this->acciones;
     }
-    
-
 
     public function getType() {
         return \AppBundle\Form\Type\MiembroType::class;
