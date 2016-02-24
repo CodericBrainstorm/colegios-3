@@ -84,7 +84,7 @@ pugx_multi_user:
           class: AppBundle\Entity\Administrador
         registration:
           form: 
-            type: AppBundle\Form\Type\UserType
+            type: AppBundle\Form\Type\AdministradorType
             name: fos_user_registration_form
             validation_groups:  [Registration, Default]
           template: default/administrador.form.html.twig
