@@ -16,12 +16,10 @@ class SostenedorType extends AbstractType {
         $builder->add('nombreInstitucion');
         $builder->add('direccion');
         $builder->add('tipoInstitucion', EntityType::class, array(
-            'placeholder' => '',
             'class' => 'AppBundle:TipoInstitucion',
             'choice_label' => 'nombre',
         ));
         $builder->add('ciudad', EntityType::class, array(
-            'placeholder' => '',
             'class' => 'AppBundle:Ciudad',
             'choice_label' => 'nombre',
         ));
@@ -29,7 +27,6 @@ class SostenedorType extends AbstractType {
         $formModifier = function (FormInterface $form, Ciudad $ciudad = null) {
             $comunas = null === $ciudad ? array() : $ciudad->getComunas();
             $form->add('comuna', EntityType::class, array('class' => 'AppBundle:Comuna',
-//                'placeholder' => '',
                 'choice_label' => 'nombre',
                 'choices' => $comunas));
         };

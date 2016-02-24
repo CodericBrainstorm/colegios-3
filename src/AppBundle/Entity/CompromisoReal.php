@@ -32,26 +32,35 @@ class CompromisoReal {
     /**
      * @Assert\NotNull(message = "assert.not_null")
      * @ORM\ManyToOne(targetEntity="Ano")
+     * @ORM\JoinColumn(name="ano_id", referencedColumnName="id", nullable=false)
      */
     private $ano;
 
     /**
+     * @Assert\NotNull(message = "assert.not_null")
      * @ORM\ManyToOne(targetEntity="Compromiso", inversedBy="compromisosReales")
+     * @ORM\JoinColumn(name="compromiso_id", referencedColumnName="id", nullable=false)
      */
     private $compromiso;
 
     /**
+     * @Assert\NotNull(message = "assert.not_null")
      * @ORM\ManyToOne(targetEntity="Estado")
+     * @ORM\JoinColumn(name="estado_director_id", referencedColumnName="id", nullable=false)
      */
     private $estadoDirector;
 
     /**
+     * @Assert\NotNull(message = "assert.not_null")
      * @ORM\ManyToOne(targetEntity="Estado")
+     * @ORM\JoinColumn(name="estado_sostenedor_id", referencedColumnName="id", nullable=false)
      */
     private $estadoSostenedor;
 
     /**
+     * @Assert\NotNull(message = "assert.not_null")
      * @ORM\ManyToOne(targetEntity="Director", inversedBy="compromisos")
+     * @ORM\JoinColumn(name="director_id", referencedColumnName="id", nullable=false)
      */
     private $director;
 
@@ -263,15 +272,13 @@ class CompromisoReal {
         return round($porcentaje, 4);
     }
 
-
     /**
      * Set ano
      *
      * @param \AppBundle\Entity\Ano $ano
      * @return CompromisoReal
      */
-    public function setAno(\AppBundle\Entity\Ano $ano = null)
-    {
+    public function setAno(\AppBundle\Entity\Ano $ano = null) {
         $this->ano = $ano;
 
         return $this;
@@ -282,8 +289,8 @@ class CompromisoReal {
      *
      * @return \AppBundle\Entity\Ano 
      */
-    public function getAno()
-    {
+    public function getAno() {
         return $this->ano;
     }
+
 }

@@ -3,12 +3,16 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Director
  *
  * @ORM\Entity(repositoryClass="AppBundle\Repository\DirectorRepository")
  * @ORM\HasLifecycleCallbacks
+ * @UniqueEntity(fields = "username", targetClass = "AppBundle\Entity\User", message="fos_user.username.already_used")
+ * @UniqueEntity(fields = "email", targetClass = "AppBundle\Entity\User", message="fos_user.email.already_used")
  */
 class Director extends User {
 
@@ -22,7 +26,9 @@ class Director extends User {
     protected $id;
 
     /**
+     * @Assert\NotNull(message = "assert.not_null")
      * @ORM\ManyToOne(targetEntity="Sostenedor", inversedBy="directores")
+     * @ORM\JoinColumn(name="sostenedor_id", referencedColumnName="id", nullable=false)
      */
     private $sostenedor;
 
@@ -32,7 +38,9 @@ class Director extends User {
     private $miembros;
 
     /**
-     * @ORM\OneToOne(targetEntity="Colegio", mappedBy="director")
+     * @Assert\NotNull(message = "assert.not_null")
+     * @ORM\OneToOne(targetEntity="Colegio", inversedBy="director")
+     * @ORM\JoinColumn(name="colegio_id", referencedColumnName="id", nullable=false)
      */
     private $colegio;
 
@@ -200,7 +208,6 @@ class Director extends User {
     public function getCompromisos() {
         return $this->compromisos;
     }
-    
 
     public function getType() {
         return \AppBundle\Form\Type\DirectorType::class;

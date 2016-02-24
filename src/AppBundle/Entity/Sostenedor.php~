@@ -48,17 +48,23 @@ class Sostenedor extends User {
     private $directores;
 
     /**
+     * @Assert\NotNull(message = "assert.not_null")
      * @ORM\ManyToOne(targetEntity="TipoInstitucion")
+     * @ORM\JoinColumn(name="tipo_institucion_id", referencedColumnName="id", nullable=false)
      */
     private $tipoInstitucion;
 
     /**
+     * @Assert\NotNull(message = "assert.not_null")
      * @ORM\ManyToOne(targetEntity="Ciudad")
+     * @ORM\JoinColumn(name="ciudad_id", referencedColumnName="id", nullable=false)
      */
     private $ciudad;
 
     /**
+     * @Assert\NotNull(message = "assert.not_null")
      * @ORM\ManyToOne(targetEntity="Comuna")
+     * @ORM\JoinColumn(name="comuna_id", referencedColumnName="id", nullable=false)
      */
     private $comuna;
 

@@ -44,7 +44,7 @@ abstract class User extends BaseUser {
 
     /**
      * @ORM\ManyToOne(targetEntity="Ano")
-     * @ORM\JoinColumn(name="ano_id", referencedColumnName="id", nullable=true)
+     * @ORM\JoinColumn(name="ano_id", referencedColumnName="id", nullable=false)
      */
     protected $ano;
 

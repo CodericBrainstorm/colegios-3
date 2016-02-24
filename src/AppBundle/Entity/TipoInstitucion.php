@@ -4,12 +4,14 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * TipoInstitucion
  *
  * @ORM\Table(name="tipo_institucion")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\TipoInstitucionRepository")
+ * @UniqueEntity("nombre")
  */
 class TipoInstitucion {
 

@@ -41,6 +41,7 @@ class Accion {
     /**
      * @Assert\NotNull(message = "assert.not_null")
      * @ORM\ManyToOne(targetEntity="Ano")
+     * @ORM\JoinColumn(name="ano_id", referencedColumnName="id", nullable=false)
      */
     private $ano;
 
@@ -70,21 +71,29 @@ class Accion {
 
     /**
      * @ORM\ManyToOne(targetEntity="Miembro", inversedBy="acciones")
+     * @ORM\JoinColumn(name="miembro_id", referencedColumnName="id", nullable=false)
+     * @Assert\NotNull(message = "assert.not_null")
      */
     private $miembro;
 
     /**
      * @ORM\ManyToOne(targetEntity="Estado")
+     * @ORM\JoinColumn(name="estado_director_id", referencedColumnName="id", nullable=false)
+     * @Assert\NotNull(message = "assert.not_null")
      */
     private $estadoDirector;
 
     /**
      * @ORM\ManyToOne(targetEntity="Estado")
+     * @ORM\JoinColumn(name="estado_miembro_id", referencedColumnName="id", nullable=false)
+     * @Assert\NotNull(message = "assert.not_null")
      */
     private $estadoMiembro;
 
     /**
      * @ORM\ManyToOne(targetEntity="Hito", inversedBy="acciones")
+     * @ORM\JoinColumn(name="hito_id", referencedColumnName="id", nullable=false)
+     * @Assert\NotNull(message = "assert.not_null")
      */
     private $hito;
 
@@ -286,15 +295,13 @@ class Accion {
         return $this->hito;
     }
 
-
     /**
      * Set ano
      *
      * @param \AppBundle\Entity\Ano $ano
      * @return Accion
      */
-    public function setAno(\AppBundle\Entity\Ano $ano = null)
-    {
+    public function setAno(\AppBundle\Entity\Ano $ano = null) {
         $this->ano = $ano;
 
         return $this;
@@ -305,8 +312,8 @@ class Accion {
      *
      * @return \AppBundle\Entity\Ano 
      */
-    public function getAno()
-    {
+    public function getAno() {
         return $this->ano;
     }
+
 }

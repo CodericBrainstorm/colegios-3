@@ -34,14 +34,14 @@ class EstadoController extends Controlador {
      * @Route("/admin/rubrica/{id}", name="editar rubrica")
      */
     public function editarRubricaAction($id, Request $request) {
-        return $this->_editarObject($request, $id, 'AppBundle:Estado', EstadoType::class, 'rubricas', 'estado', $formOpt = array());
+        return $this->_editarObject($request, $id, 'AppBundle:Estado', EstadoType::class, 'rubricas', 'estado');
     }
 
     /**
      * @Route("/admin/ver_rubrica/{id}", name="ver rubrica")
      */
     public function verRubricaAction($id, Request $request) {
-        return $this->_verObject($request, $id, 'AppBundle:Estado', EstadoType::class, 'estado', $formOpt = array());
+        return $this->_verObject($request, $id, 'AppBundle:Estado', EstadoType::class, 'estado');
     }
 
 }

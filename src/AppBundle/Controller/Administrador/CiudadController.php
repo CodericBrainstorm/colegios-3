@@ -34,14 +34,14 @@ class CiudadController extends Controlador {
      * @Route("/admin/ciudad/{id}", name="editar ciudad")
      */
     public function editarCiudadAction($id, Request $request) {
-        return $this->_editarObject($request, $id, 'AppBundle:Ciudad', CiudadType::class, 'ciudades', 'ciudad', $formOpt = array());
+        return $this->_editarObject($request, $id, 'AppBundle:Ciudad', CiudadType::class, 'ciudades', 'ciudad');
     }
 
     /**
      * @Route("/admin/ver_ciudad/{id}", name="ver ciudad")
      */
     public function verCiudadAction($id, Request $request) {
-        return $this->_verObject($request, $id, 'AppBundle:Ciudad', CiudadType::class, 'ciudad', $formOpt = array());
+        return $this->_verObject($request, $id, 'AppBundle:Ciudad', CiudadType::class, 'ciudad');
     }
 
 }

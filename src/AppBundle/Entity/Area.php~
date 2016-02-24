@@ -4,13 +4,14 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use AppBundle\Validator\Constraints as AppAssert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Area
  *
- * @ORM\Table(name="area")
+ * @ORM\Table(name="area",uniqueConstraints={@ORM\UniqueConstraint(name="ano_nombre", columns={"nombre", "ano_id"})})
  * @ORM\Entity(repositoryClass="AppBundle\Repository\AreaRepository")
+ * @UniqueEntity(fields={"nombre", "ano"})
  */
 class Area {
 
@@ -27,7 +28,7 @@ class Area {
      * @var string
      *
      * @Assert\NotBlank(message = "area.nombre.not_blank")
-     * @ORM\Column(type="string", length=255, unique=true)
+     * @ORM\Column(type="string", length=255)
      */
     private $nombre;
 
@@ -51,6 +52,7 @@ class Area {
     /**
      * @Assert\NotNull(message = "assert.not_null")
      * @ORM\ManyToOne(targetEntity="Ano")
+     * @ORM\JoinColumn(name="ano_id", referencedColumnName="id", nullable=false)
      */
     private $ano;
 
@@ -174,8 +176,7 @@ class Area {
      * @param \AppBundle\Entity\Ano $ano
      * @return Area
      */
-    public function setAno(\AppBundle\Entity\Ano $ano = null)
-    {
+    public function setAno(\AppBundle\Entity\Ano $ano = null) {
         $this->ano = $ano;
 
         return $this;
@@ -186,8 +187,8 @@ class Area {
      *
      * @return \AppBundle\Entity\Ano 
      */
-    public function getAno()
-    {
+    public function getAno() {
         return $this->ano;
     }
+
 }

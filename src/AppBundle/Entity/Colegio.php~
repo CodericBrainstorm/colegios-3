@@ -31,12 +31,14 @@ class Colegio {
     private $nombre;
 
     /**
+     * @Assert\NotNull(message = "assert.not_null")
      * @ORM\ManyToOne(targetEntity="TipoColegio")
+     * @ORM\JoinColumn(name="tipo_colegio_id", referencedColumnName="id", nullable=false)
      */
     private $tipoColegio;
 
     /**
-     * @ORM\OneToOne(targetEntity="Director", inversedBy="colegio")
+     * @ORM\OneToOne(targetEntity="Director", mappedBy="colegio")
      */
     private $director;
 

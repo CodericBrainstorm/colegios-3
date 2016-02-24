@@ -25,6 +25,12 @@ admin:
     views:
         perfil:
             title: Perfil de Administrador
+
+ano:
+    views:
+        select:
+            small_label: Año
+            large_label: Trabajando en el año 
             
 area:
     views:

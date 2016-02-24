@@ -58,20 +58,20 @@
                         <!-- visible to small devices only -->
                         <div class="visible-xs hidden-sm hidden-md hidden-lg">
                             <div class="media logged-user">
-                                <img alt="" src="{{ asset('adminex/images/photos/user-avatar.png') }}" class="media-object">
+{#                                <img alt="" src="{{ asset('adminex/images/photos/user-avatar.png') }}" class="media-object">#}
                                 <div class="media-body">
-                                    <h4><a href="#">
+                                    <h4>
                                             {% block usuario_mobile %}{{ app.user.username }}{% endblock %}
-                                        </a></h4>
-                                    <span>"Bienvenido..."</span>
+                                        </h4>
+{#                                    <span>"Bienvenido..."</span>#}
                                 </div>
                             </div>
-
+{#
                             <h5 class="left-nav-title">Información de cuenta</h5>
                             <ul class="nav nav-pills nav-stacked custom-nav">
                                 <li><a href="#"><i class="fa fa-user"></i> <span>Cuenta</span></a></li>
                                 <li><a href="/logout"><i class="fa fa-sign-out"></i> <span>Salir</span></a></li>
-                            </ul>
+                            </ul>#}
                         </div>
 
                         {% block menu %}
