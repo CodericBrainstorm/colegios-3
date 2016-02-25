@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        {% for area in areas %} 
+            <div class="col-md-12" id="button-col">
+                <section class="panel">
+                    <header class="panel-heading">
+                        {{ area.nombre | trans}} - 
+                        <span>% {{ area.ponderacion * 100 | trans}}</span>
+                        <span class="tools pull-right">
+                            <a href="javascript:;" class="fa fa-chevron-down"></a>
+                            <a href="javascript:;" class="fa fa-times"></a>
+                        </span>
+                    </header>
+
+                    <div class="panel-body">
+                        {% for compromiso in compromisos %}
+                            {{ compromiso.nombre | trans}}
+                            {% for compromisoReal in compromiso.compromisosReales %} 
+                            {% endfor %} 
+                        {% endfor %} 
+                    </div>
+                </section>
+            </div>
+        {% endfor %} 
+    </div>
+{% endblock %}
