@@ -25,6 +25,7 @@ trait DBGeneralUtilsTrait {
         $object = $this->_getObject($class, $id);
         $this->denyAccessUnlessGranted('view', $object);
         $formOpt['disabled'] = true;
+        $formOpt['attr'] = array('class' => 'view_form');
         $form = $this->createForm($type, $object, $formOpt);
         $form->handleRequest($request);
         return $this->_renderViewTemplate(array('title' => $title . '.views.ver.title', 'form' => $form->createView()));

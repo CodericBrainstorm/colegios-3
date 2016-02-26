@@ -15,6 +15,7 @@ class ColegioType extends AbstractType {
             'choice_label' => 'nombre',
         ));
         $builder->add('director', EntityType::class, array(
+            'placeholder' => '',
             'class' => 'AppBundle:Director',
             'choice_label' => 'nombre',
         ));

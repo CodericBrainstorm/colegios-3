@@ -45,6 +45,12 @@ services:
             - { name: security.voter }
         arguments: ['@security.access.decision_manager']
         public: false
+    app.hito_voter:
+        class: AppBundle\Security\HitoVoter
+        tags:
+            - { name: security.voter }
+        arguments: ['@security.access.decision_manager']
+        public: false
         
     authentication.handler.login_success_handler:
         class:  AppBundle\Security\LoginSuccessHandler

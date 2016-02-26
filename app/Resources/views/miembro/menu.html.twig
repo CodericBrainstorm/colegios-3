@@ -3,13 +3,8 @@
 {% block menu %}
     <!--sidebar nav start-->
     <ul class="nav nav-pills nav-stacked custom-nav">
-        <li class="menu-list"><a href=""><i class="fa fa-cog"></i> <span>Parametrización</span></a>
-            <ul class="sub-menu-list">
-                <li><a href="{{ path('colegios') }}"> Colegios</a></li>
-            </ul>
-        </li>
-        <li><a href="{{ path('areas') }}"><i class="fa fa-sitemap"></i> <span>Áreas</span></a></li>
-
+        <li><a href="{{  path(role ~ '_index') }}"><i class="fa fa-home"></i> <span>Inicio</span></a></li>
+        <li><a href="{{ path(role ~ '_index') }}"><i class="fa fa-sitemap"></i> <span>Acciones</span></a></li>
     </ul>
     <!--sidebar nav end-->
 {% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        {% for area in areas %} 
+            <div class="col-md-12" id="button-col">
+                <section class="panel">
+                    <header class="panel-heading">
+                        {{ area.nombre | trans}} - 
+                        <span>% {{ area.ponderacion * 100 | trans}}</span>
+                        <span class="tools pull-right">
+                            <a href="javascript:;" class="fa fa-chevron-down"></a>
+                            <a href="javascript:;" class="fa fa-times"></a>
+                        </span>
+                    </header>
+
+                    <div class="panel-body">
+                        {% set porcentaje = user.getPorcentajeDelArea(area) * 100 %}
+                        Completado:
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="porcentaje" aria-valuemin="0" aria-valuemax="100" style="min-width:20px;width: {{porcentaje}}%;" >
+                                {{porcentaje}}%
+                            </div>
+                        </div>
+                        <ul>
+                            {% for compromiso in compromisos if compromiso.compromiso.area == area %}
+                                <li><span style="font-weight:bold;color:{{compromiso.verificado ? 'green' : 'red'}}">{{ compromiso.compromiso.nombre | trans}}</span>  </li>
+                                Hitos:
+                                <ul  style="margin-bottom:20px">
+                                    {% for hito in compromiso.hitos %}
+                                        <li><span style="color:{{hito.verificado ? 'green' : 'red'}}">{{ hito.nombre | trans}}</span>  </li>
+                                        {% else %}
+                                        Aún no hay Hitos asignados a este compromiso.
+                                    {% endfor %} 
+                                </ul>
+                            {% else %}
+                                Aún no hay compromisos asignados por el sostenedor.
+                            {% endfor %} 
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        {% endfor %} 
+    </div>
+{% endblock %}

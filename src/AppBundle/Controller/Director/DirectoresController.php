@@ -16,6 +16,7 @@ class DirectoresController extends Controlador {
      * @Route("/director/", name="director_index")
      */
     public function indexAction(Request $request) {
+        return $this->redirectToRoute('estadisticas', array('role' => 'director'));
         return $this->render(
                         'director/index.html.twig'
         );
