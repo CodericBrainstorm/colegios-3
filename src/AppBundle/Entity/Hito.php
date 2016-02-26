@@ -41,7 +41,6 @@ class Hito {
     /**
      * @var float
      *
-     * @Assert\NotNull(message = "hito.ponderacion.not_null")
      * @Assert\Type(type="float", message="hito.ponderacion.type")
      * @ORM\Column(type="float")
      */

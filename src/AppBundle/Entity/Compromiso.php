@@ -81,12 +81,12 @@ class Compromiso {
      */
     private $sostenedor;
 
-    /**
-     * @Assert\NotNull(message = "assert.not_null")
-     * @ORM\ManyToOne(targetEntity="Estado")
-     * @ORM\JoinColumn(name="estado_id", referencedColumnName="id", nullable=false)
-     */
-    private $estado;
+//    /**
+//     * @Assert\NotNull(message = "assert.not_null")
+//     * @ORM\ManyToOne(targetEntity="Estado")
+//     * @ORM\JoinColumn(name="estado_id", referencedColumnName="id", nullable=false)
+//     */
+//    private $estado;
 
     /**
      * Get id

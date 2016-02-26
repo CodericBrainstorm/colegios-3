@@ -5402,3 +5402,21 @@ ul.iconic-list li a:hover, ul.iconic-list li.active a {
     margin-bottom: 0;
     padding-bottom: 0;
 }
+
+.view_form input, .view_form select, .view_form textarea{
+    background: white !important;
+    border: none !important;
+    font-weight: bold;
+    color: #333 !important;
+}
+
+.view_form select{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+}
+
+.view_form textarea {
+    resize: none;
+}

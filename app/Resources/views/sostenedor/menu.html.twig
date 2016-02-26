@@ -1,20 +1,8 @@
 <ul class="nav nav-pills nav-stacked custom-nav">
-
-    <li class="menu-list"><a href=""><i class="fa fa-users"></i> <span>Usuarios</span></a>
-        <ul class="sub-menu-list">
-            <li><a href="{{ path('directores sostenedor') }}"> Directores</a></li>
-            <li><a href="{{ path('miembros', {'role':role}) }}"> Miembros</a></li>
-
-        </ul>
-    </li>
-    <li class="menu-list"><a href=""><i class="fa fa-cog"></i> <span>Parametrización</span></a>
-        <ul class="sub-menu-list">
-            <li><a href="{{ path('colegios', {'role':role}) }}"> Colegios</a></li>
-        </ul>
-    </li>
-    <li><a href="{{ path('areas', {'role':role}) }}"><i class="fa fa-sitemap"></i> <span>Áreas</span></a></li>
+    <li><a href="{{  path(role ~ '_index') }}"><i class="fa fa-home"></i> <span>Inicio</span></a></li>
+    <li><a href="{{ path('directores sostenedor') }}"><i class="fa fa-user"></i> <span>Directores</span></a></li>
+    <li><a href="{{ path('miembros', {'role':role}) }}"><i class="fa fa-users"></i> <span>Miembros</span></a></li>
     <li><a href="{{ path('ver compromisos sostenedor', {'id': app.user.id}) }}"><i class="fa fa-bookmark-o"></i> <span>Compromisos</span></a></li>
     <li><a href="{{ path('ver compromisos asignados') }}"><i class="fa fa-bookmark"></i> <span>Compromisos Asignados</span></a></li>
-
 </ul>
 

@@ -13,9 +13,10 @@ class DirectorType extends AbstractType {
         $builder->add('sostenedor', EntityType::class, array(
             'class' => 'AppBundle:Sostenedor',
             'choice_label' => 'nombre',
-            'disabled' => $options['disabledSostenedor']
+            'read_only' => $options['disabledSostenedor']
         ));
         $builder->add('colegio', EntityType::class, array(
+            'placeholder' => '',
             'class' => 'AppBundle:Colegio',
             'choice_label' => 'nombre',
         ));

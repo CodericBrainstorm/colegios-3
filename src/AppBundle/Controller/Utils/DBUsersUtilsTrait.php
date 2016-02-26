@@ -26,6 +26,7 @@ trait DBUsersUtilsTrait {
     private function _verUser($request, $id, $class, $type, $title, $formOpt = array()) {
         $user = $this->_obtenerUser($class, $id, 'view');
         $formOpt['disabled'] = true;
+        $formOpt['attr'] = array('class' => 'view_form');
         $form = $this->createForm($type, $user, $formOpt);
         $form->remove('plainPassword');
         $form->handleRequest($request);

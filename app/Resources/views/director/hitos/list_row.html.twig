@@ -1,0 +1,15 @@
+<tr class="gradeX">
+    <td>{{ hito.compromiso.compromiso.nombre }}</td>
+    <td>{{ hito.compromiso.compromiso.sostenedor.nombre ~" "~ hito.compromiso.compromiso.sostenedor.apellido }}</td>
+    <td>{{ hito.compromiso.director.nombre~" "~hito.compromiso.director.apellido }}</td>
+    <td class="center">
+        <div class="btn-group">
+            <button data-toggle="dropdown" class="btn btn-info dropdown-toggle" type="button">Operaciones <span class="caret"></span></button>
+            <ul role="menu" class="dropdown-menu">
+                <li><a href="{{ path('ver hito asignado', {'id': hito.id}) }}">Ver</a></li>
+                <li><a href="{{ path('editar hito asignado', {'id': hito.id}) }}">Editar</a></li>
+                <li><a href="#">Eliminar</a></li>
+            </ul>
+        </div>
+    </td>
+</tr>
