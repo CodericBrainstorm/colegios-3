@@ -27,7 +27,7 @@ class CompromisoRealType extends AbstractType {
         $builder->add('estadoDirector', EntityType::class, array(
             'class' => 'AppBundle:Estado',
             'choice_label' => 'nombre',
-            'disabled' => true
+            'read_only' => true
         ));
         $builder->add('director', EntityType::class, array(
             'class' => 'AppBundle:Director',

@@ -17,7 +17,8 @@ class MyUserManager extends UserManager {
             if ($class_to_get === $class) {
                 $repo = $this->om->getRepository($class);
 
-                $users = $repo->findAll();
+//                $users = $repo->findAll();
+                $users = $repo->findBy(array('enabled'=>true));
 
                 if ($users) {
                     $usersAll = array_merge($usersAll, $users); // $usersAll

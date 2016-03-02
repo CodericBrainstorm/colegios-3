@@ -115,6 +115,22 @@ class Director extends User {
     public function getMiembros() {
         return $this->miembros;
     }
+    
+    /**
+     * Get miembros activos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMiembrosActivos() {
+        $miembros = $this->miembros;
+        $activos = array();
+        foreach($miembros as $m){
+            if($m->isEnabled()){
+                array_push($activos, $m);
+            }
+        }
+        return $activos;
+    }
 
     /**
      * Set nombre

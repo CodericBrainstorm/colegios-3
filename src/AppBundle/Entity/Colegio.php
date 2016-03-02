@@ -46,6 +46,13 @@ class Colegio {
      * @ORM\OneToMany(targetEntity="Miembro", mappedBy="colegio")
      */
     private $miembros;
+    
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="borrado", type="boolean")
+     */
+    private $borrado;
 
     /**
      * Get id
@@ -164,5 +171,35 @@ class Colegio {
     public function getMiembros()
     {
         return $this->miembros;
+    }
+    
+    /**
+     * Set borrado
+     *
+     * @param boolean $borrado
+     * @return Colegio
+     */
+    public function setBorrado($borrado) {
+        $this->borrado = $borrado;
+
+        return $this;
+    }
+
+    /**
+     * Get borrado
+     *
+     * @return boolean 
+     */
+    public function getBorrado() {
+        return $this->borrado;
+    }
+    
+    /**
+     * borrar
+     *
+     * @return Colegio
+     */
+    public function borrar() {
+        $this->setBorrado(true);
     }
 }

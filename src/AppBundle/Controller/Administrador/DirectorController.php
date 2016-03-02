@@ -61,4 +61,10 @@ class DirectorController extends Controlador {
         return $sostenedor;
     }
 
+    /**
+     * @Route("/admin/eliminar_director/{id}", name="eliminar director admin")
+     */
+    public function eliminarDirectorAction($id, Request $request) {
+        return $this->_eliminarUser($id, 'AppBundle\Entity\Director', 'directores admin');
+    }
 }

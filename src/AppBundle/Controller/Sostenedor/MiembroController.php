@@ -60,5 +60,12 @@ class MiembroController extends Controlador {
         $director = $userManager->findUserBy(array('id' => $id));
         return $director;
     }
+    
+    /**
+     * @Route("/{role}/eliminar_miembro/{id}", requirements={"role" = "admin|sostenedor"}, name="eliminar miembro")
+     */
+    public function eliminarMiembroAction($id, $role, Request $request) {
+        return $this->_eliminarUser($id, 'AppBundle\Entity\Miembro', 'miembros', array('role'=>$role));
+    }
 
 }

@@ -70,4 +70,20 @@ trait DBGeneralUtilsTrait {
         }
         return $obj;
     }
+    
+    private function _borrarObject($class, $id, $redirect){
+        $obj = $this->_getObject($class, $id);
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($obj);
+        $em->flush();
+        return $this->redirectToRoute($redirect);
+    }
+    
+    private function _borrarObjectByMethod($class, $id, $method, $redirect){
+        $obj = $this->_getObject($class, $id);
+        $obj->$method();
+        $em = $this->getDoctrine()->getManager();
+        $em->flush();
+        return $this->redirectToRoute($redirect);
+    }
 }

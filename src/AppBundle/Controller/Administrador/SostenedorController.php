@@ -47,5 +47,12 @@ class SostenedorController extends Controlador {
     public function verSostenedorAction($id, Request $request) {
         return $this->_verUser($request, $id, 'AppBundle\Entity\Sostenedor', SostenedorType::class, 'sostenedor', $formOpt = array());
     }
+    
+    /**
+     * @Route("/admin/eliminar_sostenedor/{id}", name="eliminar sostenedor")
+     */
+    public function eliminarSostenedorAction($id, Request $request) {
+        return $this->_eliminarUser($id, 'AppBundle\Entity\Sostenedor', 'sostenedores');
+    }
 
 }

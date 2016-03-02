@@ -20,7 +20,7 @@ class TipoInstitucionController extends Controlador {
      * @Route("/admin/tipos_de_institucion/", name="tipo_instituciones")
      */
     public function tiposInstitucionAction(Request $request) {
-        return $this->_listarObjects('AppBundle:TipoInstitucion', 'tipo_instituciones', 'admin/tipo_instituciones/list.html.twig');
+        return $this->_listarObjects('AppBundle:TipoInstitucion', 'tipo_instituciones', 'admin/tipo_instituciones/list.html.twig', array('borrado'=>false));
     }
 
     /**
@@ -42,6 +42,13 @@ class TipoInstitucionController extends Controlador {
      */
     public function verTipoInstitucionAction($id, Request $request) {
         return $this->_verObject($request, $id, 'AppBundle:TipoInstitucion', TipoInstitucionType::class, 'tipo_institucion');
+    }
+    
+    /**
+     * @Route("/admin/eliminar_tipo_institucion/{id}", name="eliminar tipo de institucion")
+     */
+    public function eliminarTipoInstitucionAction($id, Request $request) {
+        return $this->_borrarObjectByMethod('AppBundle:TipoInstitucion', $id, 'borrar', 'tipo_instituciones');
     }
 
 }

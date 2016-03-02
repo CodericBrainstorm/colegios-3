@@ -63,7 +63,7 @@ class Compromiso {
     private $ano;
 
     /**
-     * @ORM\OneToMany(targetEntity="CompromisoReal", mappedBy="compromiso")
+     * @ORM\OneToMany(targetEntity="CompromisoReal", mappedBy="compromiso", cascade={"remove"})
      */
     private $compromisosReales;
 
@@ -81,12 +81,12 @@ class Compromiso {
      */
     private $sostenedor;
 
-    /**
-     * @Assert\NotNull(message = "assert.not_null")
-     * @ORM\ManyToOne(targetEntity="Estado")
-     * @ORM\JoinColumn(name="estado_id", referencedColumnName="id", nullable=false)
-     */
-    private $estado;
+//    /**
+//     * @Assert\NotNull(message = "assert.not_null")
+//     * @ORM\ManyToOne(targetEntity="Estado")
+//     * @ORM\JoinColumn(name="estado_id", referencedColumnName="id", nullable=false)
+//     */
+//    private $estado;
 
     /**
      * Get id
@@ -260,26 +260,26 @@ class Compromiso {
         return $this->sostenedor;
     }
 
-    /**
-     * Set estado
-     *
-     * @param \AppBundle\Entity\Estado $estado
-     * @return Compromiso
-     */
-    public function setEstado(\AppBundle\Entity\Estado $estado = null) {
-        $this->estado = $estado;
+//    /**
+//     * Set estado
+//     *
+//     * @param \AppBundle\Entity\Estado $estado
+//     * @return Compromiso
+//     */
+//    public function setEstado(\AppBundle\Entity\Estado $estado = null) {
+//        $this->estado = $estado;
+//
+//        return $this;
+//    }
 
-        return $this;
-    }
-
-    /**
-     * Get estado
-     *
-     * @return \AppBundle\Entity\Estado 
-     */
-    public function getEstado() {
-        return $this->estado;
-    }
+//    /**
+//     * Get estado
+//     *
+//     * @return \AppBundle\Entity\Estado 
+//     */
+//    public function getEstado() {
+//        return $this->estado;
+//    }
 
 
     /**

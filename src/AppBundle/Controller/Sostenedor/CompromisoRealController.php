@@ -46,5 +46,12 @@ class CompromisoRealController extends Controlador {
         $sostenedor = $this->getUser();
         return $this->_verObject($request, $id, 'AppBundle:CompromisoReal', CompromisoRealType::class, 'compromisoReal', array('sostenedor'=>$sostenedor, 'file_path'=>'getWebPath'));
     }
+    
+    /**
+     * @Route("/sostenedor/borrar_compromiso_asignado/{id}", name="borrar compromiso asignado")
+     */
+    public function borrarCompromisoRealAction($id, Request $request) {
+        return $this->_borrarObject('AppBundle:CompromisoReal', $id, 'ver compromisos asignados');
+    }
 
 }

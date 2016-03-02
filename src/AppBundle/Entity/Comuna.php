@@ -36,6 +36,13 @@ class Comuna {
      * @ORM\JoinColumn(name="ciudad_id", referencedColumnName="id", nullable=false)
      */
     private $ciudad;
+    
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="borrado", type="boolean")
+     */
+    private $borrado;
 
     /**
      * Get id
@@ -87,5 +94,34 @@ class Comuna {
     public function getCiudad() {
         return $this->ciudad;
     }
+    
+    /**
+     * Set borrado
+     *
+     * @param boolean $borrado
+     * @return Comuna
+     */
+    public function setBorrado($borrado) {
+        $this->borrado = $borrado;
 
+        return $this;
+    }
+
+    /**
+     * Get borrado
+     *
+     * @return boolean 
+     */
+    public function getBorrado() {
+        return $this->borrado;
+    }
+
+    /**
+     * borrar
+     *
+     * @return Comuna
+     */
+    public function borrar() {
+        $this->setBorrado(true);
+    }
 }

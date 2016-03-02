@@ -19,7 +19,7 @@ class DirectorController extends Controlador {
      * @Route("/sostenedor/directores/", name="directores sostenedor")
      */
     public function directoresAction(Request $request) {
-        return $this->_listarUsersByOwn('getDirectores', 'directores', 'sostenedor/directores/list.html.twig');
+        return $this->_listarUsersByOwn('getDirectoresActivos', 'directores', 'sostenedor/directores/list.html.twig');
     }
 
     /**
@@ -41,6 +41,13 @@ class DirectorController extends Controlador {
      */
     public function verDirectorAction($id, Request $request) {
         return $this->_verUser($request, $id, 'AppBundle\Entity\Director', DirectorType::class, 'director');
+    }
+    
+    /**
+     * @Route("/sostenedor/eliminar_director/{id}", name="eliminar director sostenedor")
+     */
+    public function eliminarDirectorAction($id, Request $request) {
+        return $this->_eliminarUser($id, 'AppBundle\Entity\Director', 'directores sostenedor');
     }
 
 }

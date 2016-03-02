@@ -10,8 +10,27 @@
             <ul role="menu" class="dropdown-menu">
                 <li><a href="{{ path('ver miembro', {'id': miembro.id, 'role':role }) }}">Ver</a></li>
                 <li><a href="{{ path('editar miembro director', {'id': miembro.id}) }}">Editar</a></li>
-                <li><a href="#">Eliminar</a></li>
+                <li><a href="#miembroModal{{miembro.id}}" data-toggle="modal">Eliminar</a></li>
             </ul>
         </div>
     </td>
 </tr>
+<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="miembroModal{{miembro.id}}" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                <h4 class="modal-title">{{ 'miembro.views.delete.title'|trans }}</h4>
+            </div>
+            <div class="modal-body">
+
+                {{ 'miembro.views.delete.message'|trans|nl2br }}
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{ 'miembro.views.delete.cancel'|trans }}</button>
+                <a href="{{ path('eliminar miembro director', {'id': miembro.id}) }}"><button type="button" class="btn btn-danger"> {{ 'miembro.views.delete.confirm'|trans }}</button></a>
+            </div>
+        </div>
+    </div>
+</div>
