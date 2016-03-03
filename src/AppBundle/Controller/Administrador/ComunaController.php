@@ -20,7 +20,7 @@ class ComunaController extends Controlador {
      * @Route("/admin/comunas/", name="comunas")
      */
     public function comunasAction(Request $request) {
-        return $this->_listarObjects('AppBundle:Comuna', 'comunas', 'admin/comunas/list.html.twig');
+        return $this->_listarObjects('AppBundle:Comuna', 'comunas', 'admin/comunas/list.html.twig', array('borrado'=>false));
     }
 
     /**
@@ -42,6 +42,13 @@ class ComunaController extends Controlador {
      */
     public function verComunaAction($id, Request $request) {
         return $this->_verObject($request, $id, 'AppBundle:Comuna', ComunaType::class, 'comuna');
+    }
+
+    /**
+     * @Route("/admin/eliminar_comuna/{id}", name="eliminar comuna")
+     */
+    public function eliminarComunaAction($id, Request $request) {
+        return $this->_borrarObjectByMethod('AppBundle:Comuna', $id, 'borrar', 'comunas');
     }
 
 }

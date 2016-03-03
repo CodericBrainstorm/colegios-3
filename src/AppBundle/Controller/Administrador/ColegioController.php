@@ -20,7 +20,7 @@ class ColegioController extends Controlador {
      * @Route("/admin/colegios/", name="colegios")
      */
     public function colegiosAction(Request $request) {
-        return $this->_listarObjects('AppBundle:Colegio', 'colegios', 'admin/colegios/list.html.twig');
+        return $this->_listarObjects('AppBundle:Colegio', 'colegios', 'admin/colegios/list.html.twig', array('borrado'=>false));
     }
 
     /**
@@ -42,6 +42,13 @@ class ColegioController extends Controlador {
      */
     public function verColegioAction($id, Request $request) {
         return $this->_verObject($request, $id, 'AppBundle:Colegio', ColegioType::class, 'colegio');
+    }
+    
+    /**
+     * @Route("/admin/eliminar_colegio/{id}", name="eliminar colegio")
+     */
+    public function eliminarColegioAction($id, Request $request) {
+        return $this->_borrarObjectByMethod('AppBundle:Colegio', $id, 'borrar', 'colegios');
     }
 
 }

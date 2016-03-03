@@ -65,7 +65,7 @@ class CompromisoReal {
     private $director;
 
     /**
-     * @ORM\OneToMany(targetEntity="Hito", mappedBy="compromiso")
+     * @ORM\OneToMany(targetEntity="Hito", mappedBy="compromiso", cascade="all")
      */
     private $hitos;
 

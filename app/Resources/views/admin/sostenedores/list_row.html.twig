@@ -12,7 +12,7 @@
             <ul role="menu" class="dropdown-menu">
                 <li><a href="{{ path('ver sostenedor', {'id': sostenedor.id}) }}">Ver</a></li>
                 <li><a href="{{ path('editar sostenedor', {'id': sostenedor.id}) }}">Editar</a></li>
-                <li><a href="#">Eliminar</a></li>
+                <li><a href="#sostenedorModal{{sostenedor.id}}" data-toggle="modal">Eliminar</a></li>
                 <li class="divider"></li>
                 <li><a href="{{ path('ver directores sostenedor admin', {'id': sostenedor.id}) }}">Ver Directores</a></li>
                 <li><a href="{{ path('ver compromisos sostenedor', {'id': sostenedor.id}) }}">Ver Compromisos</a></li>
@@ -21,3 +21,22 @@
         </div>
     </td>
 </tr>
+<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="sostenedorModal{{sostenedor.id}}" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                <h4 class="modal-title">{{ 'sostenedor.views.delete.title'|trans }}</h4>
+            </div>
+            <div class="modal-body">
+
+                {{ 'sostenedor.views.delete.message'|trans|nl2br }}
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{ 'sostenedor.views.delete.cancel'|trans }}</button>
+                <a href="{{ path('eliminar sostenedor', {'id': sostenedor.id}) }}"><button type="button" class="btn btn-danger"> {{ 'sostenedor.views.delete.confirm'|trans }}</button></a>
+            </div>
+        </div>
+    </div>
+</div>

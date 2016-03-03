@@ -20,7 +20,7 @@ class TipoColegioController extends Controlador {
      * @Route("/admin/tipo_colegios/", name="tipo_colegios")
      */
     public function tipoColegiosAction(Request $request) {
-        return $this->_listarObjects('AppBundle:TipoColegio', 'tipo_colegios', 'admin/tipo_colegios/list.html.twig');
+        return $this->_listarObjects('AppBundle:TipoColegio', 'tipo_colegios', 'admin/tipo_colegios/list.html.twig', array('borrado'=>false));
     }
 
     /**
@@ -42,6 +42,13 @@ class TipoColegioController extends Controlador {
      */
     public function verTipoColegioAction($id, Request $request) {
         return $this->_verObject($request, $id, 'AppBundle:TipoColegio', TipoColegioType::class, 'tipo_colegio');
+    }
+    
+    /**
+     * @Route("/admin/eliminar_tipo_colegio/{id}", name="eliminar tipo de colegio")
+     */
+    public function eliminarTipoColegioAction($id, Request $request) {
+        return $this->_borrarObjectByMethod('AppBundle:TipoColegio', $id, 'borrar', 'tipo_colegios');
     }
 
 }

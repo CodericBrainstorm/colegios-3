@@ -8,8 +8,27 @@
             <ul role="menu" class="dropdown-menu">
                 <li><a href="{{ path('ver colegio', {'id': colegio.id}) }}">Ver</a></li>
                 <li><a href="{{ path('editar colegio', {'id': colegio.id}) }}">Editar</a></li>
-                <li><a href="#">Eliminar</a></li>
+                <li><a href="#colegioModal{{colegio.id}}" data-toggle="modal">Eliminar</a></li>
             </ul>
         </div>
     </td>
 </tr>
+<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="colegioModal{{colegio.id}}" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                <h4 class="modal-title">{{ 'colegio.views.delete.title'|trans }}</h4>
+            </div>
+            <div class="modal-body">
+
+                {{ 'colegio.views.delete.message'|trans|nl2br }}
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{ 'colegio.views.delete.cancel'|trans }}</button>
+                <a href="{{ path('eliminar colegio', {'id': colegio.id}) }}"><button type="button" class="btn btn-danger"> {{ 'colegio.views.delete.confirm'|trans }}</button></a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -31,6 +31,13 @@ class TipoInstitucion {
      * @ORM\Column(name="nombre", type="string", length=255, unique=true)
      */
     private $nombre;
+    
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="borrado", type="boolean")
+     */
+    private $borrado;
 
     /**
      * Get id
@@ -62,4 +69,33 @@ class TipoInstitucion {
         return $this->nombre;
     }
 
+    /**
+     * Set borrado
+     *
+     * @param boolean $borrado
+     * @return TipoInstitucion
+     */
+    public function setBorrado($borrado) {
+        $this->borrado = $borrado;
+
+        return $this;
+    }
+
+    /**
+     * Get borrado
+     *
+     * @return boolean 
+     */
+    public function getBorrado() {
+        return $this->borrado;
+    }
+    
+    /**
+     * borrar
+     *
+     * @return TipoInstitucion
+     */
+    public function borrar() {
+        $this->setBorrado(true);
+    }
 }

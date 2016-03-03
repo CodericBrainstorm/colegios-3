@@ -104,7 +104,7 @@ class Hito {
     private $miembros;
 
     /**
-     * @ORM\OneToMany(targetEntity="Accion", mappedBy="hito")
+     * @ORM\OneToMany(targetEntity="Accion", mappedBy="hito", cascade={"remove"})
      */
     private $acciones;
 

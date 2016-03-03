@@ -48,6 +48,14 @@ trait DBUsersUtilsTrait {
         $user = $this->_obtenerUser($class, $id, 'edit');
         return $this->_generarFormUser($request, $class, $user, $type, $redirect, $title, $formOpt, 'edit', $redirect_params);
     }
+    
+    private function _eliminarUser($id, $class, $redirect, $redirect_params = array()) {
+        $user = $this->_obtenerUser($class, $id, 'edit');
+        $user->setEnabled(false);
+        $userManager = $this->_obtenerUserManager($class);
+        $userManager->updateUser($user, true);
+        return $this->redirectToRoute($redirect, $redirect_params);
+    }
 
     private function _generarFormUser($request, $class, $user, $type, $redirect, $title, $formOpt, $title2, $redirect_params = array()) {
         $form = $this->createForm($type, $user, $formOpt);

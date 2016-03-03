@@ -7,8 +7,27 @@
             <ul role="menu" class="dropdown-menu">
                 <li><a href="{{ path('ver comuna', {'id': comuna.id}) }}">Ver</a></li>
                 <li><a href="{{ path('editar comuna', {'id': comuna.id}) }}">Editar</a></li>
-                <li><a href="#">Eliminar</a></li>
+                <li><a href="#comunaModal{{comuna.id}}" data-toggle="modal">Eliminar</a></li>
             </ul>
         </div>
     </td>
 </tr>
+<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="comunaModal{{comuna.id}}" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                <h4 class="modal-title">{{ 'comuna.views.delete.title'|trans }}</h4>
+            </div>
+            <div class="modal-body">
+
+                {{ 'comuna.views.delete.message'|trans|nl2br }}
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{ 'comuna.views.delete.cancel'|trans }}</button>
+                <a href="{{ path('eliminar comuna', {'id': comuna.id}) }}"><button type="button" class="btn btn-danger"> {{ 'comuna.views.delete.confirm'|trans }}</button></a>
+            </div>
+        </div>
+    </div>
+</div>
