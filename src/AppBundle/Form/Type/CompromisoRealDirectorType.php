@@ -13,19 +13,19 @@ class CompromisoRealDirectorType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder->add('verificado', CheckboxType::class, array(
             'required' => false,
-            'disabled' => true
+            'read_only' => true
         ));
         $builder->add('compromiso', EntityType::class, array(
             'class' => 'AppBundle:Compromiso',
             'choice_label' => 'nombre',
-            'choices' => $options['sostenedor']->getCompromisos(),
-            'disabled' => true
+            'choices' => $options['sostenedor']->getCompromisosAno($options['ano']),
+            'read_only' => true
         ));
         
         $builder->add('estadoSostenedor', EntityType::class, array(
             'class' => 'AppBundle:Estado',
             'choice_label' => 'nombre',
-            'disabled' => true
+            'read_only' => true
         ));
         $builder->add('estadoDirector', EntityType::class, array(
             'class' => 'AppBundle:Estado',
@@ -33,20 +33,21 @@ class CompromisoRealDirectorType extends AbstractType {
         ));
         $builder->add('director', EntityType::class, array(
             'class' => 'AppBundle:Director',
-            'choice_label' => 'nombre',
+            'choice_label' => 'getNombreEntero',
             'choices' => $options['sostenedor']->getDirectores(),
-            'disabled' => true
+            'read_only' => true
         ));
         $builder->add('medioVerificacion', ArchivoType::class, array(
             'file_path' => $options['file_path'],
-            'disabled' => true
+            'read_only' => true
         ));
     }
     
     public function setDefaultOptions(OptionsResolverInterface $resolver) {
         $resolver->setDefaults(array(
             'sostenedor' => null,
-            'file_path' => null
+            'file_path' => null,
+            'ano' => null,
         ));
     }
 

@@ -36,7 +36,7 @@ class CompromisoRealController extends Controlador {
      */
     public function verCompromisoAsignadoAction($id, $idSostenedor, Request $request) {
         $sostenedor = $this->_obtenerUser('AppBundle\Entity\Sostenedor', $idSostenedor, 'view');
-        return $this->_verObject($request, $id, 'AppBundle:CompromisoReal', CompromisoRealType::class, 'compromisoReal', array('sostenedor'=>$sostenedor, 'file_path'=>'getWebPath'));
+        return $this->_verObject($request, $id, 'AppBundle:CompromisoReal', CompromisoRealType::class, 'compromisoReal', array('sostenedor'=>$sostenedor, 'ano' => $this->getUser()->getAno(), 'file_path'=>'getWebPath'));
     }
 
 }

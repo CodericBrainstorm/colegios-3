@@ -28,7 +28,7 @@ class CompromisoRealController extends Controlador {
      */
     public function asignarCompromisoAction(Request $request) {
         $sostenedor = $this->getUser();
-        return $this->_crearObject($request, CompromisoReal::class, CompromisoRealType::class, 'ver compromisos asignados', 'compromisoReal', $this->getUser()->getAno(), array('sostenedor'=>$sostenedor));
+        return $this->_crearObject($request, CompromisoReal::class, CompromisoRealType::class, 'ver compromisos asignados', 'compromisoReal', $this->getUser()->getAno(), array('sostenedor'=>$sostenedor, 'ano'=>$this->getUser()->getAno(), 'read_only_estado_director'=>false));
     }
 
     /**
@@ -36,7 +36,7 @@ class CompromisoRealController extends Controlador {
      */
     public function editarCompromisoAsignadoAction($id, Request $request) {
         $sostenedor = $this->getUser();
-        return $this->_editarObject($request, $id, 'AppBundle:CompromisoReal', CompromisoRealType::class, 'ver compromisos asignados', 'compromisoReal', array('sostenedor'=>$sostenedor, 'file_path'=>'getWebPath'));
+        return $this->_editarObject($request, $id, 'AppBundle:CompromisoReal', CompromisoRealType::class, 'ver compromisos asignados', 'compromisoReal', array('sostenedor'=>$sostenedor, 'file_path'=>'getWebPath', 'ano'=>$this->getUser()->getAno(), 'read_only_estado_director'=>true));
     }
 
     /**
@@ -44,7 +44,7 @@ class CompromisoRealController extends Controlador {
      */
     public function verCompromisoAsignadoAction($id, Request $request) {
         $sostenedor = $this->getUser();
-        return $this->_verObject($request, $id, 'AppBundle:CompromisoReal', CompromisoRealType::class, 'compromisoReal', array('sostenedor'=>$sostenedor, 'file_path'=>'getWebPath'));
+        return $this->_verObject($request, $id, 'AppBundle:CompromisoReal', CompromisoRealType::class, 'compromisoReal', array('sostenedor'=>$sostenedor, 'file_path'=>'getWebPath', 'ano'=>$this->getUser()->getAno()));
     }
     
     /**

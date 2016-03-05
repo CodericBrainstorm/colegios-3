@@ -41,7 +41,7 @@ class HitoType extends AbstractType {
         ));
         $builder->add('miembros', EntityType::class, array(
             'class' => 'AppBundle:Miembro',
-            'choice_label' => 'username',
+            'choice_label' => 'getNombreCompleto',
             'choices' => $options['director']->getMiembros(),
             'multiple' => true
         ));

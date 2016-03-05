@@ -17,7 +17,7 @@ class CompromisoRealType extends AbstractType {
         $builder->add('compromiso', EntityType::class, array(
             'class' => 'AppBundle:Compromiso',
             'choice_label' => 'nombre',
-            'choices' => $options['sostenedor']->getCompromisos()
+            'choices' => $options['sostenedor']->getCompromisosAno($options['ano']),
         ));
         
         $builder->add('estadoSostenedor', EntityType::class, array(
@@ -27,11 +27,11 @@ class CompromisoRealType extends AbstractType {
         $builder->add('estadoDirector', EntityType::class, array(
             'class' => 'AppBundle:Estado',
             'choice_label' => 'nombre',
-            'read_only' => true
+            'read_only' => $options['read_only_estado_director']
         ));
         $builder->add('director', EntityType::class, array(
             'class' => 'AppBundle:Director',
-            'choice_label' => 'nombre',
+            'choice_label' => 'getNombreEntero',
             'choices' => $options['sostenedor']->getDirectores()
         ));
         $builder->add('medioVerificacion', ArchivoType::class, array(
@@ -42,7 +42,9 @@ class CompromisoRealType extends AbstractType {
     public function setDefaultOptions(OptionsResolverInterface $resolver) {
         $resolver->setDefaults(array(
             'sostenedor' => null,
-            'file_path' => null
+            'file_path' => null,
+            'ano' => null,
+            'read_only_estado_director' => false
         ));
     }
 
