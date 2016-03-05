@@ -122,5 +122,14 @@ abstract class User extends BaseUser {
     public function getAno() {
         return $this->ano;
     }
+    
+    /**
+     * Get nombre entero
+     *
+     * @return string 
+     */
+    public function getNombreEntero(){
+        return $this->apellido . " " . $this->nombre;
+    }
 
 }

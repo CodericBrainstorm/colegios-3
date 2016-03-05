@@ -38,19 +38,21 @@ trait DBGeneralUtilsTrait {
     }
 
     private function _crearObject($request, $class, $type, $redirect, $title, $ano = true, $formOpt = array()) {
-        $object = new $class;
-        if ($ano) {
-            $object->setAno($this->getUser()->getAno());
-        }
-        return $this->_generarFormObject($request, $object, $type, $redirect, $title, $formOpt, 'new');
+        $this->crearObjectWithAssign($request, $class, $type, $redirect, $title, $ano, 'setAno', $formOpt);
     }
     
-    private function _crearObjectWithAssign($request, $class, $type, $redirect, $title, $assigned_obj, $assign, $ano = true, $formOpt = array()){
+    private function _crearObjectWithAssign($request, $class, $type, $redirect, $title, $assigned_objs, $assigns, $formOpt = array()){
         $object = new $class;
-        if ($ano) {
-            $object->setAno($this->getUser()->getAno());
+        if((is_array($assigned_objs))&&(is_array($assigns))){
+            if(count($assigns)==count($assigned_objs)){
+                $length = count($assigns);
+                for ($i = 0; $i < $length; $i++) {
+                  $object->$assigns[$i]($assigned_objs[$i]);
+                }
+            }
+        }else{
+            $object->$assigns($assigned_objs);
         }
-        $object->$assign($assigned_obj);
         return $this->_generarFormObject($request, $object, $type, $redirect, $title, $formOpt, 'new');
     }
 

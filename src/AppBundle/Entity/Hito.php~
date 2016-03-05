@@ -41,7 +41,6 @@ class Hito {
     /**
      * @var float
      *
-     * @Assert\NotNull(message = "hito.ponderacion.not_null")
      * @Assert\Type(type="float", message="hito.ponderacion.type")
      * @ORM\Column(type="float")
      */
@@ -105,7 +104,7 @@ class Hito {
     private $miembros;
 
     /**
-     * @ORM\OneToMany(targetEntity="Accion", mappedBy="hito", cascade="all")
+     * @ORM\OneToMany(targetEntity="Accion", mappedBy="hito", cascade={"remove"})
      */
     private $acciones;
 

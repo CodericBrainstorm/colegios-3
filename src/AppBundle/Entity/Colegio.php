@@ -52,7 +52,7 @@ class Colegio {
      *
      * @ORM\Column(name="borrado", type="boolean")
      */
-    private $borrado;
+    private $borrado=false;
 
     /**
      * Get id

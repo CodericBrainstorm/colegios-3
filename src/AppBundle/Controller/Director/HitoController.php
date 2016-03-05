@@ -29,7 +29,8 @@ class HitoController extends Controlador {
      */
     public function asignarHitoAction(Request $request) {
         $director = $this->getUser();
-        return $this->_crearObject($request, Hito::class, HitoType::class, 'hitos', 'hito', $director->getAno(), array('director' => $director));
+        $config = $this->_getObject('AppBundle:Config', 1);
+        return $this->_crearObjectWithAssign($request, Hito::class, HitoType::class, 'hitos', 'hito', array($director->getAno(), $config->getEstadoPredefinido(), $config->getEstadoPredefinido()), array('setAno', 'setEstadoSostenedor', 'setEstadoDirector'), array('director'=>$director));
     }
 
     /**

@@ -37,7 +37,7 @@ class Estado
      *
      * @ORM\Column(name="borrado", type="boolean")
      */
-    private $borrado;
+    private $borrado=false;
 
 
     /**
