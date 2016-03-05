@@ -4,21 +4,22 @@ namespace AppBundle\Controller\Utils;
 
 trait DBGeneralUtilsTrait {
 
-    private function _listarObjects($class, $nombre, $template, $query = null) {
+    private function _listarObjects($class, $nombre, $template, $query = null, $extra = array()) {
         if (is_null($query)) {
-            return $this->_listarObjectsByMethod($class, $nombre, $template, "findAll");
+            return $this->_listarObjectsByMethod($class, $nombre, $template, "findAll", null, $extra);
         } else {
-            return $this->_listarObjectsByMethod($class, $nombre, $template, "findBy", $query);
+            return $this->_listarObjectsByMethod($class, $nombre, $template, "findBy", $query, $extra);
         }
     }
-    
-    private function _listarObjectsByMethod($class, $nombre, $template, $method, $params = null){
-        if(is_null($params)){
+
+    private function _listarObjectsByMethod($class, $nombre, $template, $method, $params = null, $extra = array()) {
+        if (is_null($params)) {
             $objects = $this->getDoctrine()->getRepository($class)->$method();
-        }else{
+        } else {
             $objects = $this->getDoctrine()->getRepository($class)->$method($params);
         }
-        return $this->render($template, array($nombre => $objects));
+        $extra[$nombre] = $objects;
+        return $this->render($template, $extra);
     }
 
     private function _verObject($request, $id, $class, $type, $title, $formOpt = array()) {
@@ -71,4 +72,14 @@ trait DBGeneralUtilsTrait {
         }
         return $obj;
     }
+
+    private function _getObjectsBy($class, $query) {
+        $em = $this->getDoctrine()->getManager();
+        $objs = $em->getRepository($class)->findBy($query);
+        if (!$objs) {
+            throw $this->createNotFoundException('No ' . $objs . ' found for id ' . $query);
+        }
+        return $objs;
+    }
+
 }

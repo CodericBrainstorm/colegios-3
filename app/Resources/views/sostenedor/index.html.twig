@@ -32,3 +32,13 @@
     </div>
 {% endblock %}
 
+{% block scripts %}
+    {{parent()}}
+    <script type="text/javascript">
+        $('.table.table-hover tbody tr .clickable_td').click(function (e) {
+            console.log('hola');
+            window.location.href = $('.table.table-hover tbody tr .link_td a').attr('href');
+        })
+    </script>
+{% endblock %}
+

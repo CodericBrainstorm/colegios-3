@@ -246,7 +246,7 @@ class Director extends User {
         foreach ($this->compromisos as $compromiso) {
             $area = $compromiso->getCompromiso()->getArea();
             if ($area->getAno() === $ano) {
-                if (!in_array($area, $areas)) {
+                if (!array_key_exists($area->getId(), $areas)) {
                     $areas[$area->getId()] = array('total' => 0, 'porcentaje' => 0, 'ponderacion' => $area->getPonderacion());
                 }
                 if ($compromiso->getVerificado()) {

@@ -16,12 +16,16 @@ class EstadisticasController extends Controlador {
         \AppBundle\Controller\Utils\DBGeneralUtilsTrait;
 
     /**
-     * @Route("/{role}/estadisticas/", name="estadisticas")
+     * @Route("/{role}/estadisticas/{id}", defaults={"id" = "own"}, name="estadisticas")
      */
-    public function cambiarAnoAction(Request $request) {
-        $user = $this->getUser();
-        $areas = $this->getDoctrine()->getRepository('AppBundle:Area')->findBy(array('ano' => $user->getAno()));
-        $stats = $user->getCompromisos();
+    public function cambiarAnoAction($id, Request $request) {
+        if ($id === "own") {
+            $user = $this->getUser();
+            $this->denyAccessUnlessGranted('edit', $user);
+        } else {
+            $user = $this->_obtenerUser('AppBundle\Entity\Director', $id, 'edit');
+        }
+        $areas = $this->_getObjectsBy('AppBundle:Area', array('ano' => $user->getAno()));
         return $this->render('sostenedor/estadisticas/show.html.twig', array('user' => $user, 'areas' => $areas, 'director' => $user));
     }
 

@@ -73,7 +73,7 @@ trait DBUsersUtilsTrait {
     private function _obtenerUser($class, $id, $action) {
         $userManager = $this->_obtenerUserManager($class);
         $user = $userManager->findUserBy(array('id' => $id));
-        $this->denyAccessUnlessGranted('view', $user);
+        $this->denyAccessUnlessGranted($action, $user);
         return $user;
     }
 
