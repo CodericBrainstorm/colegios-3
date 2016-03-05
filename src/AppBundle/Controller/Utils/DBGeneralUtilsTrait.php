@@ -33,6 +33,7 @@ trait DBGeneralUtilsTrait {
 
     private function _editarObject($request, $id, $class, $type, $redirect, $title, $formOpt = array()) {
         $object = $this->_getObject($class, $id);
+        $this->denyAccessUnlessGranted('edit', $object);
         return $this->_generarFormObject($request, $object, $type, $redirect, $title, $formOpt, 'edit');
     }
 
@@ -41,6 +42,15 @@ trait DBGeneralUtilsTrait {
         if ($ano) {
             $object->setAno($this->getUser()->getAno());
         }
+        return $this->_generarFormObject($request, $object, $type, $redirect, $title, $formOpt, 'new');
+    }
+    
+    private function _crearObjectWithAssign($request, $class, $type, $redirect, $title, $assigned_obj, $assign, $ano = true, $formOpt = array()){
+        $object = new $class;
+        if ($ano) {
+            $object->setAno($this->getUser()->getAno());
+        }
+        $object->$assign($assigned_obj);
         return $this->_generarFormObject($request, $object, $type, $redirect, $title, $formOpt, 'new');
     }
 

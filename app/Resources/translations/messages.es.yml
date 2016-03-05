@@ -20,6 +20,12 @@ accion:
             title: Editar Acción
         ver:
             title: Ver Acción
+        delete:
+                title: Eliminar Acción
+                message: | 
+                            ¿Está seguro que desea eliminar esta acción?
+                confirm: Eliminar
+                cancel: Cancelar
 
 admin:
     views:

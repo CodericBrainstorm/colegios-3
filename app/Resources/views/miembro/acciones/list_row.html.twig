@@ -1,0 +1,35 @@
+<tr class="gradeX">
+    <td>{{ accion.nombre }}</td>
+    <td>{{ accion.hito.nombre }}</td>
+    <td>{{ accion.estadoDirector.nombre }}</td>
+    <td>{{ accion.estadoMiembro.nombre }}</td>
+    <td class="center">
+        <div class="btn-group">
+            <button data-toggle="dropdown" class="btn btn-info dropdown-toggle" type="button">Operaciones <span class="caret"></span></button>
+            <ul role="menu" class="dropdown-menu">
+                <li><a href="{{ path('ver accion', {'id': accion.id}) }}">Ver</a></li>
+                <li><a href="{{ path('editar accion', {'id': accion.id}) }}">Editar</a></li>
+                <li><a href="#accionModal{{accion.id}}" data-toggle="modal">Eliminar</a></li>
+            </ul>
+        </div>
+    </td>
+</tr>
+<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="accionModal{{accion.id}}" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                <h4 class="modal-title">{{ 'accion.views.delete.title'|trans }}</h4>
+            </div>
+            <div class="modal-body">
+
+                {{ 'accion.views.delete.message'|trans|nl2br }}
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{ 'accion.views.delete.cancel'|trans }}</button>
+                <a href="{{ path('eliminar accion', {'id': accion.id}) }}"><button type="button" class="btn btn-danger"> {{ 'accion.views.delete.confirm'|trans }}</button></a>
+            </div>
+        </div>
+    </div>
+</div>
