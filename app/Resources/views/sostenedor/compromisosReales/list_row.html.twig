@@ -1,7 +1,7 @@
 <tr class="gradeX">
     <td>{{ compromiso.compromiso.nombre }}</td>
-    <td>{{ compromiso.compromiso.sostenedor.nombre ~" "~ compromiso.compromiso.sostenedor.apellido }}</td>
-    <td>{{ compromiso.director.nombre~" "~compromiso.director.apellido }}</td>
+    <td>{{ compromiso.compromiso.sostenedor.apellido }} {{ compromiso.compromiso.sostenedor.nombre }}</td>
+    <td>{{ compromiso.director.apellido }} {{ compromiso.director.nombre}}</td>
     <td class="center">
         <div class="btn-group">
             <button data-toggle="dropdown" class="btn btn-info dropdown-toggle" type="button">Operaciones <span class="caret"></span></button>

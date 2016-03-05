@@ -62,6 +62,7 @@ trait DBUsersUtilsTrait {
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $userManager = $this->_obtenerUserManager($class);
+            $this->_enviarEmailRegistro($user);
             $userManager->updateUser($user, true);
             $this->addFlash('success', 'flash.success.cambio');
             return $this->redirectToRoute($redirect, $redirect_params);
@@ -95,4 +96,19 @@ trait DBUsersUtilsTrait {
         return $this->container->get('my_pugx_user_manager');
     }
 
+    private function _enviarEmailRegistro($user){
+        $message = \Swift_Message::newInstance()
+            ->setSubject('Nuevo usuario registrado')
+            ->setFrom('mensajes@softwaretrident.com')
+            ->setTo($user->getEmail())
+            ->setBody(
+                $this->renderView(
+                    'Emails/registration.html.twig',
+                    array('nombre' => $user->getNombre(), 'apellido' => $user->getApellido(), 'user' => $user->getUsername(), 'pass' => $user->getPlainPassword())
+                ),
+                'text/html'
+            )
+        ;
+        $this->get('mailer')->send($message);
+    }
 }

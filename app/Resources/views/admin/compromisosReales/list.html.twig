@@ -1,11 +1,7 @@
 {% extends 'base_list.html.twig' %}
 {% block list_title %}
     Compromisos {% if sostenedor is defined %} del Sostenedor: <span style="color:#5bc0de;">{{sostenedor.nombre~" "~sostenedor.apellido}}</span> {% endif %}
-{% endblock %}
-
-{% block boton_nuevo %}
-    <a href="{{ path('asignar compromiso', {'role': role}) }}"><button class="btn btn-info" type="button" style="margin:15px;"><i class="fa fa-plus"></i> Asignar Compromiso</button></a>
-{% endblock %}    
+{% endblock %}   
 
 {% block list_header %}
     <th>Compromiso</th>
