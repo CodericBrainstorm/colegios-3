@@ -45,7 +45,6 @@ class HitoType extends AbstractType {
             'choices' => $options['director']->getMiembros(),
             'multiple' => true
         ));
-        $builder->add('ponderacion', PercentType::class);
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver) {

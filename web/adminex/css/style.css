@@ -5420,3 +5420,13 @@ ul.iconic-list li a:hover, ul.iconic-list li.active a {
 .view_form textarea {
     resize: none;
 }
+
+.progress-sm{
+    margin: 10px 0 0 0;
+    height: 20px;
+}
+
+.progress-sm .progress-bar{
+    line-height: 20px;
+    font-size: 14px;   
+}

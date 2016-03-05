@@ -43,4 +43,11 @@ class DirectorController extends Controlador {
         return $this->_verUser($request, $id, 'AppBundle\Entity\Director', DirectorType::class, 'director');
     }
 
+    /**
+     * @Route("/{role}/progreso_director/{id}", name="progreso director")
+     */
+    public function progresoDirectorAction($id, Request $request) {
+        return $this->_verUser($request, $id, 'AppBundle\Entity\Director', DirectorType::class, 'director');
+    }
+
 }

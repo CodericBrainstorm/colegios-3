@@ -22,7 +22,7 @@ class EstadisticasController extends Controlador {
         $user = $this->getUser();
         $areas = $this->getDoctrine()->getRepository('AppBundle:Area')->findBy(array('ano' => $user->getAno()));
         $stats = $user->getCompromisos();
-        return $this->render('sostenedor/estadisticas/show.html.twig', array('user' => $user, 'areas' => $areas, 'compromisos' => $stats));
+        return $this->render('sostenedor/estadisticas/show.html.twig', array('user' => $user, 'areas' => $areas, 'director' => $user));
     }
 
 }
