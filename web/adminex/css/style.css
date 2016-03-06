@@ -5488,3 +5488,7 @@ ul.iconic-list li a:hover, ul.iconic-list li.active a {
     float: left;
     margin: 8.5px 0 0 5px;
 }
+
+.form-control[readonly], fieldset[disabled] .form-control{
+    pointer-events: none;
+}
