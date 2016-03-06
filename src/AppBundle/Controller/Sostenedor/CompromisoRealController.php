@@ -35,9 +35,8 @@ class CompromisoRealController extends Controlador {
      * @Route("/sostenedor/compromisos_asignados/{director}/hitos/{id}", name="ver hitos compromiso director")
      */
     public function verHitosCompromisosDirectorAction($director, $id, Request $request) {
-        $directorUser = $this->_obtenerUser('AppBundle\Entity\Director', $director, 'view');
         $compromiso = $this->_getObject('AppBundle:CompromisoReal', $id);
-        return $this->_listarObjects('AppBundle:Hito', 'hitos', 'director/hitos/list.html.twig', array('compromiso' => $id, 'ano' => $this->getUser()->getAno()->getId()), array('compromiso' => $compromiso, 'director' => $directorUser));
+        return $this->_listarObjects('AppBundle:Hito', 'hitos', 'director/hitos/list.html.twig', array('compromiso' => $id, 'ano' => $this->getUser()->getAno()->getId()), array('compromiso' => $compromiso, 'director' => $compromiso->getDirector()));
     }
 
     /**
