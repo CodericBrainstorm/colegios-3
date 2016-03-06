@@ -20,6 +20,12 @@ accion:
             title: Editar Acción
         ver:
             title: Ver Acción
+        delete:
+                title: Eliminar Acción
+                message: | 
+                            ¿Está seguro que desea eliminar esta acción?
+                confirm: Eliminar
+                cancel: Cancelar
 
 admin:
     views:
@@ -40,7 +46,16 @@ area:
             title: Editar Área
         ver:
             title: Ver Área
-        
+        delete:
+            title: Eliminar Área
+            message: | 
+                        ¿Está seguro que desea eliminar esta área? Al hacerlo se eliminarán:
+                        -Todos los compromisos del área.
+                        -Todas las asignaciones de dichos compromisos.
+                        -Todos los hitos de dichas asignaciones de compromisos.
+                        -Todas las acciones de dichos hitos.
+            confirm: Eliminar
+            cancel: Cancelar
 ciudad:
     views:
         new:
@@ -49,6 +64,12 @@ ciudad:
             title: Editar Ciudad
         ver:
             title: Ver Ciudad
+        delete:
+            title: Eliminar Ciudad
+            message: | 
+                        ¿Está seguro que desea eliminar esta ciudad?
+            confirm: Eliminar
+            cancel: Cancelar
         
 colegio:
     views:
@@ -58,6 +79,12 @@ colegio:
             title: Editar Colegio
         ver:
             title: Ver Colegio
+        delete:
+            title: Eliminar Colegio
+            message: | 
+                        ¿Está seguro que desea eliminar este colegio?
+            confirm: Eliminar
+            cancel: Cancelar
         
 compromiso:
     views:
@@ -67,6 +94,15 @@ compromiso:
             title: Editar Compromiso
         ver:
             title: Ver Compromiso
+        delete:
+            title: Eliminar Compromiso
+            message: | 
+                        ¿Está seguro que desea eliminar este compromiso? Al hacerlo se eliminarán:
+                        -Todas las asignaciones del compromiso.
+                        -Todos los hitos de dichas asignaciones del compromiso.
+                        -Todas las acciones de dichos hitos.
+            confirm: Eliminar
+            cancel: Cancelar
         
 comuna:
     views:
@@ -76,6 +112,12 @@ comuna:
             title: Editar Comuna
         ver:
             title: Ver Comuna
+        delete:
+            title: Eliminar Comuna
+            message: | 
+                        ¿Está seguro que desea eliminar esta comuna?
+            confirm: Eliminar
+            cancel: Cancelar
             
 director:
     views:
@@ -87,15 +129,27 @@ director:
             title: Ver Director
         perfil:
             title: Perfil de Director
+        delete:
+            title: Eliminar Usuario Director
+            message: | 
+                        ¿Está seguro que desea eliminar este usuario director? Al hacerlo este ya no podrá acceder al sistema.
+            confirm: Eliminar
+            cancel: Cancelar
             
 estado:
     views:
         new:
-            title: Crear Estado
+            title: Crear Rúbrica
         edit:
-            title: Editar Estado
+            title: Editar Rúbrica
         ver:
-            title: Ver Estado
+            title: Ver Rúbrica
+        delete:
+            title: Eliminar Rúbrica
+            message: | 
+                        ¿Está seguro que desea eliminar esta rúbrica?
+            confirm: Eliminar
+            cancel: Cancelar
             
 hito:
     views:
@@ -116,6 +170,12 @@ miembro:
             title: Ver Miembro
         perfil:
             title: Perfil de Miembro
+        delete:
+            title: Eliminar Usuario Miembro
+            message: | 
+                        ¿Está seguro que desea eliminar este usuario miembro? Al hacerlo este ya no podrá acceder al sistema.
+            confirm: Eliminar
+            cancel: Cancelar
             
 sostenedor:
     views:
@@ -127,6 +187,12 @@ sostenedor:
             title: Ver Sostenedor
         perfil:
             title: Perfil de Sostenedor
+        delete:
+            title: Eliminar Usuario Sostenedor
+            message: | 
+                        ¿Está seguro que desea eliminar este usuario sostenedor? Al hacerlo este ya no podrá acceder al sistema.
+            confirm: Eliminar
+            cancel: Cancelar
             
 tipo_colegio:
     views:
@@ -136,6 +202,12 @@ tipo_colegio:
             title: Editar Tipo de Colegio
         ver:
             title: Ver Tipo de Colegio
+        delete:
+            title: Eliminar Tipo de Colegio
+            message: | 
+                        ¿Está seguro que desea eliminar este tipo de colegio?
+            confirm: Eliminar
+            cancel: Cancelar
             
 tipo_institucion:
     views:
@@ -145,6 +217,12 @@ tipo_institucion:
             title: Editar Tipo de Institución
         ver:
             title: Ver Tipo de Institución
+        delete:
+            title: Eliminar Tipo de Institución
+            message: | 
+                        ¿Está seguro que desea eliminar este tipo de institución?
+            confirm: Eliminar
+            cancel: Cancelar
     
 compromiso:
     views:
@@ -163,6 +241,14 @@ compromisoReal:
             title: Editar Compromiso Asignado
         ver:
             title: Ver Compromiso Asignado
+        delete:
+            title: Eliminar Asignación de Compromiso
+            message: | 
+                        ¿Está seguro que desea eliminar esta asignación de compromiso? Al hacerlo se eliminarán:
+                        -Todos los hitos de la asignación del compromiso.
+                        -Todas las acciones de dichos hitos.
+            confirm: Eliminar
+            cancel: Cancelar
             
 archivo:
     views:

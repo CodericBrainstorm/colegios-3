@@ -1,0 +1,19 @@
+<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="{{modal_id}}}" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                <h4 class="modal-title">{{modal_titulo}}</h4>
+            </div>
+            <div class="modal-body">
+
+                {{modal_mensaje}}
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger"><a href="{{modal_accion}}"> Confirm</a></button>
+            </div>
+        </div>
+    </div>
+</div>

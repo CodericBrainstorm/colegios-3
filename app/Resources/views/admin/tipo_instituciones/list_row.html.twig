@@ -6,8 +6,27 @@
             <ul role="menu" class="dropdown-menu">
                 <li><a href="{{ path('ver tipo de institucion', {'id': tipo_institucion.id}) }}">Ver</a></li>
                 <li><a href="{{ path('editar tipo de institucion', {'id': tipo_institucion.id}) }}">Editar</a></li>
-                <li><a href="#">Eliminar</a></li>
+                <li><a href="#tipoInstitucionModal{{tipo_institucion.id}}" data-toggle="modal">Eliminar</a></li>
             </ul>
         </div>
     </td>
 </tr>
+<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="tipoInstitucionModal{{tipo_institucion.id}}" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                <h4 class="modal-title">{{ 'tipo_institucion.views.delete.title'|trans }}</h4>
+            </div>
+            <div class="modal-body">
+
+                {{ 'tipo_institucion.views.delete.message'|trans|nl2br }}
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{ 'tipo_institucion.views.delete.cancel'|trans }}</button>
+                <a href="{{ path('eliminar tipo de institucion', {'id': tipo_institucion.id}) }}"><button type="button" class="btn btn-danger"> {{ 'tipo_institucion.views.delete.confirm'|trans }}</button></a>
+            </div>
+        </div>
+    </div>
+</div>

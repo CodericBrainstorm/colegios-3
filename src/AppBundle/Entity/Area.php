@@ -57,7 +57,7 @@ class Area {
     private $ano;
 
     /**
-     * @ORM\OneToMany(targetEntity="Compromiso", mappedBy="area")
+     * @ORM\OneToMany(targetEntity="Compromiso", mappedBy="area", cascade={"remove"})
      */
     private $compromisos;
 

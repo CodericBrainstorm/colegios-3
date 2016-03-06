@@ -54,7 +54,7 @@ class Compromiso {
     private $ano;
 
     /**
-     * @ORM\OneToMany(targetEntity="CompromisoReal", mappedBy="compromiso")
+     * @ORM\OneToMany(targetEntity="CompromisoReal", mappedBy="compromiso", cascade={"remove"})
      */
     private $compromisosReales;
 

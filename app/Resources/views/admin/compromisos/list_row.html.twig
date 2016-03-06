@@ -8,10 +8,29 @@
             <ul role="menu" class="dropdown-menu">
                 <li><a href="{{ path('ver compromiso', {'id': compromiso.id}) }}">Ver</a></li>
                 <li><a href="{{ path('editar compromiso', {'id': compromiso.id}) }}">Editar</a></li>
-                <li><a href="#">Eliminar</a></li>
+                <li><a href="#compromisoModal{{compromiso.id}}" data-toggle="modal">Eliminar</a></li>
                 <li class="divider"></li>
                 <li><a href="{{ path('ver compromisos asignados compromiso', {'idCompromiso': compromiso.id}) }}">Ver Asignaciones</a></li>
             </ul>
         </div>
     </td>
 </tr>
+<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="compromisoModal{{compromiso.id}}" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                <h4 class="modal-title">{{ 'compromiso.views.delete.title'|trans }}</h4>
+            </div>
+            <div class="modal-body">
+
+                {{ 'compromiso.views.delete.message'|trans|nl2br }}
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{ 'compromiso.views.delete.cancel'|trans }}</button>
+                <a href="{{ path('borrar compromiso', {'id': compromiso.id}) }}"><button type="button" class="btn btn-danger"> {{ 'compromiso.views.delete.confirm'|trans }}</button></a>
+            </div>
+        </div>
+    </div>
+</div>

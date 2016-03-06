@@ -20,7 +20,7 @@ class EstadoController extends Controlador {
      * @Route("/admin/rubricas/", name="rubricas")
      */
     public function rubricasAction(Request $request) {
-        return $this->_listarObjects('AppBundle:Estado', 'estados', 'admin/estados/list.html.twig');
+        return $this->_listarObjects('AppBundle:Estado', 'estados', 'admin/estados/list.html.twig', array('borrado'=>false));
     }
 
     /**
@@ -44,4 +44,10 @@ class EstadoController extends Controlador {
         return $this->_verObject($request, $id, 'AppBundle:Estado', EstadoType::class, 'estado');
     }
 
+    /**
+     * @Route("/admin/eliminar_rubrica/{id}", name="eliminar rubrica")
+     */
+    public function eliminarRubricaAction($id, Request $request) {
+        return $this->_borrarObjectByMethod('AppBundle:Estado', $id, 'borrar', 'rubricas');
+    }
 }

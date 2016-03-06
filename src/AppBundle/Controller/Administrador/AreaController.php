@@ -43,5 +43,12 @@ class AreaController extends Controlador {
     public function verAreaAction($id, Request $request) {
         return $this->_verObject($request, $id, 'AppBundle:Area', AreaType::class, 'area');
     }
+    
+    /**
+     * @Route("/admin/borrar_area/{id}", name="borrar area")
+     */
+    public function borrarAreaAction($id, Request $request) {
+        return $this->_borrarObject('AppBundle:Area', $id, 'areas');
+    }
 
 }

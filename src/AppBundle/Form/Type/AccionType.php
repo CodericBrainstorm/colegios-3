@@ -3,53 +3,55 @@
 namespace AppBundle\Form\Type;
 
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\PercentType;
+use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class HitoType extends AbstractType {
-
+class AccionType extends AbstractType {
+    
     public function buildForm(FormBuilderInterface $builder, array $options) {
-        $builder->add('compromiso', EntityType::class, array(
-            'class' => 'AppBundle:CompromisoReal',
-            'choice_label' => 'compromiso.nombre',
-            'choices' => $options['director']->getCompromisos()
-        ));
         $builder->add('nombre');
         $builder->add('descripcion');
         $builder->add('fechaInicio', DateType::class, array(
             'widget' => 'choice',
-            'years' => array($options['director']->getAno()->getNombre())
+            'years' => array($options['miembro']->getAno()->getNombre())
         ));
         $builder->add('fechaFin', DateType::class, array(
             'widget' => 'choice',
-            'years' => array($options['director']->getAno()->getNombre())
+            'years' => array($options['miembro']->getAno()->getNombre())
         ));
         $builder->add('verificado', CheckboxType::class, array(
             'required' => false
         ));
-        $builder->add('estadoSostenedor', EntityType::class, array(
-            'class' => 'AppBundle:Estado',
-            'choice_label' => 'nombre',
+        $builder->add('miembro', EntityType::class, array(
+            'class' => 'AppBundle:Miembro',
+            'choice_label' => 'getNombreEntero',
+            'read_only' => $options['readonlyMiembro']
         ));
         $builder->add('estadoDirector', EntityType::class, array(
             'class' => 'AppBundle:Estado',
-            'choice_label' => 'nombre'
+            'choice_label' => 'nombre',
+            'read_only' => $options['readonlyEstadoDirector']
         ));
-        $builder->add('miembros', EntityType::class, array(
-            'class' => 'AppBundle:Miembro',
-            'choice_label' => 'getNombreEntero',
-            'choices' => $options['director']->getMiembros(),
-            'multiple' => true
+        $builder->add('estadoMiembro', EntityType::class, array(
+            'class' => 'AppBundle:Estado',
+            'choice_label' => 'nombre',
+        ));
+        $builder->add('hito', EntityType::class, array(
+            'class' => 'AppBundle:Hito',
+            'choice_label' => 'nombre',
+            'choices' => $options['miembro']->getHitos()
         ));
     }
-
+    
     public function setDefaultOptions(OptionsResolverInterface $resolver) {
         $resolver->setDefaults(array(
-            'director' => null
+            'miembro' => null,
+            'ano' => null,
+            'readonlyMiembro' => false,
+            'readonlyEstadoDirector' => false
         ));
     }
 

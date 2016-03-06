@@ -20,7 +20,7 @@ class CiudadController extends Controlador {
      * @Route("/admin/ciudades/", name="ciudades")
      */
     public function ciudadesAction(Request $request) {
-        return $this->_listarObjects('AppBundle:Ciudad', 'ciudades', 'admin/ciudades/list.html.twig');
+        return $this->_listarObjects('AppBundle:Ciudad', 'ciudades', 'admin/ciudades/list.html.twig', array('borrado'=>false));
     }
 
     /**
@@ -42,6 +42,13 @@ class CiudadController extends Controlador {
      */
     public function verCiudadAction($id, Request $request) {
         return $this->_verObject($request, $id, 'AppBundle:Ciudad', CiudadType::class, 'ciudad');
+    }
+    
+    /**
+     * @Route("/admin/eliminar_ciudad/{id}", name="eliminar ciudad")
+     */
+    public function eliminarCiudadAction($id, Request $request) {
+        return $this->_borrarObjectByMethod('AppBundle:Ciudad', $id, 'borrar', 'ciudades');
     }
 
 }

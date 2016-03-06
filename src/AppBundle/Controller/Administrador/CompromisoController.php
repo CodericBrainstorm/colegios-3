@@ -51,5 +51,12 @@ class CompromisoController extends Controlador {
     public function verCompromisoAction($id, Request $request) {
         return $this->_verObject($request, $id, 'AppBundle:Compromiso', CompromisoType::class, 'compromiso', array('disabled'=>true));
     }
+    
+    /**
+     * @Route("/admin/borrar_compromiso/{id}", name="borrar compromiso")
+     */
+    public function borrarCompromisoAction($id, Request $request) {
+        return $this->_borrarObject('AppBundle:Compromiso', $id, 'compromisos');
+    }
 
 }
