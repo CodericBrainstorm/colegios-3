@@ -1,45 +1,100 @@
 {% extends 'base.html.twig' %}
 
+{% block estilos %}
+    {{parent()}}
+    <link href="{{ asset('adminex/js/nestable/jquery.nestable.css') }}" rel="stylesheet">
+{% endblock %}
+
 {% block body %}
     <div class="row">
+        <div class="col-md-12" id="button-col">
+            <section class="panel">
+                <header class="panel-heading">
+                    {% set porcentajeTotal = director.getProgreso(app.user.ano) * 100 %}
+                    {% if porcentajeTotal < 34 %}
+                        {% set color = "danger" %}
+                    {% elseif porcentajeTotal < 67 %}
+                        {% set color = "warning" %}
+                    {% else %}
+                        {% set color = "success" %}
+                    {% endif %}
+                    Progreso Total {% if role != 'director' %} de <span style="color:#5bc0de;">{{director.apellido}} {{director.nombre}}</span> {% endif %}
+                    <div class="progress progress-striped active progress-sm">
+                        <div style="width: {{ porcentajeTotal }}%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="{{ porcentajeTotal }}" role="progressbar" class="progress-bar progress-bar-{{color}}">
+                            {{ porcentajeTotal }}%
+                        </div>
+                    </div>
+                </header>
+            </section>
+        </div>
+
         {% for area in areas %} 
             <div class="col-md-12" id="button-col">
                 <section class="panel">
                     <header class="panel-heading">
                         {{ area.nombre | trans}} - 
                         <span>% {{ area.ponderacion * 100 | trans}}</span>
+                        {% set porcentaje = director.getPorcentajeDelArea(area, app.user.getAno(), false) * 100 %}
                         <span class="tools pull-right">
                             <a href="javascript:;" class="fa fa-chevron-down"></a>
                             <a href="javascript:;" class="fa fa-times"></a>
                         </span>
-                    </header>
-
-                    <div class="panel-body">
-                        {% set porcentaje = user.getPorcentajeDelArea(area) * 100 %}
-                        Completado:
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="porcentaje" aria-valuemin="0" aria-valuemax="100" style="min-width:20px;width: {{porcentaje}}%;" >
+                        <div class="progress progress-small">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="{{porcentaje}}" aria-valuemin="0" aria-valuemax="100" style="min-width:20px;width: {{porcentaje}}%;" >
                                 {{porcentaje}}%
                             </div>
                         </div>
-                        <ul>
-                            {% for compromiso in compromisos if compromiso.compromiso.area == area %}
-                                <li><span style="font-weight:bold;color:{{compromiso.verificado ? 'green' : 'red'}}">{{ compromiso.compromiso.nombre | trans}}</span>  </li>
-                                Hitos:
-                                <ul  style="margin-bottom:20px">
-                                    {% for hito in compromiso.hitos %}
-                                        <li><span style="color:{{hito.verificado ? 'green' : 'red'}}">{{ hito.nombre | trans}}</span>  </li>
-                                        {% else %}
-                                        Aún no hay Hitos asignados a este compromiso.
-                                    {% endfor %} 
-                                </ul>
-                            {% else %}
-                                Aún no hay compromisos asignados por el sostenedor.
-                            {% endfor %} 
-                        </ul>
+                    </header>
+
+                    <div class="panel-body">
+                        <div class="estadisticas-compromisos">Compromisos:</div>
+                        <div class="dd dd-nodrag" id="nestable_list">
+                            <ol class="dd-list">
+                                {% for compromiso in director.getCompromisos() if compromiso.compromiso.area == area %}
+                                    <li class="dd-item dd-item-compromiso" data-id="{{compromiso.id}}">
+                                        <div class="dd-handle dd-compromiso"><span style="font-weight:bold;color:{{compromiso.verificado ? 'green' : 'red'}}">{{ compromiso.compromiso.nombre | trans}}</span>
+                                        </div>
+                                        <ol class="dd-list">
+                                            {% if  compromiso.hitos | length > 0 %}
+                                                Hitos:
+                                                {% for hito in compromiso.hitos %}
+                                                    <li class="dd-item dd-item-hito" data-id="6">
+                                                        <div class="dd-handle dd-hito"><span style="color:{{hito.verificado ? 'green' : 'red'}}">{{ hito.nombre | trans}}</span>
+                                                            {% if  hito.acciones | length > 0 %}
+                                                            </div>
+                                                            <ol class="dd-list">
+                                                                Acciones:
+                                                                {% for accion in hito.acciones %}
+                                                                    <li class="dd-item dd-item-hito" data-id="6">
+                                                                        <div class="dd-handle dd-hito"><span style="color:{{accion.verificado ? 'green' : 'red'}}">{{ accion.nombre | trans}} - {{ accion.miembro.apellido | trans}} {{ accion.miembro.nombre | trans}}</span></div>
+                                                                    </li>
+                                                                {% endfor %} 
+                                                            </ol>
+                                                        {% else %}
+                                                           - Sin Acciones asignadas.</div>
+                                                        {% endif %} 
+                                                    </li>
+                                                {% endfor %} 
+                                            {% else %}
+                                                Aún no hay Hitos asignados a este compromiso.
+                                            {% endif %} 
+                                        </ol>
+                                    </li>
+                                {% else %}
+                                    Aún no hay compromisos asignados por el sostenedor.
+                                {% endfor %} 
+                            </ol>
+                        </div>
                     </div>
                 </section>
             </div>
         {% endfor %} 
     </div>
 {% endblock %}
+
+{% block scripts %}
+    {{parent()}}
+    <script src="{{ asset('adminex/js/nestable/jquery.nestable.js') }}"></script>
+    <script src="{{ asset('adminex/js/nestable-init.js') }}"></script>
+{% endblock %}
+

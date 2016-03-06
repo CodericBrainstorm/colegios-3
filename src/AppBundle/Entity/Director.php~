@@ -38,9 +38,8 @@ class Director extends User {
     private $miembros;
 
     /**
-     * @Assert\NotNull(message = "assert.not_null")
      * @ORM\OneToOne(targetEntity="Colegio", inversedBy="director")
-     * @ORM\JoinColumn(name="colegio_id", referencedColumnName="id", nullable=false)
+     * @ORM\JoinColumn(name="colegio_id", referencedColumnName="id")
      */
     private $colegio;
 
@@ -211,6 +210,29 @@ class Director extends User {
 
     public function getType() {
         return \AppBundle\Form\Type\DirectorType::class;
+    }
+
+    /**
+     * Get PorcentajeDelArea
+     *
+     * @return float 
+     */
+    public function getPorcentajeDelArea(Area $area, $proporcional = true) {
+        $porcentaje = 0;
+        $total = 0;
+        foreach ($this->compromisos as $compromiso) {
+            if ($compromiso->getCompromiso()->getArea() === $area) {
+                if ($compromiso->getVerificado()) {
+                    $porcentaje += 1;
+                }
+                $total += 1;
+            }
+        }
+        if ($total === 0) {
+            return 0;
+        } else {
+            return ($proporcional ? $area->getPonderacion() * ($porcentaje / $total) : $porcentaje / $total);
+        }
     }
 
 }

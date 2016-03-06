@@ -39,14 +39,6 @@ class Hito {
     private $descripcion;
 
     /**
-     * @var float
-     *
-     * @Assert\Type(type="float", message="hito.ponderacion.type")
-     * @ORM\Column(type="float")
-     */
-    private $ponderacion;
-
-    /**
      * @var \DateTime
      *
      * @Assert\Date(message = "assert.date")
@@ -157,27 +149,6 @@ class Hito {
      */
     public function getDescripcion() {
         return $this->descripcion;
-    }
-
-    /**
-     * Set ponderacion
-     *
-     * @param float $ponderacion
-     * @return Hito
-     */
-    public function setPonderacion($ponderacion) {
-        $this->ponderacion = $ponderacion;
-
-        return $this;
-    }
-
-    /**
-     * Get ponderacion
-     *
-     * @return float 
-     */
-    public function getPonderacion() {
-        return $this->ponderacion;
     }
 
     /**

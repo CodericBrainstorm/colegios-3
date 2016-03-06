@@ -1,27 +1,30 @@
 {% extends 'base_list.html.twig' %}
 {% block list_title %}
-    Hitos {% if director is defined %} del Director: <span style="color:#5bc0de;">{{director.nombre~" "~director.apellido}}</span> {% endif %}
-{% endblock %}
+    Hitos {% if director is defined %} del Director: <span style="color:#5bc0de;">{{director.nombre~" "~director.apellido}}</span>
+    {% if compromiso is defined %} y Compromiso: <span style="color:#5bc0de;">{{compromiso.compromiso.nombre }}</span> 
+    {% endif %}
+    {% endif %}
+        {% endblock %}
 
-{% block boton_nuevo %}
-    <a href="{{ path('asignar hito', {'role': role}) }}"><button class="btn btn-info" type="button" style="margin:15px;"><i class="fa fa-plus"></i> Asignar Hito</button></a>
-{% endblock %}    
+            {% block boton_nuevo %}
+                <a href="{{ path('asignar hito', {'role': role}) }}"><button class="btn btn-info" type="button" style="margin:15px;"><i class="fa fa-plus"></i> Asignar Hito</button></a>
+            {% endblock %}    
 
-{% block list_header %}
-    <th>Compromiso</th>
-    <th>Director</th>
-    <th>Miembros</th>
-    <th>Operaciones</th>
-    {% endblock %}   
+            {% block list_header %}
+                <th>Compromiso</th>
+                <th>Director</th>
+                <th>Miembros</th>
+                <th>Operaciones</th>
+                {% endblock %}   
 
-{% block list_body %}
-    {% for hito in hitos %} 
-        {{ include('director/hitos/list_row.html.twig', { 'hito': hito }) }} 
-    {% endfor %} 
-{% endblock %}
-{% block list_footer %}
-    <th>Compromiso</th>
-    <th>Director</th>
-    <th>Miembros</th>
-    <th>Operaciones</th>
-    {% endblock %}
+            {% block list_body %}
+                {% for hito in hitos %} 
+                    {{ include('director/hitos/list_row.html.twig', { 'hito': hito }) }} 
+                {% endfor %} 
+            {% endblock %}
+            {% block list_footer %}
+                <th>Compromiso</th>
+                <th>Director</th>
+                <th>Miembros</th>
+                <th>Operaciones</th>
+                {% endblock %}

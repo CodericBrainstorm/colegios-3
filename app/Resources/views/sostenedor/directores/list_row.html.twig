@@ -12,7 +12,9 @@
                 <li><a href="{{ path('editar director sostenedor', {'id': director.id}) }}">Editar</a></li>
                 <li><a href="#directorModal{{director.id}}" data-toggle="modal">Eliminar</a></li>
                 <li class="divider"></li>
+                <li><a href="{{ path('estadisticas', {'id': director.id, 'role' : role}) }}">Ver Progreso</a></li>
                 <li><a href="{{ path('ver miembros director', {'role': role, 'id': director.id}) }}">Ver Miembros</a></li>
+                <li><a href="{{ path('ver compromisos asignados un director', {'id': director.id}) }}">Ver Compromisos</a></li>
             </ul>
         </div>
     </td>
