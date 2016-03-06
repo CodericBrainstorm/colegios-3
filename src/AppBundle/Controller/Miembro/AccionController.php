@@ -28,7 +28,7 @@ class AccionController extends Controlador {
      */
     public function nuevaAccionAction(Request $request) {
         $config = $this->_getObject('AppBundle:Config', 1);
-        return $this->_crearObjectWithAssign($request, Accion::class, AccionType::class, 'acciones', 'accion', array($this->getUser(), $config->getEstadoPredefinido(), $config->getEstadoPredefinido()), array('setMiembro', 'setEstadoDirector', 'setEstadoMiembro'), array('miembro'=>$this->getUser(), 'ano'=>$this->getUser()->getAno(), 'readonlyMiembro'=>true, 'readonlyEstadoDirector' => true));
+        return $this->_crearObjectWithAssign($request, Accion::class, AccionType::class, 'acciones', 'accion', array($this->getUser()->getAno(), $this->getUser(), $config->getEstadoPredefinido(), $config->getEstadoPredefinido()), array('setAno', 'setMiembro', 'setEstadoDirector', 'setEstadoMiembro'), array('miembro'=>$this->getUser(), 'readonlyMiembro'=>true, 'readonlyEstadoDirector' => true));
     }
 
     /**
