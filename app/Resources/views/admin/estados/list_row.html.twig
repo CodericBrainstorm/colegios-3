@@ -7,6 +7,8 @@
                 <li><a href="{{ path('ver rubrica', {'id': estado.id}) }}">Ver</a></li>
                 <li><a href="{{ path('editar rubrica', {'id': estado.id}) }}">Editar</a></li>
                 <li><a href="#estadoModal{{estado.id}}" data-toggle="modal">Eliminar</a></li>
+                <li class="divider"></li>
+                <li><a href="{{ path('predefinir rubrica', {'id': estado.id}) }}">Seleccionar como Predefinida</a></li>
             </ul>
         </div>
     </td>

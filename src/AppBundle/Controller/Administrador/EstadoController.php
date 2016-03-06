@@ -29,6 +29,16 @@ class EstadoController extends Controlador {
     public function nuevaRubricaAction(Request $request) {
         return $this->_crearObject($request, Estado::class, EstadoType::class, 'rubricas', "estado", false);
     }
+    
+    /**
+     * @Route("/admin/rubrica_predefinida/{id}", name="predefinir rubrica")
+     */
+    public function predefinirRubricaAction($id, Request $request) {
+        $config = $this->_getObject('AppBundle:Config', 1);
+        $config->setEstadoPredefinido($this->_getObject('AppBundle:Estado', $id));
+        $this->_persistObject($config);
+        return $this->redirectToRoute('rubricas');
+    }
 
     /**
      * @Route("/admin/rubrica/{id}", name="editar rubrica")

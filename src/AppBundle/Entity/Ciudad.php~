@@ -34,6 +34,13 @@ class Ciudad {
      * @ORM\OneToMany(targetEntity="Comuna", mappedBy="ciudad")
      */
     private $comunas;
+    
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="borrado", type="boolean")
+     */
+    private $borrado;
 
     /**
      * Get id
@@ -104,5 +111,35 @@ class Ciudad {
     public function getComunas()
     {
         return $this->comunas;
+    }
+    
+    /**
+     * Set borrado
+     *
+     * @param boolean $borrado
+     * @return Ciudad
+     */
+    public function setBorrado($borrado) {
+        $this->borrado = $borrado;
+
+        return $this;
+    }
+
+    /**
+     * Get borrado
+     *
+     * @return boolean 
+     */
+    public function getBorrado() {
+        return $this->borrado;
+    }
+    
+    /**
+     * borrar
+     *
+     * @return Ciudad
+     */
+    public function borrar() {
+        $this->setBorrado(true);
     }
 }

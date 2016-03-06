@@ -118,6 +118,22 @@ class Sostenedor extends User {
     public function getDirectores() {
         return $this->directores;
     }
+    
+    /**
+     * Get directores
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getDirectoresActivos() {
+        $dirs = $this->directores;
+        $activos = array();
+        foreach($dirs as $d){
+            if($d->isEnabled()){
+                array_push($activos, $d);
+            }
+        }
+        return $activos;
+    }
 
     /**
      * Set nombre
@@ -273,6 +289,22 @@ class Sostenedor extends User {
      */
     public function getCompromisos() {
         return $this->compromisos;
+    }
+    
+    /**
+     * Get compromisos año
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCompromisosAno($ano) {
+        $comps = $this->compromisos;
+        $retcomps = array();
+        foreach($comps as $c){
+            if($c->getAno() === $ano){
+                array_push($retcomps, $c);
+            }
+        }
+        return $retcomps;
     }
 
     /**

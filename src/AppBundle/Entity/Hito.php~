@@ -39,6 +39,17 @@ class Hito {
     private $descripcion;
 
     /**
+<<<<<<< HEAD
+     * @var float
+     *
+     * @Assert\Type(type="float", message="hito.ponderacion.type")
+     * @ORM\Column(type="float")
+     */
+    private $ponderacion;
+
+    /**
+=======
+>>>>>>> master
      * @var \DateTime
      *
      * @Assert\Date(message = "assert.date")
@@ -96,7 +107,7 @@ class Hito {
     private $miembros;
 
     /**
-     * @ORM\OneToMany(targetEntity="Accion", mappedBy="hito", cascade="all")
+     * @ORM\OneToMany(targetEntity="Accion", mappedBy="hito", cascade={"remove"})
      */
     private $acciones;
 

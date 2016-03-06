@@ -27,7 +27,7 @@ class CompromisoRealType extends AbstractType {
         $builder->add('estadoDirector', EntityType::class, array(
             'class' => 'AppBundle:Estado',
             'choice_label' => 'nombre',
-            'read_only' => $options['read_only_estado_director']
+            'readonly' => $options['readonlyEstadoDirector']
         ));
         $builder->add('director', EntityType::class, array(
             'class' => 'AppBundle:Director',
@@ -44,7 +44,7 @@ class CompromisoRealType extends AbstractType {
             'sostenedor' => null,
             'file_path' => null,
             'ano' => null,
-            'read_only_estado_director' => false
+            'readonlyEstadoDirector' => false
         ));
     }
 

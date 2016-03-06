@@ -45,7 +45,9 @@ class CompromisoRealController extends Controlador {
      */
     public function asignarCompromisoAction(Request $request) {
         $sostenedor = $this->getUser();
-        return $this->_crearObject($request, CompromisoReal::class, CompromisoRealType::class, 'ver compromisos asignados', 'compromisoReal', $this->getUser()->getAno(), array('sostenedor' => $sostenedor, 'ano' => $this->getUser()->getAno(), 'read_only_estado_director' => false));
+        $config = $this->_getObject('AppBundle:Config', 1);
+        return $this->_crearObjectWithAssign($request, CompromisoReal::class, CompromisoRealType::class, 'ver compromisos asignados', 'compromisoReal', array($sostenedor->getAno(), $config->getEstadoPredefinido(), $config->getEstadoPredefinido()), array('setAno', 'setEstadoSostenedor', 'setEstadoDirector'), array('sostenedor'=>$sostenedor, 'ano'=>$this->getUser()->getAno(), 'readonlyEstadoDirector'=>true));
+
     }
 
     /**
