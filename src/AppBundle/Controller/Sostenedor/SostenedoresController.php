@@ -16,8 +16,10 @@ class SostenedoresController extends Controlador {
      * @Route("/sostenedor/", name="sostenedor_index")
      */
     public function indexAction(Request $request) {
+        $user = $this->getUser();
+//        return $this->redirectToRoute('directores sostenedor');
         return $this->render(
-                        'sostenedor/index.html.twig'
+                        'sostenedor/index.html.twig', array('directores' => $user->getDirectores())
         );
     }
 

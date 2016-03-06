@@ -233,18 +233,48 @@ class Director extends User {
      *
      * @return float 
      */
-    public function getPorcentajeDelArea(Area $area) {
+    public function getPorcentajeDelArea(Area $area, Ano $ano, $proporcional = true) {
         $porcentaje = 0;
         $total = 0;
         foreach ($this->compromisos as $compromiso) {
-            if ($compromiso->getCompromiso()->getArea() === $area) {
+            if ($compromiso->getAno() === $ano && $compromiso->getCompromiso()->getArea() === $area) {
                 if ($compromiso->getVerificado()) {
                     $porcentaje += 1;
                 }
                 $total += 1;
             }
         }
-        return ($total === 0 ? 0 : $porcentaje / $total);
+        if ($total === 0) {
+            return 0;
+        } else {
+            return ($proporcional ? $area->getPonderacion() * ($porcentaje / $total) : $porcentaje / $total);
+        }
+    }
+
+    /**
+     * Get Progreso
+     *
+     * @return float 
+     */
+    public function getProgreso($ano) {
+        $total = 0;
+        $areas = array();
+        foreach ($this->compromisos as $compromiso) {
+            $area = $compromiso->getCompromiso()->getArea();
+            if ($area->getAno() === $ano) {
+                if (!array_key_exists($area->getId(), $areas)) {
+                    $areas[$area->getId()] = array('total' => 0, 'porcentaje' => 0, 'ponderacion' => $area->getPonderacion());
+                }
+                if ($compromiso->getVerificado()) {
+                    $areas[$area->getId()]['porcentaje'] += 1;
+                }
+                $areas[$area->getId()]['total'] += 1;
+            }
+        }
+        foreach ($areas as $area) {
+            $total = ($area['total'] === 0 ? 0 : $area['ponderacion'] * ($area['porcentaje'] / $area['total']));
+        }
+        return $total;
     }
 
 }

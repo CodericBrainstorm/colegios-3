@@ -9,6 +9,8 @@
                 <li><a href="{{ path('ver compromiso asignado', {'id': compromiso.id}) }}">Ver</a></li>
                 <li><a href="{{ path('editar compromiso asignado', {'id': compromiso.id}) }}">Editar</a></li>
                 <li><a href="#compromisoRealModal{{compromiso.id}}" data-toggle="modal">Eliminar</a></li>
+                <li class="divider"></li>
+                <li><a href="{{ path('ver hitos compromiso director', {'director': director.id, 'id' : compromiso.id}) }}">Ver Hitos</a></li>
             </ul>
         </div>
     </td>

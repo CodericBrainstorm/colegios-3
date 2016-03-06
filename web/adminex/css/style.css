@@ -558,7 +558,7 @@ h5.left-nav-title {
     content: '';
 }
 
-.toggle-btn {
+.toggle-btn, .btn_back {
     width: 52px;
     height: 50px;
     font-size: 20px;
@@ -572,7 +572,7 @@ h5.left-nav-title {
     transition: all 0.2s ease-out 0s;
 }
 
-.toggle-btn:hover {
+.toggle-btn:hover, .btn_back:hover {
     background: #65CEA7;
     color: #fff;
     border-right-color: #65CEA7;
@@ -5419,4 +5419,72 @@ ul.iconic-list li a:hover, ul.iconic-list li.active a {
 
 .view_form textarea {
     resize: none;
+}
+
+.progress-sm{
+    margin: 10px 0 0 0;
+    height: 20px;
+}
+
+.progress-sm .progress-bar{
+    line-height: 20px;
+    font-size: 14px;   
+}
+
+.progress-small{
+    margin: 15px 0 0 0;
+}
+
+.estadisticas-compromisos{
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+#nestable_list{
+    max-width: 100%;
+}
+
+#nestable_list .dd-compromiso{
+    border: none;
+    background-color: white;
+    cursor: default;
+    font-size: 15px;
+}
+
+#nestable_list .dd-item-compromiso{
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+#nestable_list .dd-item-compromiso > button{
+    font-size: 20px;
+    height: 29px;
+}
+
+#nestable_list .dd-hito{
+    border: none;
+    cursor: default;
+}
+
+#nestable_list .dd-hito:hover{
+    background-color: #f5f5f5;
+}
+
+#nestable_list .dd-item-hito{
+    border: 1px solid #ccc;
+    background-color: #f5f5f5;
+    border-radius: 2.5px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+}
+#nestable_list .dd-item-hito > button{
+    font-size: 15px;
+    height: 29px;
+}
+
+.back_button{
+    border: medium none;
+    float: left;
+    margin: 8.5px 0 0 5px;
 }

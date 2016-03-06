@@ -233,7 +233,11 @@ class Director extends User {
      *
      * @return float 
      */
+<<<<<<< HEAD
     public function getPorcentajeDelArea(Area $area) {
+=======
+    public function getPorcentajeDelArea(Area $area, $proporcional = true) {
+>>>>>>> master
         $porcentaje = 0;
         $total = 0;
         foreach ($this->compromisos as $compromiso) {
@@ -244,7 +248,15 @@ class Director extends User {
                 $total += 1;
             }
         }
+<<<<<<< HEAD
         return ($total === 0 ? 0 : $porcentaje / $total);
+=======
+        if ($total === 0) {
+            return 0;
+        } else {
+            return ($proporcional ? $area->getPonderacion() * ($porcentaje / $total) : $porcentaje / $total);
+        }
+>>>>>>> master
     }
 
 }

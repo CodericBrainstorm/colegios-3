@@ -47,15 +47,6 @@ class Compromiso {
     private $indicador;
 
     /**
-     * @var float
-     *
-     * @Assert\NotNull(message = "compromiso.ponderacion.not_null")
-     * @Assert\Type(type="float", message="compromiso.ponderacion.type")
-     * @ORM\Column(name="ponderacion", type="float")
-     */
-    private $ponderacion;
-
-    /**
      * @Assert\NotNull(message = "assert.not_null")
      * @ORM\ManyToOne(targetEntity="Ano")
      * @ORM\JoinColumn(name="ano_id", referencedColumnName="id", nullable=false)
@@ -80,13 +71,6 @@ class Compromiso {
      * @ORM\JoinColumn(name="sostenedor_id", referencedColumnName="id", nullable=false)
      */
     private $sostenedor;
-
-//    /**
-//     * @Assert\NotNull(message = "assert.not_null")
-//     * @ORM\ManyToOne(targetEntity="Estado")
-//     * @ORM\JoinColumn(name="estado_id", referencedColumnName="id", nullable=false)
-//     */
-//    private $estado;
 
     /**
      * Get id
@@ -168,27 +152,6 @@ class Compromiso {
     }
 
     /**
-     * Set ponderacion
-     *
-     * @param float $ponderacion
-     * @return Compromiso
-     */
-    public function setPonderacion($ponderacion) {
-        $this->ponderacion = $ponderacion;
-
-        return $this;
-    }
-
-    /**
-     * Get ponderacion
-     *
-     * @return float 
-     */
-    public function getPonderacion() {
-        return $this->ponderacion;
-    }
-
-    /**
      * Add compromisosReales
      *
      * @param \AppBundle\Entity\CompromisoReal $compromisosReales
@@ -260,36 +223,13 @@ class Compromiso {
         return $this->sostenedor;
     }
 
-//    /**
-//     * Set estado
-//     *
-//     * @param \AppBundle\Entity\Estado $estado
-//     * @return Compromiso
-//     */
-//    public function setEstado(\AppBundle\Entity\Estado $estado = null) {
-//        $this->estado = $estado;
-//
-//        return $this;
-//    }
-
-//    /**
-//     * Get estado
-//     *
-//     * @return \AppBundle\Entity\Estado 
-//     */
-//    public function getEstado() {
-//        return $this->estado;
-//    }
-
-
     /**
      * Set ano
      *
      * @param \AppBundle\Entity\Ano $ano
      * @return Compromiso
      */
-    public function setAno(\AppBundle\Entity\Ano $ano = null)
-    {
+    public function setAno(\AppBundle\Entity\Ano $ano = null) {
         $this->ano = $ano;
 
         return $this;
@@ -300,8 +240,8 @@ class Compromiso {
      *
      * @return \AppBundle\Entity\Ano 
      */
-    public function getAno()
-    {
+    public function getAno() {
         return $this->ano;
     }
+
 }

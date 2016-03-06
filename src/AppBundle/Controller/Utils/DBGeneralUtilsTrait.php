@@ -4,21 +4,22 @@ namespace AppBundle\Controller\Utils;
 
 trait DBGeneralUtilsTrait {
 
-    private function _listarObjects($class, $nombre, $template, $query = null) {
+    private function _listarObjects($class, $nombre, $template, $query = null, $extra = array()) {
         if (is_null($query)) {
-            return $this->_listarObjectsByMethod($class, $nombre, $template, "findAll");
+            return $this->_listarObjectsByMethod($class, $nombre, $template, "findAll", null, $extra);
         } else {
-            return $this->_listarObjectsByMethod($class, $nombre, $template, "findBy", $query);
+            return $this->_listarObjectsByMethod($class, $nombre, $template, "findBy", $query, $extra);
         }
     }
-    
-    private function _listarObjectsByMethod($class, $nombre, $template, $method, $params = null){
-        if(is_null($params)){
+
+    private function _listarObjectsByMethod($class, $nombre, $template, $method, $params = null, $extra = array()) {
+        if (is_null($params)) {
             $objects = $this->getDoctrine()->getRepository($class)->$method();
-        }else{
+        } else {
             $objects = $this->getDoctrine()->getRepository($class)->$method($params);
         }
-        return $this->render($template, array($nombre => $objects));
+        $extra[$nombre] = $objects;
+        return $this->render($template, $extra);
     }
 
     private function _verObject($request, $id, $class, $type, $title, $formOpt = array()) {
@@ -40,17 +41,17 @@ trait DBGeneralUtilsTrait {
     private function _crearObject($request, $class, $type, $redirect, $title, $ano = true, $formOpt = array()) {
         $this->crearObjectWithAssign($request, $class, $type, $redirect, $title, $ano, 'setAno', $formOpt);
     }
-    
-    private function _crearObjectWithAssign($request, $class, $type, $redirect, $title, $assigned_objs, $assigns, $formOpt = array()){
+
+    private function _crearObjectWithAssign($request, $class, $type, $redirect, $title, $assigned_objs, $assigns, $formOpt = array()) {
         $object = new $class;
-        if((is_array($assigned_objs))&&(is_array($assigns))){
-            if(count($assigns)==count($assigned_objs)){
+        if ((is_array($assigned_objs)) && (is_array($assigns))) {
+            if (count($assigns) == count($assigned_objs)) {
                 $length = count($assigns);
                 for ($i = 0; $i < $length; $i++) {
-                  $object->$assigns[$i]($assigned_objs[$i]);
+                    $object->$assigns[$i]($assigned_objs[$i]);
                 }
             }
-        }else{
+        } else {
             $object->$assigns($assigned_objs);
         }
         return $this->_generarFormObject($request, $object, $type, $redirect, $title, $formOpt, 'new');
@@ -83,20 +84,30 @@ trait DBGeneralUtilsTrait {
         }
         return $obj;
     }
-    
-    private function _borrarObject($class, $id, $redirect){
+
+    private function _getObjectsBy($class, $query) {
+        $em = $this->getDoctrine()->getManager();
+        $objs = $em->getRepository($class)->findBy($query);
+        if (!$objs) {
+            throw $this->createNotFoundException('No ' . $objs . ' found for id ' . $query);
+        }
+        return $objs;
+    }
+
+    private function _borrarObject($class, $id, $redirect) {
         $obj = $this->_getObject($class, $id);
         $em = $this->getDoctrine()->getManager();
         $em->remove($obj);
         $em->flush();
         return $this->redirectToRoute($redirect);
     }
-    
-    private function _borrarObjectByMethod($class, $id, $method, $redirect){
+
+    private function _borrarObjectByMethod($class, $id, $method, $redirect) {
         $obj = $this->_getObject($class, $id);
         $obj->$method();
         $em = $this->getDoctrine()->getManager();
         $em->flush();
         return $this->redirectToRoute($redirect);
     }
+
 }
